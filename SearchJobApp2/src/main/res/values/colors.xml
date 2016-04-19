@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="all_back_color">#eff1ef</color>
+    <color name="theme_color">#5fbe9e</color>
+    <color name="theme_color_pressed">#57a188</color>
+    <color name="white">@android:color/white</color>
+
+    <color name="normal_gray">#7d7d7d</color>
+    <color name="black">@android:color/black</color>
+    <color name="bottom_pressed">#cdcdcd</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="transparent_half">#50000000</color>
+    <color name="chat_text_color">#373334</color>
+    <color name="gray_line_color">#cccccc</color>
+    <!--com.csi0n.im.widget.loading-->
+    <!--覆盖颜色-->
+    <color name="bgColor_overlay">#60000000</color>
+    <color name="bgColor_overlay_black">#95000000</color>
+    <!--窗口背景颜色-->
+    <color name="bgColor_svprogressdefaultview">@android:color/white</color>
+    <!--标题颜色-->
+    <color name="textColor_svprogresshuddefault_msg">#000000</color>
+    <color name="roundColor_svprogresshuddefault">#e5e5e5</color>
+    <color name="roundProgressColor_svprogresshuddefault">@android:color/black</color>
+
+    <color name="choose_eara_item_press_color">#f4f4f4</color>
+    <color name="popup_main_background">#b0000000</color>
+</resources>

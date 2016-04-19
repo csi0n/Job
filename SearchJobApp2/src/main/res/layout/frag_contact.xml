@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/frag_main_title_height"
+        android:background="@color/theme_color"
+        android:gravity="center_vertical">
+
+        <com.csi0n.searchjob.lib.widget.RoundImageView
+            android:id="@+id/img_head_ic"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_contact"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small_size" />
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:text="添加"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small_size" />
+    </RelativeLayout>
+
+    <com.csi0n.searchjob.ui.widget.IphoneTreeView
+        android:layout_width="match_parent"
+        android:id="@+id/list"
+        android:divider="@color/all_back_color"
+        android:dividerHeight="1dp"
+        android:cacheColorHint="@color/transparent"
+        android:layout_height="match_parent"></com.csi0n.searchjob.ui.widget.IphoneTreeView>
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_normal"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:minHeight="80dp"
+        android:padding="8dp"
+        android:paddingBottom="6.0dip"
+        android:paddingTop="6.0dip">
+        <com.csi0n.searchjob.lib.widget.RoundImageView
+            android:id="@+id/ri_normal_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10.0dip"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/tv_normal_uname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ri_normal_head"
+            android:layout_marginLeft="11dp"
+            android:layout_toEndOf="@+id/ri_normal_head"
+            android:layout_toRightOf="@+id/ri_normal_head"
+            android:text="csi0n"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_medium_size" />
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="2dp"
+                android:src="@mipmap/ico_login_status_wifi" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_normal_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ri_normal_head"
+            android:layout_alignLeft="@+id/tv_normal_uname"
+            android:layout_alignStart="@+id/tv_normal_uname"
+            android:text="这个人很懒什么都没留下..."
+            android:textColor="@color/normal_gray"
+            android:textSize="@dimen/text_default_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_device"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:minHeight="80dp"
+        android:padding="8dp"
+        android:paddingBottom="6.0dip"
+        android:paddingTop="6.0dip">
+
+        <com.csi0n.searchjob.lib.widget.RoundImageView
+            android:id="@+id/tv_device_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10.0dip"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_device_uname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_device_sign"
+            android:layout_alignStart="@+id/tv_device_sign"
+            android:layout_alignTop="@+id/tv_device_icon"
+            android:text="csi0n"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_medium_size" />
+
+        <TextView
+            android:id="@+id/tv_device_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_device_icon"
+            android:layout_marginLeft="11dp"
+            android:layout_toEndOf="@+id/tv_device_icon"
+            android:layout_toRightOf="@+id/tv_device_icon"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_default_size" />
+    </RelativeLayout>
+</LinearLayout>

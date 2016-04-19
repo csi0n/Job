@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical">
+<include android:id="@+id/line_top" layout="@layout/view_line_top"></include>
+
+    <LinearLayout
+        android:layout_below="@+id/line_top"
+        android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_normal_size">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_normal_size"
+            android:background="#ededed"
+            android:paddingBottom="7dp"
+            android:paddingLeft="@dimen/view_search_padding"
+            android:paddingRight="@dimen/view_search_padding"
+            android:paddingTop="7dp">
+
+            <EditText
+                android:id="@+id/sh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+
+                android:background="@drawable/edit_shape"
+                android:drawableLeft="@mipmap/ico_search_gray"
+                android:focusableInTouchMode="true"
+                android:hint="@string/str_please_enter_search_word"
+                android:paddingBottom="5dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#8C8C8C"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/search_clear"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:background="@android:color/transparent"
+                android:padding="6dp"
+                android:src="@mipmap/ico_clear_gray"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_search"
+        android:layout_marginTop="7dp"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:dividerHeight="1dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" />
+
+    <ListView
+        android:id="@+id/search_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_search"
+        android:layout_marginTop="7dp"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/transparent"
+        android:dividerHeight="0dp"
+        android:listSelector="@color/transparent"
+        android:scrollbars="none"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_noresult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_search"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="抱歉,暂时没有找到相关城市"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <com.csi0n.searchjob.ui.widget.LetterListView
+        android:id="@+id/MyLetterListView01"
+        android:layout_width="25dip"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/ll_search"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="7dp" />
+
+</RelativeLayout>

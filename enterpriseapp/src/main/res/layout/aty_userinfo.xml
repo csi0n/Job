@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_main_title_height">
+        <include layout="@layout/include_view_line_top"></include>
+    </LinearLayout>
+
+    <com.csi0n.searchjob.lib.widget.CScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/ll_change_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@mipmap/ico_user_info_32" />
+
+                    <TextView
+                        android:id="@+id/textView_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/imageView3"
+                        android:layout_toRightOf="@+id/imageView3"
+                        android:text="修改用户信息"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:src="@mipmap/ico_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="1dp"
+                android:id="@+id/ll_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@mipmap/ico_password_32" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/imageView1"
+                        android:layout_toRightOf="@+id/imageView1"
+                        android:text="修改密码"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:src="@mipmap/ico_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_my_send"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginTop="1dp"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@mipmap/ico_my_send_32" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/imageView2"
+                        android:layout_toRightOf="@+id/imageView2"
+                        android:text="我的发布"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:src="@mipmap/ico_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="@dimen/text_medium_size"
+                android:textColor="@color/white"
+                android:text="注销"
+                android:background="@drawable/btn_selector_red"
+                android:layout_height="@dimen/btn_normal_size" />
+        </LinearLayout>
+    </com.csi0n.searchjob.lib.widget.CScrollView>
+</LinearLayout>

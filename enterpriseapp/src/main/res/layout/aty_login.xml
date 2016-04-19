@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_view_line_top"></include>
+
+    <com.csi0n.searchjob.lib.widget.RoundImageView
+        android:layout_width="@dimen/login_head_size"
+        android:layout_height="@dimen/login_head_size"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <EditText
+        android:id="@+id/edit_username"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edit_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_shape"
+android:text="csi0n"
+        android:hint="@string/str_please_enter_username"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/normal_gray"
+        android:textSize="@dimen/text_medium_size" />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edit_height"
+        android:text="123456"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/edit_shape"
+        android:hint="@string/str_please_enter_password"
+        android:inputType="textPassword"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/normal_gray" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_normal_size"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_selector_theme"
+        android:text="登陆"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_medium_size" />
+
+</LinearLayout>

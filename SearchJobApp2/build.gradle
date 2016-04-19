@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'csi0n'
+            keyPassword '123123123'
+            storeFile file('/Volumes/Source/Code/Android/android_key.jks')
+            storePassword '123123123'
+        }
+    }
+    compileSdkVersion 22
+    buildToolsVersion '23.0.2'
+    defaultConfig {
+        applicationId "com.csi0n.searchjob"
+        minSdkVersion 14
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0.6"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res/anim']
+            jniLibs.srcDir 'src/main/jni'
+            jni.srcDirs = []
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    compile 'com.ogaclejapan.arclayout:library:1.0.1@aar'
+    compile files('libs/core.jar')
+    compile 'cn.bingoogolapple:bga-badgeview:1.0.6@aar'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.2@aar'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    //Optional: see how to use the utility.
+    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
+    compile 'com.victor:lib:1.0.3'
+    compile 'com.github.kingideayou:tagcloudview:1.0.2'
+    compile project(':lib')
+}

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.csi0n.searchjob.lib.widget.CScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_setting_normal_height"
+            android:layout_marginTop="20dp"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/view_setting_margin"
+                android:layout_marginStart="@dimen/view_setting_margin"
+                android:text="@string/str_new_message_notice"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small_size" />
+
+            <com.csi0n.searchjob.ui.widget.switchbutton.zcw.togglebutton.ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/view_setting_margin" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_1"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/line_1"
+                android:layout_marginRight="@dimen/line_1"
+                android:background="@color/all_back_color" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_setting_normal_height"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/view_setting_margin"
+                android:layout_marginStart="@dimen/view_setting_margin"
+                android:text="@string/str_sound"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small_size" />
+
+            <com.csi0n.searchjob.ui.widget.switchbutton.zcw.togglebutton.ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/view_setting_margin" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_1"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/line_1"
+                android:layout_marginRight="@dimen/line_1"
+                android:background="@color/all_back_color" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_setting_normal_height"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/view_setting_margin"
+                android:layout_marginStart="@dimen/view_setting_margin"
+                android:text="@string/str_shake"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small_size" />
+
+            <com.csi0n.searchjob.ui.widget.switchbutton.zcw.togglebutton.ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/view_setting_margin" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_1"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/line_1"
+                android:layout_marginRight="@dimen/line_1"
+                android:background="@color/all_back_color" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_line_chat_font_size"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_setting_normal_height"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/view_setting_margin"
+                android:layout_marginStart="@dimen/view_setting_margin"
+                android:text="@string/str_setting_font_size"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/view_setting_margin"
+                android:src="@mipmap/ico_arrow" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_1"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/line_1"
+                android:layout_marginRight="@dimen/line_1"
+                android:background="@color/all_back_color" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_line_check_update"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_setting_normal_height"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/view_setting_margin"
+                android:layout_marginStart="@dimen/view_setting_margin"
+                android:text="@string/str_check_update"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/view_setting_margin"
+                android:src="@mipmap/ico_arrow" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.csi0n.searchjob.lib.widget.CScrollView>

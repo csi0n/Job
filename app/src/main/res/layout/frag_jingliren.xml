@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/all_back_color"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edit_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:enabled="false"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_shape"
+        android:hint="请输入姓名"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/normal_gray"
+        android:textSize="@dimen/text_medium_size" />
+    <EditText
+        android:id="@+id/edit_code"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edit_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:enabled="false"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_shape"
+        android:hint="请输入身份证号码"
+        android:paddingLeft="8dp"
+        android:inputType="number"
+        android:numeric ="integer"
+        android:digits="0123456789xX"
+        android:textColor="@color/black"
+        android:textColorHint="@color/normal_gray"
+        android:textSize="@dimen/text_medium_size" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_normal_size"
+        android:enabled="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_selector_theme"
+        android:text="已设置"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_medium_size" />
+</LinearLayout>

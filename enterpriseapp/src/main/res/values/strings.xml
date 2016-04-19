@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">搜工作企业版</string>
+    <string name="str_login">登录</string>
+    <string name="str_please_enter_username">请输入用户名</string>
+    <string name="str_please_enter_password">请输入密码</string>
+    <string name="str_please_enter_old_password">请输入旧密码</string>
+    <string name="str_please_enter_new_password">请输入新密码</string>
+    <string name="str_please_confirm_new_password">请确认新密码</string>
+    <string name="str_please_choose_city">请选择城市</string>
+    <string name="str_please_choose_area">请选择区域</string>
+    <string name="str_please_enter_company_intro">请输入公司介绍</string>
+    <string name="str_please_enter_company_address_detail">请输入公司详细位置</string>
+    <string name="str_please_choose_job_type">请选择工作类型</string>
+    <string name="str_choose">选择</string>
+    <string name="str_main">首页</string>
+    <string name="url_enterPriseAuthorize">api.php/User/Oauth/enterPriseAuthorize</string>
+    <string name="url_checkTimeOut">api.php/User/Oauth/checkTimeOut</string>
+    <string name="url_getUserCompanyInfo">api.php/EnterPrise/Index/getUserCompanyInfo</string>
+    <string name="url_changeInfo">api.php/EnterPrise/Index/changeInfo</string>
+    <string name="url_checkUpdateEnterprise">api.php/User/Oauth/checkUpdateEnterprise</string>
+    <string name="url_getComments">api.php/EnterPrise/Index/getComments</string>
+    <string name="url_getDefaultSearchJobFragmentConfig">api.php/User/Index/getDefaultSearchJobFragmentConfig</string>
+    <string name="url_getJobList">api.php/EnterPrise/Index/getJobList</string>
+    <string name="url_insertJob">api.php/EnterPrise/Index/insertJob</string>
+    <string name="url_loadMoneyBack">api.php/EnterPrise/Index/loadMoneyBack</string>
+    <string name="url_saveMoneyBack">api.php/EnterPrise/Index/saveMoneyBack</string>
+</resources>

@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_main_title_height">
+
+        <include layout="@layout/include_view_line_top"></include>
+    </LinearLayout>
+
+    <com.csi0n.searchjob.lib.widget.CScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_height"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_choose_job_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="工作类型:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <Button
+                        android:id="@+id/btn_choose_job_type"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/btn_selector_theme"
+                        android:text="@string/str_choose"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <EditText
+                        android:id="@+id/edit_job_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@+id/btn_choose_job_type"
+                        android:layout_toRightOf="@+id/tv_choose_job_type"
+                        android:background="@drawable/edit_shape"
+                        android:enabled="false"
+                        android:hint="@string/str_please_choose_job_type"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_height"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_choose_gongzi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="工作区间:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_gongzi_1"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/tv_choose_gongzi"
+                        android:layout_toRightOf="@+id/tv_choose_gongzi"
+                        android:background="@drawable/edit_shape"
+                        android:hint="最低工资"
+
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                    <TextView
+                        android:id="@+id/tv_t"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/edit_gongzi_1"
+                        android:layout_toRightOf="@+id/edit_gongzi_1"
+                        android:gravity="center_vertical"
+                        android:text="~"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/edit_gongzi_2"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/tv_t"
+                        android:layout_toRightOf="@+id/tv_t"
+                        android:background="@drawable/edit_shape"
+                        android:hint="最高工资"
+
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_gongzi_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="工资详情:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_gongzi_detail"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_gongzi_detail"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="left|top"
+                        android:hint="工资纤细介绍,例如:2000基本工资,多劳多得"
+                        android:lines="5"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_work_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="工作时长:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_work_time"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_work_time"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="center_vertical"
+                        android:hint="工作时长,例如:无休"
+                        android:lines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_height"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_fuli"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="选择福利:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <Button
+                        android:id="@+id/btn_choose_fuli"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/btn_selector_theme"
+                        android:text="@string/str_choose"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <EditText
+                        android:id="@+id/edit_fuli"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@+id/btn_choose_fuli"
+                        android:layout_toRightOf="@+id/tv_fuli"
+                        android:background="@drawable/edit_shape"
+                        android:enabled="false"
+                        android:hint="请选择福利"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_height"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="用工性别:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_choose_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/tv_sex"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:button="@drawable/default_rad_style"
+                            android:checked="true"
+                            android:paddingLeft="8dp"
+                            android:text="不限"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_medium_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:button="@drawable/default_rad_style"
+                            android:paddingLeft="8dp"
+                            android:text="男"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_medium_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_3"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:button="@drawable/default_rad_style"
+                            android:paddingLeft="8dp"
+                            android:text="女"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_medium_size" />
+                    </RadioGroup>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_height"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="年龄区间:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_age_1"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/tv_age"
+                        android:layout_toRightOf="@+id/tv_age"
+                        android:background="@drawable/edit_shape"
+                        android:hint="最低年龄"
+
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                    <TextView
+                        android:id="@+id/tv_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/edit_age_1"
+                        android:layout_toRightOf="@+id/edit_age_1"
+                        android:gravity="center_vertical"
+                        android:text="~"
+                        android:textColor="@color/black" />
+                    <EditText
+                        android:id="@+id/edit_age_2"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/tv_a"
+                        android:layout_toRightOf="@+id/tv_a"
+                        android:background="@drawable/edit_shape"
+                        android:hint="最高年龄"
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_work_life"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="工作年限:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_work_life"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_work_life"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="center_vertical"
+                        android:hint="工作年限,例如:不限,2年工作经验"
+                        android:lines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_degree_wanted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="教育程度:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_degree_wanted"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_degree_wanted"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="center_vertical"
+                        android:hint="教育程度,例如:高中及以上"
+                        android:lines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_more_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="更多信息:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_more_info"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_more_info"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="left|top"
+                        android:hint="更多信息,例如:公司环境"
+                        android:lines="5"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_work_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="工作内容:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_work_info"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_work_info"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="left|top"
+                        android:hint="工作内容,例如:日常操作机械,餐厅为顾客端茶"
+                        android:lines="5"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_work_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="工作地址:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_work_location"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_work_location"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="left|top"
+                        android:hint="工作地址"
+                        android:lines="5"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_height"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_shebao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="缴纳社保:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <CheckBox
+                        android:id="@+id/chk_shebao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@+id/tv_shebao"
+                        android:button="@drawable/default_checkbox_style"
+                        android:checked="true"
+                        android:text="是否缴纳社保"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_user_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="用工类型:"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_medium_size" />
+
+                    <EditText
+                        android:id="@+id/edit_user_type"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_toRightOf="@+id/tv_user_type"
+                        android:background="@drawable/edit_shape"
+                        android:gravity="center_vertical"
+                        android:hint="用工类型,例如:劳务派遣/劳务外包"
+                        android:lines="1"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/normal_gray" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="8dp"
+                        android:gravity="center_vertical"
+                        android:text="*年龄区间不填则表示不限,只填一个年龄也无用!"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/text_small_size" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.csi0n.searchjob.lib.widget.CScrollView>
+</LinearLayout>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_line_top"></include>
+
+    <com.csi0n.searchjob.lib.widget.CScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_shape_without_bg_color"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="账户信息:"
+                    android:textColor="@color/normal_gray"
+                    android:textSize="@dimen/text_small_size" />
+
+                <EditText
+                    android:id="@+id/edit_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入手机号码"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:id="@+id/edit_uname"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入短信验证码"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:id="@+id/edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="@string/str_please_enter_password"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:id="@+id/edit_repassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="@string/str_please_enter_repassword"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shape_without_bg_color"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="个人信息:"
+                    android:textColor="@color/normal_gray"
+                    android:textSize="@dimen/text_small_size" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入E-mail"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <RadioGroup
+                    android:id="@+id/rg_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:button="@drawable/bg_round_check_box"
+                        android:checked="true"
+
+                        android:text="@string/str_male"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:button="@drawable/bg_round_check_box"
+                        android:text="@string/str_female"
+                        android:textColor="@color/black" />
+                </RadioGroup>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入昵称"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入推荐人"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="请正确填写身份证号码,一经填写无法修改"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_small_size" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="姓名"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="身份证号码"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shape_without_bg_color"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员等级:"
+                    android:textColor="@color/normal_gray"
+                    android:textSize="@dimen/text_small_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/bg_round_check_box"
+
+                        android:text="普通会员 免费"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:button="@drawable/bg_round_check_box"
+
+                        android:text="金牌会员 999元"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/bg_round_check_box"
+
+                        android:text="金钻会员 4999元"
+                        android:textColor="@color/black" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/default_rad_style"
+                    android:text="我已经认真阅读并且完全同意《用户服务条例》中的所有条款"
+                    android:textColor="@color/normal_gray"
+                    android:textSize="@dimen/text_small_size" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_selector_theme"
+                android:text="注册"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium_size" />
+        </LinearLayout>
+    </com.csi0n.searchjob.lib.widget.CScrollView>
+
+</LinearLayout>

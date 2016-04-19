@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title_bar_with_round_image_button"></include>
+
+
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/rl_modulename_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+                <ListView
+                    android:id="@+id/list"
+                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                   ></ListView>
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_main_title_height"
+        android:background="@color/theme_color">
+
+        <ImageButton
+            android:id="@+id/pick_picture_detail_return_btn"
+            android:layout_width="@dimen/frag_main_title_height"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@null"
+            android:src="@mipmap/ico_back" />
+
+        <Button
+            android:id="@+id/pick_picture_send_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="5dp"
+            android:text="发送"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/child_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:columnWidth="100dip"
+        android:gravity="center"
+        android:horizontalSpacing="5dip"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="auto_fit"
+        android:padding="5dip"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dip"></GridView>
+
+</LinearLayout>

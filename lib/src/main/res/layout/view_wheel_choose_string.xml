@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_main_title_height"
+        android:background="@color/theme_color"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择城市"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/white"
+        android:gravity="top|left"
+        android:padding="8dp">
+
+        <com.csi0n.searchjob.lib.widget.WheelView
+            android:id="@+id/wheel_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.csi0n.searchjob.lib.widget.WheelView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_main_title_height"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingBottom="11dp">
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_selector_theme"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small_size" />
+    </LinearLayout>
+</LinearLayout>

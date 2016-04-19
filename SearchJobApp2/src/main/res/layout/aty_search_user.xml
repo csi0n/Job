@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_line_top"></include>
+
+    <include layout="@layout/view_search_layout"></include>
+
+    <LinearLayout
+        android:id="@+id/ll_find_person"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_normal_size"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:drawableLeft="@mipmap/ico_search_friend_person"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="找人:"
+            android:textColor="@color/black"
+
+            android:textSize="@dimen/text_small_size" />
+
+        <TextView
+            android:id="@+id/tv_person_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_find_group"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_normal_size"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:drawableLeft="@mipmap/ico_search_friend_group"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="找群:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small_size" />
+
+        <TextView
+            android:id="@+id/tv_group_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small_size" />
+    </LinearLayout>
+</LinearLayout>

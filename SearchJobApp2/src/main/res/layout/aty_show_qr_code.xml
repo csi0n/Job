@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_line_top"></include>
+
+    <com.csi0n.searchjob.lib.widget.CScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout3"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/bgColor_divier"
+                    android:paddingTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/iv_qr"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@mipmap/ic_launcher" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_below="@+id/iv_qr"
+                        android:layout_centerHorizontal="true"
+                        android:background="@color/roundColor_svprogresshuddefault">
+
+                        <com.csi0n.searchjob.lib.widget.RoundImageView
+                            android:id="@+id/ri_head"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="11dp"
+                            android:src="@mipmap/ic_launcher" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@+id/ri_head"
+                            android:layout_alignTop="@+id/ri_head"
+                            android:layout_marginLeft="8dp"
+                            android:layout_toEndOf="@+id/ri_head"
+                            android:layout_toRightOf="@+id/ri_head"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_uname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="csi0n"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_small_size" />
+
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="扫一扫二维码,添加我为好友吧"
+                                android:textColor="@color/normal_gray"
+                                android:textSize="@dimen/text_small_size" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/relativeLayout3"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/ll_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView8"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:src="@mipmap/ico_qr_scan" />
+
+                            <TextView
+                                android:id="@+id/textView11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/imageView8"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="8dp"
+                                android:text="扫一扫"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_small_size" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </com.csi0n.searchjob.lib.widget.CScrollView>
+</LinearLayout>

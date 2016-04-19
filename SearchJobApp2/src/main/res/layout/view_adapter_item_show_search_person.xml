@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+
+        <com.csi0n.searchjob.lib.widget.RoundImageView
+            android:id="@+id/ri_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="11dp" />
+
+        <TextView
+            android:id="@+id/tv_uname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ri_head"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/ri_head"
+            android:layout_toRightOf="@+id/ri_head"
+            android:text="csi0n"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_medium_size" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_uname"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/ri_head"
+            android:layout_toRightOf="@+id/ri_head"
+            android:text="账户:csi0n"
+            android:textColor="@color/normal_gray"
+            android:textSize="@dimen/text_small_size" />
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ri_head"
+            android:layout_alignStart="@+id/tv_uname"
+            android:layout_below="@+id/tv_account"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="4dp"
+            android:text="天气好冷！"
+            android:textColor="@color/normal_gray"
+            android:textSize="@dimen/text_small_size" />
+
+        <ImageView
+            android:id="@+id/iv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_uname"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@+id/tv_uname"
+            android:layout_toRightOf="@+id/tv_uname"
+            android:src="@mipmap/ico_small_male_checked" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

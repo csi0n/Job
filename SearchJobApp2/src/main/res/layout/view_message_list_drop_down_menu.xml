@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="8dp"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/drop_down_message_list_menu_bg"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:id="@+id/btn_add_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_message_list_menu"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/ico_message_list_header_menu_addmember" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/str_add_friend"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_small_size" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/bgColor_divier" />
+
+            <LinearLayout
+                android:id="@+id/btn_add_friends_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_message_list_menu"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/ico_message_list_header_menu_friend_apply" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/str_friend_apply"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_small_size" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/bgColor_divier" />
+
+            <LinearLayout
+                android:id="@+id/btn_message_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_message_list_menu"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/ico_message_list_header_menu_message" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="消息"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_small_size" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_line_top"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.csi0n.searchjob.lib.widget.CScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:id="@+id/rg_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rb_user_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="@string/str_person_info"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+
+                    <RadioButton
+                        android:id="@+id/rb_normal_use"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/str_normal_setting"
+
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+
+                    <RadioButton
+                        android:id="@+id/rb_friend_dynamic"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/str_friend_dynamic"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+                    <RadioButton
+                        android:id="@+id/rb_jingliren"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="经理人设置"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+                    <RadioButton
+                        android:id="@+id/rb_qun"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/str_qun"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+
+                    <RadioButton
+                        android:id="@+id/rb_community"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/community_setting"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+
+                    <RadioButton
+                        android:id="@+id/rb_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/contact_setting"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+
+                    <RadioButton
+                        android:id="@+id/rb_privacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/privacy_setting"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_line_color" />
+
+                    <RadioButton
+                        android:id="@+id/rb_search_job"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_normal_size"
+                        android:background="@drawable/rd_selector_setting_and_feed"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/str_search_job"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.csi0n.searchjob.lib.widget.CScrollView>
+
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"></FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

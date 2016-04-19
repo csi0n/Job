@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_main_title_height">
+
+        <include layout="@layout/include_view_line_top"></include>
+    </LinearLayout>
+
+    <com.csi0n.searchjob.lib.widget.CScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.csi0n.searchjob.lib.widget.RoundImageView
+                        android:id="@+id/ri_head"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="29dp"
+                        android:layout_marginStart="29dp"
+                        android:layout_toEndOf="@+id/ri_head"
+                        android:layout_toRightOf="@+id/ri_head"
+                        android:text="csi0n123"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="10dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="11dp"
+                        android:layout_marginRight="11dp"
+                        android:src="@mipmap/ico_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_normal_user"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginTop="1dp"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="11dp"
+                        android:src="@mipmap/ico_normal_use" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="17dp"
+                        android:layout_marginStart="17dp"
+                        android:layout_toEndOf="@+id/imageView1"
+                        android:layout_toRightOf="@+id/imageView1"
+                        android:text="普工招工"
+                        android:textColor="@color/black" />
+                    <ImageView
+                        android:id="@+id/imageView_1"
+                        android:layout_width="6dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="11dp"
+                        android:layout_marginRight="11dp"
+                        android:src="@mipmap/ico_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_comments"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginTop="1dp"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="11dp"
+                        android:src="@mipmap/ico_normal_use" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="17dp"
+                        android:layout_marginStart="17dp"
+                        android:layout_toEndOf="@+id/imageView2"
+                        android:layout_toRightOf="@+id/imageView2"
+                        android:text="评论"
+                        android:textColor="@color/black" />
+                    <ImageView
+                        android:id="@+id/imageView_2"
+                        android:layout_width="6dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="11dp"
+                        android:layout_marginRight="11dp"
+                        android:src="@mipmap/ico_arrow" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.csi0n.searchjob.lib.widget.CScrollView>
+</RelativeLayout>
