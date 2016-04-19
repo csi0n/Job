@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'csi0n'
             keyPassword '123123123'
-            storeFile file('/Volumes/Source/Code/Android/android_key.jks')
+            storeFile file('G:/Web_Github/android_key.jks')
             storePassword '123123123'
         }
     }

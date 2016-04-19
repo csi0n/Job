@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bgColor_divier" />
+
+    <RadioGroup
+        android:id="@+id/rg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/frag_main_bottom_height"
+        android:orientation="horizontal">
+        <!--android:drawableTop="@drawable/footer_home_ico"-->
+        <cn.bingoogolapple.badgeview.BGABadgeRadioButton
+            android:id="@+id/rd_news"
+            android:text="24小时导航"
+            style="@style/style_main_bottom_bar"
+            android:drawableTop="@drawable/rd_selector_message"
+            />
+
+        <cn.bingoogolapple.badgeview.BGABadgeRadioButton
+            android:id="@+id/rd_search_job"
+            android:checked="true"
+            android:text="搜工作"
+            style="@style/style_main_bottom_bar"
+            android:drawableTop="@drawable/rd_selector_search_job"
+            />
+    </RadioGroup>
+</LinearLayout>
