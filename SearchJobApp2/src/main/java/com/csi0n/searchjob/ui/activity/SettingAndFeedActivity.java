@@ -8,12 +8,10 @@ import android.widget.TextView;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.SettingAndFeedController;
-import com.csi0n.searchjob.controller.SettingJinliRenController;
 import com.csi0n.searchjob.ui.fragment.BaseFragment;
 import com.csi0n.searchjob.ui.fragment.SettingCommunityFragment;
 import com.csi0n.searchjob.ui.fragment.SettingContactFragment;
 import com.csi0n.searchjob.ui.fragment.SettingFriendDynamicFragment;
-import com.csi0n.searchjob.ui.fragment.SettingJinLirenFragment;
 import com.csi0n.searchjob.ui.fragment.SettingNormalFragment;
 import com.csi0n.searchjob.ui.fragment.SettingPersonInfoFragment;
 import com.csi0n.searchjob.ui.fragment.SettingPrivacyFragment;
@@ -38,7 +36,6 @@ public class SettingAndFeedActivity extends BaseActivity {
     public SettingQunFragment mSettingQunFragment;
     public SettingSearchJobFragment mSettingSearchJobFragment;
     public SettingAndFeedController mSettingAndFeedController;
-    public SettingJinLirenFragment mSettingJinlirenFragment;
 
     @Override
     protected void setActionBarRes(ActionBarRes actionBarRes) {
@@ -63,7 +60,6 @@ public class SettingAndFeedActivity extends BaseActivity {
         mSettingSearchJobFragment = new SettingSearchJobFragment();
         mSettingAndFeedController = new SettingAndFeedController(this);
         mSettingAndFeedController.initSettingAndFeed();
-        mSettingJinlirenFragment=new SettingJinLirenFragment();
 
 
     }

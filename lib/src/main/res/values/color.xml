@@ -31,4 +31,6 @@
     <color name="red">#fb6155</color>
     <color name="red_color_pressed">#f76e63</color>
     <color name="all_back_color">#eff1ef</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="black">@android:color/black</color>
 </resources>

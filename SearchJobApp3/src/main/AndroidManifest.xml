@@ -34,6 +34,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.Main" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.WangzhiDaoHangActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.ChooseCityActivity" android:theme="@style/notitle"></activity>
 
 
         <!-- Rich push 核心功能 since 2.0.6-->

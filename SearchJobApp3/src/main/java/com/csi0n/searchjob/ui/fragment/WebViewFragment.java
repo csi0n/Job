@@ -10,6 +10,7 @@ import com.csi0n.searchjob.model.event.WangZhiDaoHangEvent;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
@@ -46,7 +47,7 @@ public class WebViewFragment extends BaseFragment {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
-
+    @Subscribe
     public void onEvent(WangZhiDaoHangEvent wangZhiDaoHang) {
         if (wangZhiDaoHang.isBack())
             mWebView.goBack();

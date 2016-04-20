@@ -54,7 +54,7 @@ public class SettingAndFeedController extends BaseController {
                 changeFragment(mSettingAndFeedActivity.mSettingSearchJobFragment);
                 break;
             case R.id.rb_jingliren:
-                changeFragment(mSettingAndFeedActivity.mSettingJinlirenFragment);
+                //changeFragment(mSettingAndFeedActivity.mSettingJinlirenFragment);
                 break;
             default:
                 break;
