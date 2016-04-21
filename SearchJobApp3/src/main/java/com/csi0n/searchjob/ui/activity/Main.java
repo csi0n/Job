@@ -1,19 +1,17 @@
 package com.csi0n.searchjob.ui.activity;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.MainController;
 import com.csi0n.searchjob.ui.fragment.BaseFragment;
 import com.csi0n.searchjob.ui.fragment.SearchJobFragment;
-
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -37,19 +35,14 @@ public class Main extends BaseActivity {
         Bundle bundle = getBundle();
         if (bundle != null)
             isNeedLogin = bundle.getBoolean(Config.MARK_MAIN_IS_NEED_AUTO_LOGIN, false);
-        registerReceive();
         mSearchJobFragment = new SearchJobFragment();
-        changeFragment(mSearchJobFragment);
         mMainController = new MainController(this);
         mMainController.initMain();
+        registerReceive();
     }
 
     public boolean isNeedLogin() {
         return isNeedLogin;
-    }
-
-    public SearchJobFragment getSearchJobFragment() {
-        return mSearchJobFragment;
     }
 
     public void startWanZhiDaoHang() {
@@ -74,8 +67,10 @@ public class Main extends BaseActivity {
             }
         }
     }
-
-    public void changeFragment(BaseFragment targetFragment) {
+    public void changeSearchJobFragment(){
+        changeFragment(mSearchJobFragment);
+    }
+    private void changeFragment(BaseFragment targetFragment) {
         super.changeFragment(R.id.fl_content, targetFragment);
     }
 

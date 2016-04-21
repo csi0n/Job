@@ -40,6 +40,12 @@ public class Config {
             .setDbDir(FileUtils.getSaveFolder(Config.saveFolder))
             .setDbVersion(1)
             .setAllowTransaction(true)
+            .setDbOpenListener(new DbManager.DbOpenListener() {
+                @Override
+                public void onDbOpened(DbManager db) {
+                    db.getDatabase().enableWriteAheadLogging();
+                }
+            })
             .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
                 @Override
                 public void onUpgrade(DbManager db, int oldVersion, int newVersion) {

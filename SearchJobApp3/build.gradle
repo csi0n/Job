@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'csi0n'
             keyPassword '123123123'
-            storeFile file('G:/Web_Github/android_key.jks')
+            storeFile file('android_key.jks')
             storePassword '123123123'
         }
     }
@@ -39,9 +39,12 @@ dependencies {
     compile project(':lib')
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'cn.bingoogolapple:bga-badgeview:1.1.1@aar'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.2@aar'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
 
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
 
     compile 'org.greenrobot:eventbus:3.0.0'
+
 }

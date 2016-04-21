@@ -74,7 +74,6 @@ public abstract class ObjectHttpCallBack<T> implements Callback.CommonCallback<S
 
     @Override
     public void onFinished() {
-
     }
 
 }

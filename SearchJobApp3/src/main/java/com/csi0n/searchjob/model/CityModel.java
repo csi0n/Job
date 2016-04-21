@@ -2,8 +2,12 @@ package com.csi0n.searchjob.model;
 
 import com.csi0n.searchjob.lib.utils.bean.BaseBean;
 
+import org.xutils.DbManager;
 import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;
+import org.xutils.ex.DbException;
+
+import java.util.List;
 
 /**
  * Created by chqss on 2016/4/20 0020.
@@ -15,18 +19,18 @@ public class CityModel extends BaseBean {
      * city : 无锡
      * pinyin : wuxi
      */
-    @Column(name = "id", isId = true)
-    private String id;
+    @Column(name = "id")
+    private int id;
     @Column(name = "city")
     private String city;
     @Column(name = "pinyin")
     private String pinyin;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -44,5 +48,8 @@ public class CityModel extends BaseBean {
 
     public void setPinyin(String pinyin) {
         this.pinyin = pinyin;
+    }
+    public List<AreaModel> getAreaList(DbManager db)throws DbException{
+        return db.selector(AreaModel.class).where("city_id", "=", this.id).findAll();
     }
 }

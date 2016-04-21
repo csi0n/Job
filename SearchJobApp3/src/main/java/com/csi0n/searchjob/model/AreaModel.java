@@ -11,7 +11,7 @@ import org.xutils.db.annotation.Table;
 
 @Table(name = "area_bean")
 public class AreaModel extends BaseBean {
-    @Column(name = "id", isId = true)
+    @Column(name = "id")
     private int id;
     @Column(name = "area")
     private String area;

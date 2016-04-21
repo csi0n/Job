@@ -31,6 +31,7 @@ public abstract class BaseController {
         PostParams params = new PostParams(x.app().getString(id));
         if (!TextUtils.isEmpty(Config.DEFAULT_TOKEN))
             params.put("token", Config.DEFAULT_TOKEN);
+        params.put("ver", StringUtils.getVersion(x.app()));
         return params;
     }
 }

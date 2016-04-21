@@ -23,7 +23,7 @@ public class MainController extends BaseController {
             verityToken(SharePreferenceManager.getKeyCachedToken());
         } else {
         }
-
+        mMain.changeSearchJobFragment();
     }
 
     private void verityToken(String token) {
@@ -36,7 +36,7 @@ public class MainController extends BaseController {
                 mMain.startWanZhiDaoHang();
                 break;
             case R.id.rd_search_job:
-                mMain.changeFragment(mMain.getSearchJobFragment());
+                mMain.changeSearchJobFragment();
                 break;
             default:
                 break;

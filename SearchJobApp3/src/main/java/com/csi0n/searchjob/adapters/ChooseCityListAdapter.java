@@ -156,6 +156,7 @@ public class ChooseCityListAdapter extends BaseAdapter {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
+
                     Toast.makeText(mChooseCityActivity.getApplicationContext(),
                             mChooseCityController.city_hot.get(position).getCity(),
                             Toast.LENGTH_SHORT).show();

@@ -1,14 +1,8 @@
 package com.csi0n.searchjob.utils;
 
 import com.csi0n.searchjob.R;
-import com.csi0n.searchjob.lib.utils.CLog;
-import com.csi0n.searchjob.lib.utils.Config;
-import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
-import com.csi0n.searchjob.lib.utils.bean.Area;
-import com.csi0n.searchjob.lib.utils.bean.CityBean;
-import com.csi0n.searchjob.lib.utils.bean.JobTypeBean;
 import com.csi0n.searchjob.model.AreaModel;
 import com.csi0n.searchjob.model.CityModel;
 import com.csi0n.searchjob.model.ConfigModel;
@@ -18,7 +12,6 @@ import com.csi0n.searchjob.model.JobTypeModel;
 import org.json.JSONException;
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
-import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import java.util.List;
@@ -27,9 +20,14 @@ import java.util.List;
  * Created by chqss on 2016/4/20 0020.
  */
 public class DownLoadConfig {
-    private ObjectHttpCallBack<ConfigModel> callBack;
+    public interface I_DownLoadConfig{
+        void onSuccess(ConfigModel result);
+        void onError(int code,String str);
+        void onFinish();
+    }
+    private I_DownLoadConfig callBack;
 
-    public DownLoadConfig(ObjectHttpCallBack<ConfigModel> callBack) {
+    public DownLoadConfig(I_DownLoadConfig callBack) {
         this.callBack = callBack;
     }
 
@@ -40,13 +38,20 @@ public class DownLoadConfig {
             @Override
             public void SuccessResult(ConfigModel result) throws JSONException {
                 try {
+                    if (db.findAll(AreaModel.class) != null)
                     db.delete(AreaModel.class);
+                    if (db.findAll(CityModel.class) != null)
                     db.delete(CityModel.class);
+                    if (db.findAll(FuliModel.class) != null)
                     db.delete(FuliModel.class);
+                    if (db.findAll(JobTypeModel.class) != null)
                     db.delete(JobTypeModel.class);
                     List<ConfigModel.CityAndAreaEntity> cityAndAreaEntities=result.getCity();
                     for (ConfigModel.CityAndAreaEntity cityAndArea:cityAndAreaEntities) {
-                        db.save(cityAndArea);
+                        db.save(cityAndArea.getCity());
+                        for (AreaModel area : cityAndArea.getArea()) {
+                            db.save(area);
+                        }
                     }
                     List<JobTypeModel> jobTypeBeanLists=result.getJob_type();
                     for (JobTypeModel jobtype:jobTypeBeanLists) {
@@ -57,10 +62,11 @@ public class DownLoadConfig {
                         db.save(fuli);
                     }
                     if (callBack!=null)
-                        callBack.SuccessResult(result);
+                        callBack.onSuccess(result);
                 } catch (DbException e) {
-                    CLog.show("删除配置文件出错!");
-                    callBack.ErrorResult(1,"删除配置文件出错!");
+                    callBack.onError(1,"删除配置文件出错!");
+                }finally {
+                    callBack.onFinish();
                 }
             }
         });

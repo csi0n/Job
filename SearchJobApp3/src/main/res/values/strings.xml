@@ -4,4 +4,5 @@
     <string name="str_please_enter_search_word">请输入搜索关键字</string>
     <string name="str_choose_location">请选择城市</string>
     <string name="url_config">api.php/User/Public/config</string>
+    <string name="url_getSearchJobList">api.php/User/Public/searchJobList</string>
 </resources>

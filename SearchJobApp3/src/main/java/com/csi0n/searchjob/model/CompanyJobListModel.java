@@ -1,24 +1,24 @@
-package com.csi0n.searchjob.utils.bean;
+package com.csi0n.searchjob.model;
 
 import com.csi0n.searchjob.lib.utils.bean.BaseBean;
 
 import java.util.List;
 
 /**
- * Created by chqss on 2016/3/2 0002.
+ * Created by chqss on 2016/4/21 0021.
  */
-public class CompanyJobListBean extends BaseBean {
-    private List<CompanyJobBean> data;
+public class CompanyJobListModel extends BaseBean {
+    private List<CompanyJobModel> data;
 
-    public List<CompanyJobBean> getData() {
+    public List<CompanyJobModel> getData() {
         return data;
     }
 
-    public void setData(List<CompanyJobBean> data) {
+    public void setData(List<CompanyJobModel> data) {
         this.data = data;
     }
 
-    public static class CompanyJobBean extends BaseBean{
+    public static class CompanyJobModel extends BaseBean{
         private int id;
         private String company_name;
         private String job_id;
@@ -29,14 +29,6 @@ public class CompanyJobListBean extends BaseBean {
         private String fuli;
         private String area;
         private String city;
-
-        public int getSex() {
-            return sex;
-        }
-
-        public void setSex(int sex) {
-            this.sex = sex;
-        }
 
         public int getId() {
             return id;
@@ -86,6 +78,14 @@ public class CompanyJobListBean extends BaseBean {
             this.age = age;
         }
 
+        public int getSex() {
+            return sex;
+        }
+
+        public void setSex(int sex) {
+            this.sex = sex;
+        }
+
         public String getFuli() {
             return fuli;
         }
@@ -108,6 +108,6 @@ public class CompanyJobListBean extends BaseBean {
 
         public void setCity(String city) {
             this.city = city;
-        }}
-
+        }
+    }
 }
