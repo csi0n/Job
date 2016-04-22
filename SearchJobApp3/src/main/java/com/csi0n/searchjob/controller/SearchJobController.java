@@ -1,6 +1,7 @@
 package com.csi0n.searchjob.controller;
 
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
@@ -35,7 +36,7 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 /**
  * Created by chqss on 2016/4/20 0020.
  */
-public class SearchJobController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate {
+public class SearchJobController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate,AdapterView.OnItemClickListener {
     private SearchJobFragment mSearchJobFragment;
     private ProgressLoading loading;
     private DbManager db = x.getDb(Config.dbConfig);
@@ -141,7 +142,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
 
     private void getJobList(final int page) {
         is_busy = true;
-        PostParams params = getDefaultPostParams(R.string.url_getSearchJobList);
+        PostParams params = getDefaultPostParams(R.string.url_searchJobList);
         params.put("page", String.valueOf(page));
         if (AREA_ID != -1)
             params.put("area_id", String.valueOf(AREA_ID));
@@ -224,5 +225,10 @@ public class SearchJobController extends BaseController implements BGARefreshLay
             CLog.show(R.string.str_thread_busy_please_wait_last_task_complete);
             return true;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mSearchJobFragment.startCompanyWorkDetail(adapter.datas.get(position));
     }
 }

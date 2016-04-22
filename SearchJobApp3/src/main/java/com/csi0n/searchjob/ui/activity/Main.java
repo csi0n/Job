@@ -5,13 +5,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.MainController;
+import com.csi0n.searchjob.lib.AppManager;
+import com.csi0n.searchjob.lib.widget.alert.AlertView;
+import com.csi0n.searchjob.lib.widget.alert.OnItemClickListener;
+import com.csi0n.searchjob.model.SearchJobKeyCacheModel;
 import com.csi0n.searchjob.ui.fragment.BaseFragment;
 import com.csi0n.searchjob.ui.fragment.SearchJobFragment;
+
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -78,5 +85,21 @@ public class Main extends BaseActivity {
     protected void onDestroy() {
         aty.unregisterReceiver(mainBroadcastReceiver);
         super.onDestroy();
+    }
+private AlertView alertView;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getKeyCode()==KeyEvent.KEYCODE_BACK){
+            alertView = new AlertView("退出", "是否退出?", "取消", new String[]{"退出"}, null, aty, AlertView.Style.Alert, new OnItemClickListener() {
+                @Override
+                public void onItemClick(Object o, int position) {
+                    if (position != AlertView.CANCELPOSITION) {
+                        AppManager.getAppManager().AppExit(aty);
+                    }
+                }
+            }).setCancelable(true);
+            alertView.show();
+        }
+        return false;
     }
 }

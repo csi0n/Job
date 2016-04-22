@@ -12,6 +12,7 @@ public class PostParams {
     private RequestParams mRequestParams;
 
     public PostParams(int url) {
+        CLog.getInstance().eMessage(Config.BASE_URL+x.app().getString(url));
         mRequestParams = new RequestParams(Config.BASE_URL + x.app().getString(url));
     }
 

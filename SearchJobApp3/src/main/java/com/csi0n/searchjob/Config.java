@@ -57,4 +57,6 @@ public class Config {
             });
     public  static  final String MARK_MAIN_IS_NEED_AUTO_LOGIN="mark_main_is_need_auto_login";
     public  static final String MARK_MAIN_ACTIVITY_CHANGE_SEARCH_JOB="mark_main_activity_change_search_job";
+    public static final String MARK_SHOW_SEARCH_JOB_RESULT_KEY="mark_show_search_job_result_key";
+    public static final String MARK_COMAPNY_WORK_DETAIL_ACTIVITY_COMPANY_DATA="mark_company_work_detail_activity_company_data";
 }

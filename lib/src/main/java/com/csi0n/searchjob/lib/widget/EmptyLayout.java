@@ -21,6 +21,7 @@ public class EmptyLayout extends LinearLayout implements View.OnClickListener {
     public static final int NODATA = 3; // 没有数据
     public static final int HIDE_LAYOUT = 4; // 隐藏
     public static final int NO_FRIEND_CHAT = 5;
+    public static final int DATA_ERROR=6;
     private int mErrorState = NETWORK_LOADING;
     private OnClickListener listener;
     private boolean clickEnable = true;
@@ -116,6 +117,7 @@ public class EmptyLayout extends LinearLayout implements View.OnClickListener {
     public void setErrorType(int i) {
         setVisibility(View.VISIBLE);
         switch (i) {
+            case DATA_ERROR:
             case NETWORK_ERROR:
                 mErrorState = NETWORK_ERROR;
                 tv.setText("没有网络啊~");

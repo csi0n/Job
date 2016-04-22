@@ -1,23 +1,28 @@
 package com.csi0n.searchjob.ui.fragment;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.SearchJobController;
 import com.csi0n.searchjob.lib.widget.EmptyLayout;
 import com.csi0n.searchjob.model.AreaModel;
 import com.csi0n.searchjob.model.CityModel;
+import com.csi0n.searchjob.model.CompanyJobListModel;
 import com.csi0n.searchjob.model.FuliModel;
 import com.csi0n.searchjob.model.JobTypeModel;
 import com.csi0n.searchjob.ui.activity.ChooseCityActivity;
+import com.csi0n.searchjob.ui.activity.CompanyWorkDetailActivity;
 import com.csi0n.searchjob.ui.widget.tabview.view.ExpandTabView;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewAreaList;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewBackMoney;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewJob;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewWelfare;
+import com.csi0n.searchjob.utils.BGANormalRefreshViewHolder;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -64,6 +69,9 @@ public class SearchJobFragment extends BaseFragment {
     protected void initWidget() {
         mSearchJobController = new SearchJobController(this);
         mSearchJobController.initSearchJob();
+        mList.setOnItemClickListener(mSearchJobController);
+        mBGARefreshLayout.setDelegate(mSearchJobController);
+        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, false));
         EventBus.getDefault().register(this);
     }
 
@@ -195,7 +203,11 @@ public class SearchJobFragment extends BaseFragment {
         mBGARefreshLayout.endRefreshing();
         mBGARefreshLayout.endLoadingMore();
     }
-
+    public void startCompanyWorkDetail(CompanyJobListModel.CompanyJobModel companyJobBean) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Config.MARK_COMAPNY_WORK_DETAIL_ACTIVITY_COMPANY_DATA, companyJobBean);
+        aty.skipActivityWithBundleWithOutExit(aty, CompanyWorkDetailActivity.class, bundle);
+    }
     public void startChooseCityActivity() {
         startActivity(ChooseCityActivity.class);
     }

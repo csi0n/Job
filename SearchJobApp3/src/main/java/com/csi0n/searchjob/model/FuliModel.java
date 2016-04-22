@@ -10,7 +10,7 @@ import org.xutils.db.annotation.Table;
  */
 @Table(name = "table_fuli")
 public class FuliModel extends BaseBean {
-    @Column(name = "id",isId = true)
+    @Column(name = "id")
     private int id;
     @Column(name = "name")
     private String name;
