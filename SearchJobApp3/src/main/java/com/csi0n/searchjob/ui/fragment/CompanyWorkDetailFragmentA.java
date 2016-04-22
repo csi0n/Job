@@ -104,6 +104,10 @@ public class CompanyWorkDetailFragmentA extends BaseFragment {
         }
     }
 
+    public void endRefersh() {
+        mBGARefreshLayout.endRefreshing();
+        mBGARefreshLayout.endLoadingMore();
+    }
     public CompanyJobListModel.CompanyJobModel getCompanyJobBean() {
         return companyJobBean;
     }

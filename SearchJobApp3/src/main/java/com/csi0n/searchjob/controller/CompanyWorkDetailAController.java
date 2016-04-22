@@ -82,8 +82,7 @@ public class CompanyWorkDetailAController extends BaseController implements BGAR
 
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout bgaRefreshLayout) {
-        bgaRefreshLayout.endRefreshing();
-        bgaRefreshLayout.endLoadingMore();
+        mCompanyWorkDetailFragmentA.endRefersh();
     }
 
     @Override

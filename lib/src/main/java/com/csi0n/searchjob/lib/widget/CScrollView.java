@@ -21,39 +21,47 @@ public class CScrollView extends ScrollView {
     private boolean canPullDown = false; // 是否可以继续下拉
     private boolean canPullUp = false; // 是否可以继续上拉
     private boolean isMoved = false; // 记录是否移动了布局
+
     public CScrollView(Context context) {
         super(context);
     }
+
     public CScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
     @Override
     protected void onFinishInflate() {
         if (getChildCount() > 0) {
             contentView = getChildAt(0);
         }
     }
+
     @Override
     public void addView(View child) {
         super.addView(child);
         onFinishInflate();
     }
+
     @Override
     public void addView(View child, int index) {
         super.addView(child, index);
         onFinishInflate();
     }
+
     @Override
     public void addView(View child, int width, int height) {
         super.addView(child, width, height);
         onFinishInflate();
     }
+
     @Override
     public void addView(View child, int index,
                         android.view.ViewGroup.LayoutParams params) {
         super.addView(child, index, params);
         onFinishInflate();
     }
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
@@ -62,6 +70,7 @@ public class CScrollView extends ScrollView {
         originalRect.set(contentView.getLeft(), contentView.getTop(),
                 contentView.getRight(), contentView.getBottom());
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (contentView == null) {
@@ -87,7 +96,7 @@ public class CScrollView extends ScrollView {
                 break;
             case MotionEvent.ACTION_UP:
                 boundBack();
-                if (canPullDown && (ev.getY()-startY) > 200 && pullListener != null) {
+                if (canPullDown && (ev.getY() - startY) > 200 && pullListener != null) {
                     // 调用监听器
                     pullListener.onPull();
                 }
@@ -125,6 +134,7 @@ public class CScrollView extends ScrollView {
         }
         return super.dispatchTouchEvent(ev);
     }
+
     private void boundBack() {
         if (!isMoved) {
             return; // 如果没有移动布局， 则跳过执行
@@ -142,18 +152,40 @@ public class CScrollView extends ScrollView {
         canPullUp = false;
         isMoved = false;
     }
+
     private boolean isCanPullDown() {
         return getScrollY() == 0
                 || contentView.getHeight() < getHeight() + getScrollY();
     }
+
     private boolean isCanPullUp() {
         return contentView.getHeight() <= getHeight() + getScrollY();
     }
+
     public OnViewTopPull pullListener;
+
     public void setOnViewTopPullListener(OnViewTopPull l) {
         this.pullListener = l;
     }
+
     public interface OnViewTopPull {
         void onPull();
+    }
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+        if (mScrollViewListener != null)
+            mScrollViewListener.onScrollChanged(this, l, t, oldl, oldt);
+    }
+
+    public void addScrollerListener(ScrollViewListener mScrollViewListener) {
+        this.mScrollViewListener = mScrollViewListener;
+}
+
+    private ScrollViewListener mScrollViewListener;
+
+    public interface ScrollViewListener {
+        void onScrollChanged(CScrollView scrollView, int x, int y, int oldx, int oldy);
     }
 }

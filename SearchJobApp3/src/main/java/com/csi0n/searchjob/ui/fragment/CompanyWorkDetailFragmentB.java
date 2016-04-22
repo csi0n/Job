@@ -12,6 +12,7 @@ import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.CompanyWorkDetailBController;
 import com.csi0n.searchjob.model.CompanyJobListModel;
 import com.csi0n.searchjob.model.CompanyWorkDetailBHeaderModel;
+import com.csi0n.searchjob.ui.activity.ShowJobTypeDetailActivity;
 import com.csi0n.searchjob.utils.BGANormalRefreshViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -45,6 +46,7 @@ public class CompanyWorkDetailFragmentB extends BaseFragment {
         mCompanyWorkDetailBController = new CompanyWorkDetailBController(this);
         mCompanyWorkDetailBController.initCompanyWorkDetailB();
         mBGARefreshLayout.setDelegate(mCompanyWorkDetailBController);
+        mList.setOnItemClickListener(mCompanyWorkDetailBController);
     }
 
     private View getHeadView() {
@@ -74,5 +76,16 @@ public class CompanyWorkDetailFragmentB extends BaseFragment {
     public void endRefresh() {
         mBGARefreshLayout.endRefreshing();
         mBGARefreshLayout.endLoadingMore();
+    }
+    public boolean hasHeader() {
+        if (mList.getHeaderViewsCount() == 0)
+            return false;
+        else
+            return true;
+    }
+    public void startShowSearchJobTypeActivity(String job_id){
+        Bundle bundle=new Bundle();
+        bundle.putString(Config.MARK_SHOW_SEARCH_JOB_TYPE_ACTIVITY,job_id);
+        startActivityWithBunde(ShowJobTypeDetailActivity.class,bundle);
     }
 }

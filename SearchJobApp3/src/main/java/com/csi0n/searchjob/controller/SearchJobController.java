@@ -135,6 +135,9 @@ public class SearchJobController extends BaseController implements BGARefreshLay
             case R.id.empty_layout:
                 getJobList(CURRENT_PAGE);
                 break;
+            case R.id.ll_search_job:
+                mSearchJobFragment.startSearchJobActivity();
+                break;
             default:
                 break;
         }

@@ -1,6 +1,7 @@
 package com.csi0n.searchjob.controller;
 
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
@@ -21,7 +22,7 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 /**
  * Created by chqss on 2016/3/6 0006.
  */
-public class CompanyWorkDetailBController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate {
+public class CompanyWorkDetailBController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener {
     private CompanyWorkDetailFragmentB mCompanyWorkDetailFragmentB;
     private CompanyWorkDetailBListAdapter adapter;
     private boolean is_busy = false;
@@ -115,5 +116,13 @@ public class CompanyWorkDetailBController extends BaseController implements BGAR
             CLog.show(R.string.str_thread_busy_please_wait_last_task_complete);
             return true;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (mCompanyWorkDetailFragmentB.hasHeader())
+            mCompanyWorkDetailFragmentB.startShowSearchJobTypeActivity(adapter.datas.get((position - 1)).getJob_id());
+        else
+            mCompanyWorkDetailFragmentB.startShowSearchJobTypeActivity(adapter.datas.get(position).getJob_id());
     }
 }

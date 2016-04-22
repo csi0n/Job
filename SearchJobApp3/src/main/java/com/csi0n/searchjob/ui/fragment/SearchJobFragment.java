@@ -17,6 +17,7 @@ import com.csi0n.searchjob.model.FuliModel;
 import com.csi0n.searchjob.model.JobTypeModel;
 import com.csi0n.searchjob.ui.activity.ChooseCityActivity;
 import com.csi0n.searchjob.ui.activity.CompanyWorkDetailActivity;
+import com.csi0n.searchjob.ui.activity.SearchJobActivity;
 import com.csi0n.searchjob.ui.widget.tabview.view.ExpandTabView;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewAreaList;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewBackMoney;
@@ -53,7 +54,7 @@ public class SearchJobFragment extends BaseFragment {
     @ViewInject(value = R.id.list)
     private ListView mList;
 
-    @Event(value = {R.id.tv_location, R.id.empty_layout})
+    @Event(value = {R.id.tv_location, R.id.empty_layout,R.id.ll_search_job})
     private void onClick(View view) {
         mSearchJobController.onClick(view);
     }
@@ -211,5 +212,7 @@ public class SearchJobFragment extends BaseFragment {
     public void startChooseCityActivity() {
         startActivity(ChooseCityActivity.class);
     }
-
+public void startSearchJobActivity(){
+    startActivity(SearchJobActivity.class);
+}
 }

@@ -40,6 +40,7 @@
         <activity android:name=".ui.activity.SearchJobActivity" android:theme="@style/notitle"></activity>
         <activity android:name=".ui.activity.ShowSearchJobResultActivity" android:theme="@style/notitle"></activity>
         <activity android:name=".ui.activity.CompanyWorkDetailActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.ShowJobTypeDetailActivity" android:theme="@style/style_show_job_type_detail"></activity>
 
 
         <!-- Rich push 核心功能 since 2.0.6-->

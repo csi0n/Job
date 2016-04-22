@@ -85,6 +85,12 @@ public abstract class BaseFragment extends Fragment {
         intent.setClass(getActivity(), classz);
         getActivity().startActivity(intent);
     }
+    public void startActivityWithBunde(Class<?> classz,Bundle bundle){
+        Intent intent=new Intent();
+        intent.setClass(getActivity(),classz);
+        intent.putExtras(bundle);
+        getActivity().startActivity(intent);
+    }
 
     public void changeFragment(int resView, BaseFragment targetFragment) {
         if (targetFragment.equals(currentFragment)) {

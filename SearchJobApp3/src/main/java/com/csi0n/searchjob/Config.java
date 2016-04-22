@@ -59,4 +59,5 @@ public class Config {
     public  static final String MARK_MAIN_ACTIVITY_CHANGE_SEARCH_JOB="mark_main_activity_change_search_job";
     public static final String MARK_SHOW_SEARCH_JOB_RESULT_KEY="mark_show_search_job_result_key";
     public static final String MARK_COMAPNY_WORK_DETAIL_ACTIVITY_COMPANY_DATA="mark_company_work_detail_activity_company_data";
+    public static final String MARK_SHOW_SEARCH_JOB_TYPE_ACTIVITY="mark_show_search_job_type_activity";
 }
