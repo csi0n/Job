@@ -19,12 +19,22 @@ public class CityModel extends BaseBean {
      * city : 无锡
      * pinyin : wuxi
      */
+    @Column(name = "p_id",isId = true)
+    private int p_id;
     @Column(name = "id")
     private int id;
     @Column(name = "city")
     private String city;
     @Column(name = "pinyin")
     private String pinyin;
+
+    public int getP_id() {
+        return p_id;
+    }
+
+    public void setP_id(int p_id) {
+        this.p_id = p_id;
+    }
 
     public int getId() {
         return id;

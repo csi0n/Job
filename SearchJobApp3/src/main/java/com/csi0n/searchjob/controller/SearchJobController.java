@@ -68,6 +68,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
                         List<FuliModel> fuliBeanList = db.selector(FuliModel.class).findAll();
                         mSearchJobFragment.initTop(db, city, jobTypeBeanList, fuliBeanList);
                         CITY_ID = city.getId();
+                        SharePreferenceManager.setFlagIsFirstStartSearchJobFragment(false);
                         getJobList(CURRENT_PAGE);
                     } catch (DbException e) {
                         onError(1, "数据库操作失败!");

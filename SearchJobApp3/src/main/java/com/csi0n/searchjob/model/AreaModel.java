@@ -11,6 +11,8 @@ import org.xutils.db.annotation.Table;
 
 @Table(name = "area_bean")
 public class AreaModel extends BaseBean {
+    @Column(name = "p_id", isId = true)
+    private int p_id;
     @Column(name = "id")
     private int id;
     @Column(name = "area")
@@ -19,6 +21,14 @@ public class AreaModel extends BaseBean {
     private int city_id;
     @Column(name = "pinyin")
     private String pinyin;
+
+    public int getP_id() {
+        return p_id;
+    }
+
+    public void setP_id(int p_id) {
+        this.p_id = p_id;
+    }
 
     public int getId() {
         return id;

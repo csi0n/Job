@@ -1,5 +1,7 @@
 package com.csi0n.searchjob.controller;
+
 import android.view.View;
+
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.adapters.CompanyWorkDetailDListAdapter;
@@ -10,13 +12,15 @@ import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
 import com.csi0n.searchjob.model.CompanyWorkDetailDListModel;
 import com.csi0n.searchjob.ui.fragment.CompanyWorkDetailFragmentD;
+
 import org.json.JSONException;
+
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
 /**
  * Created by chqss on 2016/3/10 0010.
  */
-public class CompanyWorkDetailDController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate {
+public class CompanyWorkDetailDController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate, View.OnClickListener {
     private CompanyWorkDetailFragmentD mCompanyWorkDetailFragmentD;
     private CompanyWorkDetailDListAdapter adapter;
     private boolean is_busy = false;
@@ -28,6 +32,10 @@ public class CompanyWorkDetailDController extends BaseController implements BGAR
     }
 
     public void initCompanyWorkDetailD() {
+        if (Config.LOGIN_USER != null)
+            mCompanyWorkDetailFragmentD.setLoginView(true);
+        else
+            mCompanyWorkDetailFragmentD.setLoginView(false);
         adapter = new CompanyWorkDetailDListAdapter(mCompanyWorkDetailFragmentD.aty);
         mCompanyWorkDetailFragmentD.setAdapter(adapter);
         getDataFromNet(CURRENT_PAGE);
@@ -42,7 +50,7 @@ public class CompanyWorkDetailDController extends BaseController implements BGAR
             @Override
             public void SuccessResult(CompanyWorkDetailDListModel result) throws JSONException {
                 TEMP_COUNT = result.getData().size();
-                if (page==1)
+                if (page == 1)
                     adapter.datas.clear();
                 adapter.datas.addAll(result.getData());
                 adapter.notifyDataSetChanged();
@@ -60,7 +68,14 @@ public class CompanyWorkDetailDController extends BaseController implements BGAR
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.ll_main:
+                break;
+            case R.id.btn_reply:
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

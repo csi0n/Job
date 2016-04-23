@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/ll_main"
+    android:background="@drawable/edit_shape"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="请" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/theme_color"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="登录" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="后发表言论" />
+</LinearLayout>

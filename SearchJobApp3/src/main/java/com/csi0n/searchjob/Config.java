@@ -1,6 +1,8 @@
 package com.csi0n.searchjob;
 
 import com.csi0n.searchjob.lib.utils.FileUtils;
+import com.csi0n.searchjob.model.UserModel;
+
 import org.xutils.DbManager;
 
 /**
@@ -35,6 +37,7 @@ public class Config {
     public static final int CHAT_TXT_SIZE_3 = 21;
     public static final int CHAT_TXT_SIZE_4 = 24;
     public static final int CHAT_TXT_SIZE_5 = 27;
+    public static UserModel LOGIN_USER;
     public static DbManager.DaoConfig dbConfig = new DbManager.DaoConfig()
             .setDbName("SEARCH_JOB.db")
             .setDbDir(FileUtils.getSaveFolder(Config.saveFolder))

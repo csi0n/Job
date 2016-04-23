@@ -20,6 +20,6 @@ public class AppContext extends Application {
         JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);            // 初始化 JPush
         SharePreferenceManager.init(getApplicationContext(), Config.IM_CONFIGS);
-        C.init(this, Config.saveFolder, Config.FILE_NAME_SUFFIX);
+        C.init(getApplicationContext, Config.saveFolder, Config.FILE_NAME_SUFFIX);
     }
 }
