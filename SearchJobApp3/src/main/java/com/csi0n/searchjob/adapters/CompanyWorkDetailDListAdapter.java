@@ -3,6 +3,7 @@ package com.csi0n.searchjob.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,6 +14,7 @@ import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.lib.utils.TimeFormat;
 import com.csi0n.searchjob.lib.widget.RoundImageView;
 import com.csi0n.searchjob.model.CompanyWorkDetailDListModel;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -50,7 +52,7 @@ public class CompanyWorkDetailDListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder = null;
         if (view == null) {
-            holder = new ViewHolder ();
+            holder = new ViewHolder();
             view = View.inflate(mContext, R.layout.view_adapter_company_work_detail_d_list_item, null);
             holder.mRIhead = (RoundImageView) view.findViewById(R.id.ri_head);
             holder.mTVname = (TextView) view.findViewById(R.id.tv_name);
@@ -60,19 +62,39 @@ public class CompanyWorkDetailDListAdapter extends BaseAdapter {
         } else
             holder = (ViewHolder) view.getTag();
         final ViewHolder finalHolder = holder;
+        if (getItem(i).getUser_info() != null) {
+            if (TextUtils.isEmpty(getItem(i).getUser_info().getHead_ic()))
+                holder.mRIhead.setImageResource(R.mipmap.ico_default_head_ic);
+            else {
+                Picasso.with(mContext).load(com.csi0n.searchjob.lib.utils.Config.BASE_URL + getItem(i).getUser_info().getHead_ic()).into(holder.mRIhead, new Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError() {
+                        finalHolder.mRIhead.setImageResource(R.mipmap.ico_default_head_ic);
+                    }
+                });
+            }
+        }
+
         finalHolder.mTVcontent.setText(getItem(i).getContent());
-        TimeFormat timeFormat=new TimeFormat(mContext,Long.valueOf(getItem(i).getAdd_time()));
+        TimeFormat timeFormat = new TimeFormat(mContext, Long.valueOf(getItem(i).getAdd_time()));
         finalHolder.mTVtime.setText(timeFormat.getTime());
-        addListener(holder,i);
+        addListener(holder, i);
         return view;
     }
-private void  addListener(final ViewHolder holder,final int position){
-    holder.mRIhead.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-        }
-    });
-}
+
+    private void addListener(final ViewHolder holder, final int position) {
+        holder.mRIhead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+    }
+
     private class ViewHolder {
         RoundImageView mRIhead;
         TextView mTVname, mTVcontent, mTVtime;

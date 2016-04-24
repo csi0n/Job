@@ -35,6 +35,7 @@ public class CompanyWorkDetailAModel extends BaseBean {
     private String job_type;
     private String use_type;
     private String gongzi;
+    private String gongzi_detail;
     private String work_time;
     private String shebao;
     private String work_location;
@@ -147,6 +148,14 @@ public class CompanyWorkDetailAModel extends BaseBean {
 
     public String getGongzi() {
         return gongzi;
+    }
+
+    public String getGongzi_detail() {
+        return gongzi_detail;
+    }
+
+    public void setGongzi_detail(String gongzi_detail) {
+        this.gongzi_detail = gongzi_detail;
     }
 
     public String getWork_time() {

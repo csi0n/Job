@@ -1,5 +1,7 @@
 package com.csi0n.searchjob.controller;
+
 import android.view.View;
+
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.adapters.CompanyWorkDetailCListAdapter;
@@ -8,15 +10,19 @@ import com.csi0n.searchjob.lib.utils.CLog;
 import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
+import com.csi0n.searchjob.lib.utils.bean.BaseStatusBean;
+import com.csi0n.searchjob.lib.widget.EmptyLayout;
 import com.csi0n.searchjob.model.CompanyWorkDetailCListModel;
 import com.csi0n.searchjob.ui.fragment.CompanyWorkDetailFragmentC;
+
 import org.json.JSONException;
+
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
 /**
  * Created by chqss on 2016/3/6 0006.
  */
-public class CompanyWorkDetailCController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate {
+public class CompanyWorkDetailCController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate, View.OnClickListener {
     private CompanyWorkDetailFragmentC mCompanyWorkDetailFragmentC;
     private CompanyWorkDetailCListAdapter adapter;
     private boolean is_busy = false;
@@ -42,10 +48,16 @@ public class CompanyWorkDetailCController extends BaseController implements BGAR
             @Override
             public void SuccessResult(CompanyWorkDetailCListModel result) throws JSONException {
                 TEMP_COUNT = result.getData().size();
-                if (page==1)
+                if (page == 1)
                     adapter.datas.clear();
+                mCompanyWorkDetailFragmentC.setEmptyLayoutErrorType(EmptyLayout.HIDE_LAYOUT);
                 adapter.datas.addAll(result.getData());
                 adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void EmptyData(BaseStatusBean<CompanyWorkDetailCListModel> b) throws JSONException {
+                mCompanyWorkDetailFragmentC.setEmptyLayoutErrorType(EmptyLayout.NO_JINGLIREN);
             }
 
             @Override
@@ -60,7 +72,11 @@ public class CompanyWorkDetailCController extends BaseController implements BGAR
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.empty_layout:
+                getDataFromNet(CURRENT_PAGE);
+                break;
+        }
     }
 
     @Override

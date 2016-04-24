@@ -20,14 +20,16 @@ public class CompanyWorkDetailCListModel extends BaseBean {
 
     public  static  class CompanyWorkDetailCModel extends BaseBean {
 
-
         /**
          * company_id : 3
          * uid : 15823766
          * username : test1
          * real_name : 胡兵
          * phone : 180124886671
-         * is_follow : 1
+         * head_ic : null
+         * intro : 这个人很懒什么都没有留下!
+         * sex : 0
+         * is_follow : 0
          */
 
         private String company_id;
@@ -35,6 +37,9 @@ public class CompanyWorkDetailCListModel extends BaseBean {
         private String username;
         private String real_name;
         private String phone;
+        private String head_ic;
+        private String intro;
+        private String sex;
         private int is_follow;
 
         public String getCompany_id() {
@@ -75,6 +80,30 @@ public class CompanyWorkDetailCListModel extends BaseBean {
 
         public void setPhone(String phone) {
             this.phone = phone;
+        }
+
+        public String getHead_ic() {
+            return head_ic;
+        }
+
+        public void setHead_ic(String head_ic) {
+            this.head_ic = head_ic;
+        }
+
+        public String getIntro() {
+            return intro;
+        }
+
+        public void setIntro(String intro) {
+            this.intro = intro;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
         }
 
         public int getIs_follow() {

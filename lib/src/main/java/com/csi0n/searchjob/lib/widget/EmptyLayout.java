@@ -21,6 +21,8 @@ public class EmptyLayout extends LinearLayout implements View.OnClickListener {
     public static final int NODATA = 3; // 没有数据
     public static final int HIDE_LAYOUT = 4; // 隐藏
     public static final int NO_FRIEND_CHAT = 5;
+    public static final int NO_COMMENTS=7;
+    public static final int NO_JINGLIREN=8;
     public static final int DATA_ERROR=6;
     private int mErrorState = NETWORK_LOADING;
     private OnClickListener listener;
@@ -143,6 +145,22 @@ public class EmptyLayout extends LinearLayout implements View.OnClickListener {
                 img.setVisibility(View.VISIBLE);
                 animProgress.setVisibility(View.GONE);
                 setTvNoDataContent();
+                clickEnable = true;
+                break;
+            case NO_COMMENTS:
+                mErrorState = NODATA;
+                img.setBackgroundResource(R.mipmap.bg_empty_comments);
+                img.setVisibility(View.VISIBLE);
+                animProgress.setVisibility(View.GONE);
+                tv.setText("快发表第一个评论吧!");
+                clickEnable = true;
+                break;
+            case NO_JINGLIREN:
+                mErrorState = NODATA;
+                img.setBackgroundResource(R.mipmap.bg_empty_jinliren);
+                img.setVisibility(View.VISIBLE);
+                animProgress.setVisibility(View.GONE);
+                tv.setText("此公司还没有经理人!!");
                 clickEnable = true;
                 break;
             case NO_FRIEND_CHAT:

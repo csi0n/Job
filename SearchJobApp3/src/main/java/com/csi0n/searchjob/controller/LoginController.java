@@ -11,6 +11,7 @@ import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
 import com.csi0n.searchjob.lib.widget.ProgressLoading;
+import com.csi0n.searchjob.model.TokenAuthorizeModel;
 import com.csi0n.searchjob.model.UserModel;
 import com.csi0n.searchjob.model.event.UserLoginEvent;
 import com.csi0n.searchjob.ui.activity.LoginActivity;
@@ -46,11 +47,12 @@ public class LoginController extends BaseController {
         PostParams postParams = getDefaultPostParams(R.string.url_Authorize);
         postParams.put("username", username);
         postParams.put("password", password);
-        HttpPost post = new HttpPost(postParams, new ObjectHttpCallBack<UserModel>(UserModel.class) {
+        HttpPost post = new HttpPost(postParams, new ObjectHttpCallBack<TokenAuthorizeModel>(TokenAuthorizeModel.class) {
             @Override
-            public void SuccessResult(final UserModel result) throws JSONException {
-                EventBus.getDefault().post(new UserLoginEvent(result));
-                Config.LOGIN_USER = result;
+            public void SuccessResult(final TokenAuthorizeModel result) throws JSONException {
+                EventBus.getDefault().post(new UserLoginEvent(result.getUser()));
+                Config.LOGIN_USER = result.getUser();
+                SharePreferenceManager.setKeyCachedToken(result.getToken());
                 mLoginActivity.finish();
             }
 

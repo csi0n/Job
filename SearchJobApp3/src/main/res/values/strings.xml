@@ -18,4 +18,6 @@
     <string name="url_searchJobDetailD">api.php/User/Public/searchJobDetailD</string>
     <string name="url_followJinglirenOption">api.php/User/JinLiRen/followJinglirenOption</string>
     <string name="url_Authorize">api.php/User/Oauth/authorize</string>
+    <string name="url_checkTimeOut">api.php/User/Oauth/checkTimeOut</string>
+    <string name="url_comments_insert">api.php/User/Comments/insert</string>
 </resources>

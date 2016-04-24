@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.csi0n.searchjob.lib.widget.EmptyLayout
+        android:id="@+id/empty_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.csi0n.searchjob.lib.widget.EmptyLayout>
+
     <cn.bingoogolapple.refreshlayout.BGARefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"

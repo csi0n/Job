@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.model.CompanyJobListModel;
+import com.csi0n.searchjob.model.FuliModel;
+
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
 import org.xutils.x;
@@ -77,7 +79,7 @@ public class SearchJobFragmentAdapter extends BaseAdapter {
         String[] fu_lis = getItem(positon).getFuli().split(",");
         for (int i = 0; i < fu_lis.length; i++) {
             try {
-                com.csi0n.searchjob.lib.utils.bean.FuliBean fuliBean = db.selector(com.csi0n.searchjob.lib.utils.bean.FuliBean.class).where("id", "=", fu_lis[i]).findFirst();
+                FuliModel fuliBean = db.selector(FuliModel.class).where("id", "=", fu_lis[i]).findFirst();
                 if (fuliBean != null)
                     if (fuliBean.getName()!=null)
                         tags2.add(fuliBean.getName());

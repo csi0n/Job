@@ -7,6 +7,7 @@ import android.widget.ListView;
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.CompanyWorkDetailCController;
+import com.csi0n.searchjob.lib.widget.EmptyLayout;
 import com.csi0n.searchjob.model.CompanyJobListModel;
 import com.csi0n.searchjob.utils.BGANormalRefreshViewHolder;
 import org.xutils.view.annotation.ContentView;
@@ -16,12 +17,14 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 /**
  * Created by chqss on 2016/2/23 0023.
  */
-@ContentView(R.layout.frag_list)
+@ContentView(R.layout.frag_list_include_empty_layout)
 public class CompanyWorkDetailFragmentC extends BaseFragment {
     @ViewInject(value = R.id.refreshLayout)
     private BGARefreshLayout mBGARefreshLayout;
     @ViewInject(value = R.id.list)
     private ListView mList;
+    @ViewInject(value = R.id.empty_layout)
+    private EmptyLayout mEmptyLayout;
     private CompanyWorkDetailCController mCompanyWorkDetailCController;
     private CompanyJobListModel.CompanyJobModel companyJobBean;
     @Override
@@ -33,6 +36,7 @@ public class CompanyWorkDetailFragmentC extends BaseFragment {
         mCompanyWorkDetailCController.initCompanyWorkDetailC();
         mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, false));
         mBGARefreshLayout.setDelegate(mCompanyWorkDetailCController);
+        mEmptyLayout.setOnLayoutClickListener(mCompanyWorkDetailCController);
     }
 
     public void endRefresh() {
@@ -44,6 +48,9 @@ public class CompanyWorkDetailFragmentC extends BaseFragment {
         return companyJobBean;
     }
 
+    public void setEmptyLayoutErrorType(int type){
+        mEmptyLayout.setErrorType(type);
+    }
     public void setAdapter(BaseAdapter adapter) {
         mList.setAdapter(adapter);
     }

@@ -2,6 +2,7 @@ package com.csi0n.searchjob.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 
 import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
@@ -54,4 +55,5 @@ public class CompanyWorkDetailActivity extends BaseActivity {
     public ViewPager getViewPager() {
         return mViewPager;
     }
+
 }

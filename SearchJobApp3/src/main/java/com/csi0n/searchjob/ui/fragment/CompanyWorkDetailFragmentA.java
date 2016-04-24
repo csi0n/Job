@@ -35,7 +35,7 @@ public class CompanyWorkDetailFragmentA extends BaseFragment {
     private BGARefreshLayout mBGARefreshLayout;
     @ViewInject(value = R.id.list)
     private ListView mList;
-    private TextView mGangWei, mTVUseType, mGongZi, mWorkTime, mSheBao, mLocation, mWorkXuQiu, mDegree, mWorkLife, mMoreInfo, mWorkInfo, mToday, mSearch;
+    private TextView mGangWei, mTVUseType, mGongZi, mGoneZiDetail, mWorkTime, mSheBao, mLocation, mWorkXuQiu, mDegree, mWorkLife, mMoreInfo, mWorkInfo, mToday, mSearch;
     private TagCloudView mTag;
     private CompanyWorkDetailAController mCompanyWorkDetailAController;
     private CompanyJobListModel.CompanyJobModel companyJobBean;
@@ -58,6 +58,7 @@ public class CompanyWorkDetailFragmentA extends BaseFragment {
         mGangWei = (TextView) view.findViewById(R.id.tv_gang_wei_bo);
         mTVUseType = (TextView) view.findViewById(R.id.tv_use_type);
         mGongZi = (TextView) view.findViewById(R.id.tv_gongzi);
+        mGoneZiDetail = (TextView) view.findViewById(R.id.tv_gongzi_detail);
         mWorkTime = (TextView) view.findViewById(R.id.tv_work_time);
         mSheBao = (TextView) view.findViewById(R.id.tv_sheba);
         mLocation = (TextView) view.findViewById(R.id.tv_location);
@@ -77,6 +78,7 @@ public class CompanyWorkDetailFragmentA extends BaseFragment {
         mGangWei.setText(companyInforTop.getJob_type());
         mTVUseType.setText(companyInforTop.getUse_type());
         mGongZi.setText(companyInforTop.getGongzi());
+        mGoneZiDetail.setText(companyInforTop.getGongzi_detail());
         mWorkTime.setText(companyInforTop.getWork_time());
         mSheBao.setText(Integer.valueOf(companyInforTop.getShebao()) == 0 ? "无" : "按照国家规定缴纳社保.");
         mLocation.setText(companyInforTop.getWork_location());
@@ -108,6 +110,7 @@ public class CompanyWorkDetailFragmentA extends BaseFragment {
         mBGARefreshLayout.endRefreshing();
         mBGARefreshLayout.endLoadingMore();
     }
+
     public CompanyJobListModel.CompanyJobModel getCompanyJobBean() {
         return companyJobBean;
     }

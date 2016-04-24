@@ -36,7 +36,7 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 /**
  * Created by chqss on 2016/4/20 0020.
  */
-public class SearchJobController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate,AdapterView.OnItemClickListener {
+public class SearchJobController extends BaseController implements BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener {
     private SearchJobFragment mSearchJobFragment;
     private ProgressLoading loading;
     private DbManager db = x.getDb(Config.dbConfig);
@@ -49,6 +49,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
     private int MONEY_BACK = -1;
     private int WORK_TYPE = -1;
     private List<FuliModel> FULI_LIST = null;
+
     public SearchJobController(SearchJobFragment mSearchJobFragment) {
         this.mSearchJobFragment = mSearchJobFragment;
     }
@@ -74,6 +75,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
                         onError(1, "数据库操作失败!");
                     }
                 }
+
                 @Override
                 public void onError(int code, String str) {
 
@@ -171,10 +173,9 @@ public class SearchJobController extends BaseController implements BGARefreshLay
         HttpPost post = new HttpPost(params, new ObjectHttpCallBack<CompanyJobListModel>(CompanyJobListModel.class) {
             @Override
             public void SuccessResult(CompanyJobListModel result) throws JSONException {
-                if (page == 1) {
+                if (page == 1)
                     adapter.datas.clear();
-                    mSearchJobFragment.serEmptyLayoutType(EmptyLayout.HIDE_LAYOUT);
-                }
+                mSearchJobFragment.serEmptyLayoutType(EmptyLayout.HIDE_LAYOUT);
                 TEMP_COUNT = result.getData().size();
                 adapter.datas.addAll(result.getData());
                 adapter.notifyDataSetChanged();
