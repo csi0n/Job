@@ -38,6 +38,10 @@ public class Config {
     public static final int CHAT_TXT_SIZE_4 = 24;
     public static final int CHAT_TXT_SIZE_5 = 27;
     public static UserModel LOGIN_USER;
+    public static final int PIC_FROM_CAMERA=0x2010;
+    public static final int D_PIC_FROM_CAMERA=0x20101;
+    public static final int PIC_FROM_DISK=0x2011;
+    public static final int D_PIC_FROM_DISK=0X20111;
     public static DbManager.DaoConfig dbConfig = new DbManager.DaoConfig()
             .setDbName("SEARCH_JOB.db")
             .setDbDir(FileUtils.getSaveFolder(Config.saveFolder))

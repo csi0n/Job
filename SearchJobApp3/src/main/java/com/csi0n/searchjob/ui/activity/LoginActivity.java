@@ -6,7 +6,10 @@ import android.widget.EditText;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.LoginController;
+import com.csi0n.searchjob.model.event.UserLoginEvent;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -23,30 +26,48 @@ public class LoginActivity extends BaseActivity {
     private LoginController mLoginController;
     @ViewInject(R.id.btn_login)
     private Button mLogin;
+
     @Event(value = {R.id.btn_login, R.id.btn_register})
     private void onClick(View view) {
         if (mLoginController != null)
             mLoginController.onClick(view);
     }
+
     @Override
     protected void setActionBarRes(ActionBarRes actionBarRes) {
-        actionBarRes.title=getString(R.string.str_login);
+        actionBarRes.title = getString(R.string.str_login);
         super.setActionBarRes(actionBarRes);
     }
+
     @Override
     protected void initWidget() {
-        mLoginController=new LoginController(this);
+        mLoginController = new LoginController(this);
         mLoginController.initLogin();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onEvent(UserLoginEvent userLoginEvent) {
+        finish();
     }
     public void startRegister() {
         startActivity(this, RegisterActivity.class);
     }
+
     public String getUserName() {
         return mEditUsername.getText().toString().trim();
     }
+
     public String getPassword() {
         return mEditPassword.getText().toString().trim();
     }
+
     public void setLoginEnable(final boolean enable) {
         mLogin.setEnabled(enable);
     }

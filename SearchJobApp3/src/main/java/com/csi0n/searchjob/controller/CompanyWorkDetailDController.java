@@ -105,7 +105,7 @@ public class CompanyWorkDetailDController extends BaseController implements BGAR
         PostParams params = getDefaultPostParams(R.string.url_comments_insert);
         params.put("company_id", company_id);
         params.put("content", content);
-        if (TextUtils.isEmpty(reply_uid))
+        if (!TextUtils.isEmpty(reply_uid))
             params.put("reply_uid", reply_uid);
         HttpPost post = new HttpPost(params, new ObjectHttpCallBack<EmptyLayout>(EmptyLayout.class) {
             @Override

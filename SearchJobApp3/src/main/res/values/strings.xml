@@ -6,6 +6,17 @@
     <string name="str_please_enter_username">请输入用户名</string>
     <string name="str_please_enter_password">请输入密码</string>
     <string name="str_please_enter_repassword">请输入确认密码</string>
+    <string name="str_please_enter_old_password">请输入旧密码</string>
+    <string name="str_please_enter_new_password">请输入新密码</string>
+    <string name="str_please_enter_re_new_password">请确认新密码</string>
+    <string name="str_please_enter_name">请输入姓名</string>
+    <string name="str_please_enter_code">请输入身份证号码</string>
+    <string name="str_please_enter_intro">请输入个人介绍</string>
+    <string name="str_please_enter_uname">请输入昵称</string>
+    <string name="str_uname">昵称</string>
+    <string name="str_account">账号</string>
+    <string name="str_sex">性别</string>
+    <string name="str_sign">个性签名</string>
     <string name="str_male">男</string>
     <string name="str_female">女</string>
     <string name="str_login">登陆</string>
@@ -20,4 +31,6 @@
     <string name="url_Authorize">api.php/User/Oauth/authorize</string>
     <string name="url_checkTimeOut">api.php/User/Oauth/checkTimeOut</string>
     <string name="url_comments_insert">api.php/User/Comments/insert</string>
+    <string name="url_user_changeInfo">api.php/User/User/changeInfo</string>
+    <string name="url_user_show">api.php/User/User/show</string>
 </resources>

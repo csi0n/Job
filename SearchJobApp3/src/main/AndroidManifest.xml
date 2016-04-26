@@ -23,7 +23,7 @@
     <application
         android:name=".AppContext"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ico_app"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/notitle">
@@ -42,7 +42,12 @@
         <activity android:name=".ui.activity.CompanyWorkDetailActivity" android:theme="@style/notitle"></activity>
         <activity android:name=".ui.activity.ShowJobTypeDetailActivity" android:theme="@style/style_show_job_type_detail"></activity>
         <activity android:name=".ui.activity.LoginActivity" android:theme="@style/notitle"></activity>
-
+        <activity android:name=".ui.activity.ChangePasswordActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.ChangeIntroActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.ChangeUnameActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.ChangeNameAndCodeActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.UpdateDocumentsActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.activity.MyCommentsActivity" android:theme="@style/notitle"></activity>
 
         <!-- Rich push 核心功能 since 2.0.6-->
         <activity

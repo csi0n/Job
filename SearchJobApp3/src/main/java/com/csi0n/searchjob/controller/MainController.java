@@ -1,21 +1,27 @@
 package com.csi0n.searchjob.controller;
 
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.lib.controller.BaseController;
+import com.csi0n.searchjob.lib.utils.CLog;
 import com.csi0n.searchjob.lib.utils.Config;
 import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
+import com.csi0n.searchjob.lib.utils.bean.EmptyModel;
 import com.csi0n.searchjob.model.UserModel;
+import com.csi0n.searchjob.model.event.HeadChangeEvent;
 import com.csi0n.searchjob.model.event.UserLoginEvent;
 import com.csi0n.searchjob.ui.activity.Main;
 import com.csi0n.searchjob.utils.SharePreferenceManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
+
+import java.io.File;
 
 /**
  * Created by chqss on 2016/4/19 0019.
@@ -58,9 +64,30 @@ public class MainController extends BaseController {
             case R.id.rd_search_job:
                 mMain.changeSearchJobFragment();
                 break;
+            case R.id.rd_me:
+                if (com.csi0n.searchjob.Config.LOGIN_USER != null)
+                    mMain.changeMeFragment();
+                else {
+                    mMain.startLoginActivity();
+                    mMain.setRadioButtonCheck((RadioButton) radioGroup.findViewById(R.id.rd_search_job));
+                }
+                break;
             default:
                 break;
         }
+    }
+
+    public void uploadHead(final File headfile) {
+        PostParams params = getDefaultPostParams(R.string.url_user_changeInfo);
+        params.put("head", headfile);
+        HttpPost post = new HttpPost(params, new ObjectHttpCallBack<EmptyModel>(EmptyModel.class) {
+            @Override
+            public void SuccessResult(EmptyModel result) throws JSONException {
+                CLog.show("头像修改成功!");
+                EventBus.getDefault().post(new HeadChangeEvent(headfile));
+            }
+        });
+        post.post();
     }
 
     @Override

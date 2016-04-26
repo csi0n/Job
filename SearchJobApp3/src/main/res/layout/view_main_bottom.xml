@@ -31,5 +31,11 @@
             style="@style/style_main_bottom_bar"
             android:drawableTop="@drawable/rd_selector_search_job"
             />
+        <cn.bingoogolapple.badgeview.BGABadgeRadioButton
+            android:id="@+id/rd_me"
+            android:text="我"
+            style="@style/style_main_bottom_bar"
+            android:drawableTop="@drawable/rd_selector_me"
+            />
     </RadioGroup>
 </LinearLayout>
