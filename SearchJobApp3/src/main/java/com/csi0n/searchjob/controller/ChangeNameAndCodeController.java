@@ -10,8 +10,11 @@ import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
 import com.csi0n.searchjob.lib.utils.bean.EmptyModel;
+import com.csi0n.searchjob.model.ShowModel;
+import com.csi0n.searchjob.model.event.ShowChangeEvent;
 import com.csi0n.searchjob.ui.activity.ChangeNameAndCodeActivity;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 
 /**
@@ -46,14 +49,18 @@ public class ChangeNameAndCodeController extends BaseController {
         }
     }
 
-    private void do_change_name_and_code(String name, String code) {
+    private void do_change_name_and_code(final String name, final String code) {
         PostParams params = getDefaultPostParams(R.string.url_user_changeInfo);
         params.put("name", name);
         params.put("code", code);
         HttpPost post = new HttpPost(params, new ObjectHttpCallBack<EmptyModel>(EmptyModel.class) {
             @Override
             public void SuccessResult(EmptyModel result) throws JSONException {
-
+                ShowModel showModel=mChangeNameAndCodeActivity.getShowData();
+                showModel.setReal_name(name);
+                showModel.setReal_code(code);
+                EventBus.getDefault().post(new ShowChangeEvent(showModel));
+                mChangeNameAndCodeActivity.finish();
             }
         });
         post.post();

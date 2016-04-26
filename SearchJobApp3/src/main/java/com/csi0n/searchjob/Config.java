@@ -38,10 +38,11 @@ public class Config {
     public static final int CHAT_TXT_SIZE_4 = 24;
     public static final int CHAT_TXT_SIZE_5 = 27;
     public static UserModel LOGIN_USER;
-    public static final int PIC_FROM_CAMERA=0x2010;
-    public static final int D_PIC_FROM_CAMERA=0x20101;
-    public static final int PIC_FROM_DISK=0x2011;
-    public static final int D_PIC_FROM_DISK=0X20111;
+    /*选择图片相关*/
+    public static final int PIC_FROM_CAMERA=28;
+    public static final int D_PIC_FROM_CAMERA=29;
+    public static final int PIC_FROM_DISK=30;
+    public static final int D_PIC_FROM_DISK=31;
     public static DbManager.DaoConfig dbConfig = new DbManager.DaoConfig()
             .setDbName("SEARCH_JOB.db")
             .setDbDir(FileUtils.getSaveFolder(Config.saveFolder))
@@ -67,4 +68,5 @@ public class Config {
     public static final String MARK_SHOW_SEARCH_JOB_RESULT_KEY="mark_show_search_job_result_key";
     public static final String MARK_COMAPNY_WORK_DETAIL_ACTIVITY_COMPANY_DATA="mark_company_work_detail_activity_company_data";
     public static final String MARK_SHOW_SEARCH_JOB_TYPE_ACTIVITY="mark_show_search_job_type_activity";
+    public static final String MARK_CHANGE_NAME_AND_CODE_ACTIVITY="mark_change_name_and_code_activity";
 }

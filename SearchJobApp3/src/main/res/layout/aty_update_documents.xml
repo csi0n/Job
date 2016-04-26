@@ -108,6 +108,7 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_line_account"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/white">
@@ -330,8 +331,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/btn_selector_theme"
-                    android:text="保存"
+                    android:background="@drawable/btn_selector_red"
+                    android:text="注销"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_medium_size" />
             </RelativeLayout>

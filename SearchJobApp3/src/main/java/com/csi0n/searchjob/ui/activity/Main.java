@@ -127,9 +127,11 @@ public class Main extends BaseActivity {
             beginCrop(Uri.fromFile(FileUtils.getSaveFile(Config.saveFolder, "TEMP_PIC.png")), "upload_pic", Config.D_PIC_FROM_CAMERA);
         } else if (requestCode == Config.PIC_FROM_DISK && resultCode == Activity.RESULT_OK) {
             beginCrop(data.getData(), "TEMP_PIC", Config.D_PIC_FROM_DISK);
-        } else if (requestCode == Config.D_PIC_FROM_CAMERA || requestCode == Config.D_PIC_FROM_DISK) {
+        } else if (requestCode == Config.D_PIC_FROM_CAMERA||requestCode==Config.D_PIC_FROM_DISK) {
             handleCrop(requestCode, resultCode, data);
-        } else {
+        } else if (resultCode==Activity.RESULT_CANCELED){
+            CLog.getInstance().iMessage("取消操作");
+        }else {
             CLog.show("不知名操作");
         }
     }
@@ -141,9 +143,9 @@ public class Main extends BaseActivity {
 
     private void handleCrop(int requestCode, int resultCode, Intent result) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == Config.PIC_FROM_CAMERA) {
+            if (requestCode == Config.D_PIC_FROM_CAMERA) {
                 mMainController.uploadHead(FileUtils.getSaveFile(Config.saveFolder, "upload_pic.png"));
-            } else if (requestCode == Config.PIC_FROM_DISK) {
+            } else if (requestCode == Config.D_PIC_FROM_DISK) {
                 mMainController.uploadHead(FileUtils.getSaveFile(Config.saveFolder, "TEMP_PIC.png"));
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
@@ -174,8 +176,8 @@ public class Main extends BaseActivity {
     @Subscribe
     public void onEvent(ChoosePicHeadEvent choosePicHeadEvent) {
         if (choosePicHeadEvent.isFromCamera())
-            SystemUtils.openCamera(this, Config.PIC_FROM_CAMERA, Config.saveFolder);
+            SystemUtils.openCamera(aty, Config.PIC_FROM_CAMERA, Config.saveFolder);
         else
-            SystemUtils.openPic(mMeFragment.aty, Config.PIC_FROM_DISK);
+            SystemUtils.openPic(aty, Config.PIC_FROM_DISK);
     }
 }

@@ -1,5 +1,6 @@
 package com.csi0n.searchjob.ui.activity;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,8 @@ import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.controller.UpdateDocumentsController;
 import com.csi0n.searchjob.model.ShowModel;
 import com.csi0n.searchjob.model.event.HeadChangeEvent;
+import com.csi0n.searchjob.model.event.ShowChangeEvent;
+import com.csi0n.searchjob.model.event.UserInfoEvent;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -41,10 +44,16 @@ public class UpdateDocumentsActivity extends BaseActivity {
     @ViewInject(value = R.id.tv_sign)
     private TextView mTvSign;
 
-    @Event(value = {R.id.rl_line_head, R.id.rl_line_uname, R.id.rl_line_sex, R.id.rl_line_name, R.id.rl_line_code, R.id.rl_line_sign})
+    @Event(value = {R.id.rl_line_head, R.id.rl_line_uname, R.id.rl_line_account,R.id.rl_line_sex, R.id.rl_line_name, R.id.rl_line_code, R.id.rl_line_sign,R.id.btn_logout})
     private void onClick(View view) {
         if (mUpdateDocumentsController != null)
             mUpdateDocumentsController.onClick(view);
+    }
+
+    @Override
+    protected void setActionBarRes(ActionBarRes actionBarRes) {
+        actionBarRes.title="更新资料";
+        super.setActionBarRes(actionBarRes);
     }
 
     private UpdateDocumentsController mUpdateDocumentsController;
@@ -77,7 +86,7 @@ public class UpdateDocumentsActivity extends BaseActivity {
     }
 
     private void setUname(String uname) {
-        mTvName.setText(uname);
+        mTvUname.setText(uname);
     }
 
     private void setAccount(String account) {
@@ -107,6 +116,14 @@ public class UpdateDocumentsActivity extends BaseActivity {
         startActivity(aty, ChangeUnameActivity.class);
     }
 
+    public void startChangeNameAndCode(ShowModel showModel){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(Config.MARK_CHANGE_NAME_AND_CODE_ACTIVITY,showModel);
+        startActivity(aty,ChangeNameAndCodeActivity.class);
+    }
+    public void startChangeSign(){
+        startActivity(aty,ChangeIntroActivity.class);
+    }
     public void initWidget(ShowModel showModel) {
         Picasso.with(aty).load(com.csi0n.searchjob.lib.utils.Config.BASE_URL + showModel.getHead_ic()).into(mIvHead, new Callback() {
             @Override
@@ -134,5 +151,21 @@ public class UpdateDocumentsActivity extends BaseActivity {
     @Subscribe
     public void onEvent(HeadChangeEvent headChangeEvent) {
         changeHead(headChangeEvent.getHeadFile());
+    }
+    @Subscribe
+    public void onEvent(UserInfoEvent userInfoEvent){
+        if (!TextUtils.isEmpty(userInfoEvent.getUser().getUname()))
+            setUname(userInfoEvent.getUser().getUname());
+        if (!TextUtils.isEmpty(userInfoEvent.getUser().getSex()))
+            setSex(userInfoEvent.getUser().getSex());
+        if (!TextUtils.isEmpty(userInfoEvent.getUser().getIntro()))
+            setSign(userInfoEvent.getUser().getIntro());
+    }
+    @Subscribe
+    public void onEvent(ShowChangeEvent showChangeEvent){
+        if (!TextUtils.isEmpty(showChangeEvent.getShow().getReal_name()))
+            setName(showChangeEvent.getShow().getReal_name());
+        if (!TextUtils.isEmpty(showChangeEvent.getShow().getReal_code()))
+           setCode(showChangeEvent.getShow().getReal_code());
     }
 }

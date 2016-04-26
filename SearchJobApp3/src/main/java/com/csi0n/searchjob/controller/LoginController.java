@@ -52,6 +52,7 @@ public class LoginController extends BaseController {
             public void SuccessResult(final TokenAuthorizeModel result) throws JSONException {
                 EventBus.getDefault().post(new UserLoginEvent(result.getUser()));
                 Config.LOGIN_USER = result.getUser();
+                com.csi0n.searchjob.lib.utils.Config.DEFAULT_TOKEN=result.getToken();
                 SharePreferenceManager.setKeyCachedToken(result.getToken());
                 mLoginActivity.finish();
             }

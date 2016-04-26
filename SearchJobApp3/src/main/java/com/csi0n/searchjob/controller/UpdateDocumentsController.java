@@ -2,16 +2,19 @@ package com.csi0n.searchjob.controller;
 
 import android.view.View;
 
+import com.csi0n.searchjob.AppContext;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.lib.controller.BaseController;
 import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
+import com.csi0n.searchjob.lib.utils.SystemUtils;
 import com.csi0n.searchjob.lib.widget.alert.AlertView;
 import com.csi0n.searchjob.lib.widget.alert.OnItemClickListener;
 import com.csi0n.searchjob.model.ShowModel;
 import com.csi0n.searchjob.model.event.ChoosePicHeadEvent;
 import com.csi0n.searchjob.ui.activity.UpdateDocumentsActivity;
+import com.csi0n.searchjob.utils.SharePreferenceManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
@@ -23,6 +26,7 @@ public class UpdateDocumentsController extends BaseController {
     private UpdateDocumentsActivity mUpdateDocumentsActivity;
     private AlertView mAlertView, mAlertViewChooseSex;
 
+    private ShowModel showModel;
     public UpdateDocumentsController(UpdateDocumentsActivity mUpdateDocumentsActivity) {
         this.mUpdateDocumentsActivity = mUpdateDocumentsActivity;
     }
@@ -52,6 +56,9 @@ public class UpdateDocumentsController extends BaseController {
                 mAlertView.show();
                 break;
             case R.id.rl_line_uname:
+                mUpdateDocumentsActivity.startChangeUname();
+                break;
+            case R.id.rl_line_sex:
                 mAlertViewChooseSex = new AlertView("请选择性别", null, "取消", null,
                         new String[]{"男", "女"},
                         mUpdateDocumentsActivity, AlertView.Style.ActionSheet, new OnItemClickListener() {
@@ -60,12 +67,23 @@ public class UpdateDocumentsController extends BaseController {
                             case 0:
                                 break;
                             case 1:
-
                                 break;
                         }
                     }
                 });
                 mAlertViewChooseSex.show();
+                break;
+            case R.id.rl_line_name:
+            case R.id.rl_line_code:
+                if (showModel!=null)
+                mUpdateDocumentsActivity.startChangeNameAndCode(showModel);
+                break;
+            case R.id.rl_line_sign:
+                mUpdateDocumentsActivity.startChangeSign();
+                break;
+            case R.id.btn_logout:
+                SharePreferenceManager.setKeyCachedToken("");
+                SystemUtils.restartApplication(AppContext.getApplicationContext);
                 break;
             default:
                 break;
@@ -77,6 +95,7 @@ public class UpdateDocumentsController extends BaseController {
         HttpPost post = new HttpPost(params, new ObjectHttpCallBack<ShowModel>(ShowModel.class) {
             @Override
             public void SuccessResult(ShowModel result) throws JSONException {
+                showModel=result;
                 mUpdateDocumentsActivity.initWidget(result);
             }
         });

@@ -89,6 +89,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
             });
             downLoadConfig.download();
         } else {
+            getJobList(CURRENT_PAGE);
         }
 
     }

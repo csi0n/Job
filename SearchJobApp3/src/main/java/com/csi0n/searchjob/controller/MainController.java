@@ -12,6 +12,7 @@ import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
 import com.csi0n.searchjob.lib.utils.bean.EmptyModel;
+import com.csi0n.searchjob.lib.widget.ProgressLoading;
 import com.csi0n.searchjob.model.UserModel;
 import com.csi0n.searchjob.model.event.HeadChangeEvent;
 import com.csi0n.searchjob.model.event.UserLoginEvent;
@@ -28,7 +29,7 @@ import java.io.File;
  */
 public class MainController extends BaseController {
     private Main mMain;
-
+private ProgressLoading loading;
     public MainController(Main mMain) {
         this.mMain = mMain;
     }
@@ -41,7 +42,7 @@ public class MainController extends BaseController {
         mMain.changeSearchJobFragment();
     }
 
-    private void verityToken(String token) {
+    private void verityToken(final String token) {
         Config.DEFAULT_TOKEN = token;
         PostParams params = getDefaultPostParams(R.string.url_checkTimeOut);
         params.put("token", token);
@@ -49,8 +50,13 @@ public class MainController extends BaseController {
             @Override
             public void SuccessResult(UserModel result) throws JSONException {
                 com.csi0n.searchjob.Config.LOGIN_USER = result;
+                com.csi0n.searchjob.lib.utils.Config.DEFAULT_TOKEN=token;
                 EventBus.getDefault().post(new UserLoginEvent(result));
+            }
 
+            @Override
+            public void ErrorResult(int code, String str) {
+                com.csi0n.searchjob.lib.utils.Config.DEFAULT_TOKEN=null;
             }
         });
         post.post();
@@ -78,6 +84,8 @@ public class MainController extends BaseController {
     }
 
     public void uploadHead(final File headfile) {
+        loading=new ProgressLoading(mMain.aty,"上传中请稍后...");
+        loading.show();
         PostParams params = getDefaultPostParams(R.string.url_user_changeInfo);
         params.put("head", headfile);
         HttpPost post = new HttpPost(params, new ObjectHttpCallBack<EmptyModel>(EmptyModel.class) {
@@ -85,6 +93,13 @@ public class MainController extends BaseController {
             public void SuccessResult(EmptyModel result) throws JSONException {
                 CLog.show("头像修改成功!");
                 EventBus.getDefault().post(new HeadChangeEvent(headfile));
+            }
+
+            @Override
+            public void onFinished() {
+                super.onFinished();
+                if (loading.isShowing())
+                    loading.dismiss();
             }
         });
         post.post();
