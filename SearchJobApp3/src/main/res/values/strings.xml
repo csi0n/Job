@@ -33,4 +33,5 @@
     <string name="url_comments_insert">api.php/User/Comments/insert</string>
     <string name="url_user_changeInfo">api.php/User/User/changeInfo</string>
     <string name="url_user_show">api.php/User/User/show</string>
+    <string name="url_comments_list">api.php/User/Comments/lists</string>
 </resources>

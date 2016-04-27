@@ -72,7 +72,7 @@ public class SearchJobFragment extends BaseFragment {
         mSearchJobController.initSearchJob();
         mList.setOnItemClickListener(mSearchJobController);
         mBGARefreshLayout.setDelegate(mSearchJobController);
-        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, false));
+        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, true));
         EventBus.getDefault().register(this);
     }
 
@@ -105,6 +105,7 @@ public class SearchJobFragment extends BaseFragment {
 
         viewJob = new ViewJob(aty);
         JobTypeModel jobTypeBean = new JobTypeModel();
+        jobTypeBean.setId(-1);
         jobTypeBean.setName("工作不限");
         viewJob.jobDatas.add(jobTypeBean);
         viewJob.jobDatas.addAll(jobTypeBeenList);
@@ -113,9 +114,6 @@ public class SearchJobFragment extends BaseFragment {
         mTextArray.add(viewJob.jobDatas.get(0).getName());
 
         viewWelfare = new ViewWelfare(aty);
-        FuliModel fuliBean = new FuliModel();
-        fuliBean.setName("福利不限");
-        viewWelfare.fuliBeanList.add(fuliBean);
         viewWelfare.fuliBeanList.addAll(fuliBeanList);
         viewWelfare.setAdapterChange();
         mViewArray.add(viewWelfare);
@@ -125,7 +123,7 @@ public class SearchJobFragment extends BaseFragment {
         mExpandTabView.setTitle(viewAreaList.areaDatas.get(0).getArea(), 0);
         mExpandTabView.setTitle(backmoney.get(0), 1);
         mExpandTabView.setTitle(viewJob.jobDatas.get(0).getName(), 2);
-        mExpandTabView.setTitle(viewWelfare.fuliBeanList.get(0).getName(), 3);
+        mExpandTabView.setTitle("福利不限", 3);
         viewAreaList.setOnSelectListener(new ViewAreaList.OnSelectListener() {
             @Override
             public void getValue(int position, AreaModel showText) {
@@ -135,7 +133,7 @@ public class SearchJobFragment extends BaseFragment {
         viewBackMoney.setOnSelectListener(new ViewBackMoney.OnSelectListener() {
             @Override
             public void getValue(int position, String showText) {
-                onRefresh(viewBackMoney, -1, showText, null, null, null);
+                onRefresh(viewBackMoney, position, showText, null, null, null);
             }
         });
         viewJob.setOnSelectListener(new ViewJob.OnSelectListener() {
@@ -147,7 +145,10 @@ public class SearchJobFragment extends BaseFragment {
         viewWelfare.setOnSelectListener(new ViewWelfare.OnSelectListener() {
             @Override
             public void getValue(List<FuliModel> datas) {
-                onRefresh(viewWelfare, -1, null, null, null, datas);
+                if (datas.size() == 0)
+                    onRefresh(viewWelfare, -1, "福利不限", null, null, datas);
+                else
+                    onRefresh(viewWelfare, -1, null, null, null, datas);
             }
         });
     }
@@ -157,7 +158,6 @@ public class SearchJobFragment extends BaseFragment {
         mExpandTabView.setTitle("返现不限", 1);
         mExpandTabView.setTitle("工作不限", 2);
         mExpandTabView.setTitle("福利不限", 3);
-
     }
 
     public void setListAdapter(BaseAdapter adapter) {
@@ -212,7 +212,8 @@ public class SearchJobFragment extends BaseFragment {
     public void startChooseCityActivity() {
         startActivity(ChooseCityActivity.class);
     }
-public void startSearchJobActivity(){
-    startActivity(SearchJobActivity.class);
-}
+
+    public void startSearchJobActivity() {
+        startActivity(SearchJobActivity.class);
+    }
 }

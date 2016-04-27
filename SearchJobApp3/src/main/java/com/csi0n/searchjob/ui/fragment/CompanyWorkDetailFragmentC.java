@@ -34,7 +34,7 @@ public class CompanyWorkDetailFragmentC extends BaseFragment {
             companyJobBean = (CompanyJobListModel.CompanyJobModel) bundle.getSerializable(Config.MARK_COMAPNY_WORK_DETAIL_ACTIVITY_COMPANY_DATA);
         mCompanyWorkDetailCController = new CompanyWorkDetailCController(this);
         mCompanyWorkDetailCController.initCompanyWorkDetailC();
-        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, false));
+        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, true));
         mBGARefreshLayout.setDelegate(mCompanyWorkDetailCController);
         mEmptyLayout.setOnLayoutClickListener(mCompanyWorkDetailCController);
     }

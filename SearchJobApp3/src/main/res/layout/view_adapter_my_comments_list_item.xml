@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/all_back_color">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.csi0n.searchjob.lib.widget.RoundImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/ri_user_head"
+                android:src="@mipmap/ico_default_head_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="csi0n"
+                android:id="@+id/tv_uname"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/ri_user_head"
+                android:layout_toEndOf="@+id/ri_user_head"
+                android:contextClickable="false"
+                android:textColor="@color/black"
+                android:layout_marginLeft="8dp"
+                android:textSize="@dimen/text_small_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="昨天"
+                android:id="@+id/tv_time"
+                android:contextClickable="false"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_small_small_default_size"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我也不知道说点什么好!"
+                android:id="@+id/tv_content"
+                android:contextClickable="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_content_size"
+                android:layout_below="@+id/tv_uname"
+                android:layout_toRightOf="@+id/ri_user_head"
+                android:layout_toEndOf="@+id/ri_user_head"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_content"
+                android:layout_alignLeft="@+id/tv_content"
+                android:layout_alignStart="@+id/tv_content"
+                android:layout_marginTop="11dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/ad"
+                    android:padding="8dp"
+                    android:background="@color/gray">
+
+                    <com.csi0n.searchjob.lib.widget.RoundImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/ri_company_image"
+                        android:src="@mipmap/ico_default_head_ic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="搜工作有限公司"
+                        android:id="@+id/tv_company_name"
+                        android:contextClickable="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_size"
+                        android:layout_alignTop="@+id/ri_company_image"
+                        android:layout_toRightOf="@+id/ri_company_image"
+                        android:layout_toEndOf="@+id/ri_company_image"
+                        android:layout_marginLeft="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="这个企业很懒什么都没有留下"
+                        android:id="@+id/tv_company_intro"
+                        android:contextClickable="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_small_default_size"
+                        android:layout_below="@+id/tv_company_name"
+                        android:layout_alignLeft="@+id/tv_company_name"
+                        android:layout_alignStart="@+id/tv_company_name"
+                        android:layout_marginTop="4dp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

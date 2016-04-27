@@ -57,6 +57,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
     public void initSearchJob() {
         adapter = new SearchJobFragmentAdapter(mSearchJobFragment.aty);
         mSearchJobFragment.setListAdapter(adapter);
+        SharePreferenceManager.setFlagIsFirstStartSearchJobFragment(true);
         if (SharePreferenceManager.getFlagIsFirstStartSearchJobFragment()) {
             loading = new ProgressLoading(mSearchJobFragment.aty, "正在下载配置文件...");
             loading.show();
@@ -114,7 +115,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
     }
 
     public void onRefresh(int positon, AreaModel area, JobTypeModel jobTypeBean, List<FuliModel> strings) {
-        if (positon != -1)
+        if (positon > 0)
             MONEY_BACK = positon;
         if (area != null) {
             if (area.getId() != -1)
@@ -122,7 +123,7 @@ public class SearchJobController extends BaseController implements BGARefreshLay
             else
                 CITY_ID = area.getCity_id();
         }
-        if (jobTypeBean != null)
+        if (jobTypeBean != null&&jobTypeBean.getId()!=-1)
             WORK_TYPE = jobTypeBean.getId();
         if (strings != null)
             FULI_LIST = strings;
@@ -160,14 +161,12 @@ public class SearchJobController extends BaseController implements BGARefreshLay
         if (WORK_TYPE != -1)
             params.put("work_type", String.valueOf(WORK_TYPE));
         if (FULI_LIST != null && FULI_LIST.size() > 0) {
-            int k = 0;
             String fuliTemp = null;
             for (int i = 0; i < FULI_LIST.size(); i++) {
-                if (k == 0)
+                if (i == 0)
                     fuliTemp = String.valueOf(FULI_LIST.get(i).getId());
                 else
-                    fuliTemp = "," + FULI_LIST.get(i).getId();
-                k++;
+                    fuliTemp =fuliTemp+ "," + FULI_LIST.get(i).getId();
             }
             params.put("fuli", fuliTemp);
         }

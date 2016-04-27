@@ -5,4 +5,5 @@
     <dimen name="expand_tab_item_height">45dp</dimen>
     <dimen name="edit_height">45dp</dimen>
     <dimen name="login_head_size">100dp</dimen>
+    <dimen name="text_content_size">13dp</dimen>
 </resources>
