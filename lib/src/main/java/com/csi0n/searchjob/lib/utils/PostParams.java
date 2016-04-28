@@ -21,6 +21,7 @@ public class PostParams {
     }
 
     public void put(String key, String value) {
+        mRequestParams.setMultipart(true);
         mRequestParams.addQueryStringParameter(key, value);
     }
     public void put(String key,File file){

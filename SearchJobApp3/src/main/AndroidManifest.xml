@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.csi0n.searchjob">
+    <permission
+        android:name="com.csi0n.searchjob.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
     <uses-permission android:name="com.csi0n.searchjob.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -149,7 +152,7 @@
 
         <!-- Required  . Enable it you can get statistics data with channel -->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="vc8gixf5F6k7789nX9nscmiG" /> <!--  </>值来自开发者平台取得的AppKey-->
+        <meta-data android:name="JPUSH_APPKEY" android:value="2377e62bff1084f8d825ff20" /> <!--  </>值来自开发者平台取得的AppKey-->
 
     </application>
 

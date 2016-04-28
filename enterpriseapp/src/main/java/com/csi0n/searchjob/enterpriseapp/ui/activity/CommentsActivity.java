@@ -35,7 +35,7 @@ public class CommentsActivity extends BaseActivity {
     protected void initWidget() {
         mCommentsController = new CommentsController(this);
         mCommentsController.initComments();
-        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, false));
+        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, true));
         mBGARefreshLayout.setDelegate(mCommentsController);
         mList.setOnItemClickListener(mCommentsController);
         mEmptyLayout.setOnLayoutClickListener(mCommentsController);

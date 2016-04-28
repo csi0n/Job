@@ -25,6 +25,17 @@ public class SharePreferenceManager {
         return null;
     }
 
+    public static final String KEY_DEVICE_ID="key_device_id";
+    public static void setKeyDeviceID(String deviceID){
+        if (null!=sp)
+            sp.edit().putString(KEY_DEVICE_ID,deviceID).commit();
+    }
+    public static String getKeyDeviceId(){
+        if (null!=sp)
+            return sp.getString(KEY_DEVICE_ID,null);
+        return null;
+    }
+
     private static final String FLAG_NOTICE_MODE = "flag_notice_mode";
 
     public static void setFlagNoticeMode(int mode) {

@@ -106,6 +106,10 @@ public class CompanyWorkDetailFragmentD extends BaseFragment {
         else
             return "";
     }
+    public void setReplayContent(String string){
+        if (mContent!=null)
+            mContent.setText(string);
+    }
 
     public void setReplyHintContent(String string) {
         if (mContent != null)

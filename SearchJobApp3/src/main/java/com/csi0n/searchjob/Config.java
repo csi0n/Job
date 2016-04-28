@@ -19,6 +19,7 @@ public class Config {
     public static final int CODE_EMPTY = 14;
     public static final int CODE_TIMEOUT=15;
     public static final int CODE_FRIEND_LIST_CHANGE = 250;
+    public static final int CODE_NOTICE_CONFIG_CHANGE=252;
     public static int DEFAULT_PAGE = 20;
     /*
 0:展示通知，有声音有震动

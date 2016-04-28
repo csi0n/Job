@@ -1,5 +1,6 @@
 package com.csi0n.searchjob.controller;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -11,6 +12,7 @@ import com.csi0n.searchjob.lib.utils.Config;
 import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
+import com.csi0n.searchjob.lib.utils.SystemUtils;
 import com.csi0n.searchjob.lib.utils.bean.EmptyModel;
 import com.csi0n.searchjob.lib.widget.ProgressLoading;
 import com.csi0n.searchjob.model.UserModel;
@@ -23,6 +25,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 
 import java.io.File;
+import java.util.Set;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 /**
  * Created by chqss on 2016/4/19 0019.
@@ -40,6 +46,9 @@ private ProgressLoading loading;
         } else {
         }
         mMain.changeSearchJobFragment();
+bindDeviceID();
+    }
+    private void bindDeviceID(){
     }
 
     private void verityToken(final String token) {

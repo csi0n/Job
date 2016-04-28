@@ -5,7 +5,7 @@ package com.csi0n.searchjob.lib.utils;
  */
 public class Config {
     public static final boolean DEBUG = true;
-    public static final String BASE_URL = "http://192.168.2.102/im/";
+    public static final String BASE_URL = "http://app.123111.cn/im/";
     public static final int SUCCESS_CODE = 10;
     public static final int CODE_EMPTY = 14;
     public static final int CODE_TIMEOUT=15;

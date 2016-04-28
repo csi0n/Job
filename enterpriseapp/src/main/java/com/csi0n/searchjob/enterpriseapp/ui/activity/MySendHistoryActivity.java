@@ -37,7 +37,7 @@ public class MySendHistoryActivity extends BaseActivity {
     protected void initWidget() {
         mMySendHistoryController = new MySendHistoryController(this);
         mMySendHistoryController.initMySendHistory();
-        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, false));
+        mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(aty, true));
         mBGARefreshLayout.setDelegate(mMySendHistoryController);
         mList.setOnItemClickListener(mMySendHistoryController);
         mEmptyLayout.setOnLayoutClickListener(mMySendHistoryController);

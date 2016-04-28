@@ -12,6 +12,7 @@ import com.csi0n.searchjob.lib.utils.Config;
 import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
+import com.csi0n.searchjob.lib.utils.bean.BaseStatusBean;
 import com.csi0n.searchjob.lib.widget.EmptyLayout;
 import org.json.JSONException;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
@@ -51,7 +52,12 @@ public class CommentsController extends BaseController implements BGARefreshLayo
                 mCommentsActivity.setEmptyLayoutErrorType(EmptyLayout.HIDE_LAYOUT);
             }
 
-
+            @Override
+            public void EmptyData(BaseStatusBean<CommentsListBean> b) throws JSONException {
+                super.EmptyData(b);
+                TEMP_COUNT = 0;
+                mCommentsActivity.setEmptyLayoutErrorType(EmptyLayout.NO_COMMENTS);
+            }
 
             @Override
             public void ErrorResult(int code, String str) {

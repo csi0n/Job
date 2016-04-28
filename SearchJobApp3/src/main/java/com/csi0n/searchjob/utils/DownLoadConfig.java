@@ -39,13 +39,13 @@ public class DownLoadConfig {
             public void SuccessResult(ConfigModel result) throws JSONException {
                 try {
                     if (db.findAll(AreaModel.class) != null)
-                    db.delete(AreaModel.class);
+                        db.dropTable(AreaModel.class);
                     if (db.findAll(CityModel.class) != null)
-                    db.delete(CityModel.class);
+                        db.dropTable(CityModel.class);
                     if (db.findAll(FuliModel.class) != null)
-                    db.delete(FuliModel.class);
+                        db.dropTable(FuliModel.class);
                     if (db.findAll(JobTypeModel.class) != null)
-                    db.delete(JobTypeModel.class);
+                        db.dropTable(JobTypeModel.class);
                     List<ConfigModel.CityAndAreaEntity> cityAndAreaEntities=result.getCity();
                     for (ConfigModel.CityAndAreaEntity cityAndArea:cityAndAreaEntities) {
                         db.save(cityAndArea.getCity());

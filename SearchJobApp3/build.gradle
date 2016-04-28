@@ -11,13 +11,12 @@ android {
     }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.csi0n.searchjob"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName '1.0.0'
     }
     buildTypes {
         release {
@@ -32,6 +31,8 @@ android {
             jni.srcDirs = []
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -41,10 +42,7 @@ dependencies {
     compile 'cn.bingoogolapple:bga-badgeview:1.1.1@aar'
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.2@aar'
     compile 'com.android.support:recyclerview-v7:23.3.0'
-
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
-
     compile 'org.greenrobot:eventbus:3.0.0'
-
 }

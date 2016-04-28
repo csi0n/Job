@@ -13,6 +13,7 @@ import com.csi0n.searchjob.lib.utils.Config;
 import com.csi0n.searchjob.lib.utils.HttpPost;
 import com.csi0n.searchjob.lib.utils.ObjectHttpCallBack;
 import com.csi0n.searchjob.lib.utils.PostParams;
+import com.csi0n.searchjob.lib.utils.bean.BaseStatusBean;
 import com.csi0n.searchjob.lib.widget.EmptyLayout;
 
 import org.json.JSONException;
@@ -99,6 +100,13 @@ public class MySendHistoryController extends BaseController implements BGARefres
             @Override
             public void ErrorResult(int code, String str) {
                 super.ErrorResult(code, str);
+                TEMP_COUNT = 0;
+                mMySendHistoryActivity.setEmptyLayoutErrorType(EmptyLayout.NODATA);
+            }
+
+            @Override
+            public void EmptyData(BaseStatusBean<JobListBean> b) throws JSONException {
+                super.EmptyData(b);
                 TEMP_COUNT = 0;
                 mMySendHistoryActivity.setEmptyLayoutErrorType(EmptyLayout.NODATA);
             }

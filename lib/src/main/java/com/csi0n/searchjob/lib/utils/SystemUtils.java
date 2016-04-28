@@ -9,6 +9,13 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
+
+import org.xutils.x;
+
+import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
 /**
  * Created by chqss on 2016/2/21 0021.
@@ -51,5 +58,23 @@ public class SystemUtils {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(FileUtils.getSaveFile(saveFolder,"TEMP_PIC.png")));
         intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
         titleBarFragment.startActivityForResult(intent, id);
+    }
+    protected static final String PREFS_FILE = "gank_device_id.xml";
+    protected static final String PREFS_DEVICE_ID = "gank_device_id";
+    protected static String uuid;
+    public static  String getUDID()
+    {
+        final String androidId = Settings.Secure.getString(x.app().getContentResolver(), Settings.Secure.ANDROID_ID);
+        try {
+            if (!"9774d56d682e549c".equals(androidId)) {
+                uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8")).toString();
+            } else {
+                final String deviceId = ((TelephonyManager) x.app().getSystemService( Context.TELEPHONY_SERVICE )).getDeviceId();
+                uuid = deviceId!=null ? UUID.nameUUIDFromBytes(deviceId.getBytes("utf8")).toString() : UUID.randomUUID().toString();
+            }
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        return uuid;
     }
 }

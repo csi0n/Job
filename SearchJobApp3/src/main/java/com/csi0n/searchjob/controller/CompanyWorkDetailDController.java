@@ -110,6 +110,8 @@ public class CompanyWorkDetailDController extends BaseController implements BGAR
         HttpPost post = new HttpPost(params, new ObjectHttpCallBack<EmptyLayout>(EmptyLayout.class) {
             @Override
             public void SuccessResult(EmptyLayout result) throws JSONException {
+                CLog.show("回复成功!");
+                mCompanyWorkDetailFragmentD.setReplayContent("");
                 getDataFromNet(CURRENT_PAGE);
             }
         });

@@ -84,6 +84,7 @@ public abstract class BaseActivity extends FragmentActivity {
         setTitleText(actionBarRes.title);
         setMoreText(actionBarRes.more);
         CLog.getInstance().iMessage(this.getClass().getName() + "**********onResume**********");
+        JPushInterface.onResume(this);
     }
 
     @Override
@@ -91,6 +92,7 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onPause();
         JPushInterface.onPause(this);
         CLog.getInstance().iMessage(this.getClass().getName() + "**********onPause**********");
+        JPushInterface.onPause(this);
     }
 
     @Override

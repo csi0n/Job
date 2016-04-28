@@ -15,6 +15,8 @@ import com.csi0n.searchjob.ui.activity.BaseActivity;
 
 import org.xutils.x;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by csi0n on 2015/12/14 0014.
  */
