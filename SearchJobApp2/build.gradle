@@ -50,5 +50,5 @@ dependencies {
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
     compile 'com.victor:lib:1.0.3'
     compile 'com.github.kingideayou:tagcloudview:1.0.2'
-    compile project(':lib')
+    compile project(':Lib')
 }

@@ -37,7 +37,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':lib')
+    compile project(':Lib')
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.2'
 }

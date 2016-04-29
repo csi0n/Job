@@ -3,10 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Job.iml" filepath="$PROJECT_DIR$/Job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lib/lib.iml" filepath="$PROJECT_DIR$/Lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lib4/Lib4.iml" filepath="$PROJECT_DIR$/Lib4/Lib4.iml" />
       <module fileurl="file://$PROJECT_DIR$/SearchJobApp2/SearchJobApp2.iml" filepath="$PROJECT_DIR$/SearchJobApp2/SearchJobApp2.iml" />
       <module fileurl="file://$PROJECT_DIR$/SearchJobApp3/SearchJobApp3.iml" filepath="$PROJECT_DIR$/SearchJobApp3/SearchJobApp3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/enterpriseapp/enterpriseapp.iml" filepath="$PROJECT_DIR$/enterpriseapp/enterpriseapp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SearchJobApp4/SearchJobApp4.iml" filepath="$PROJECT_DIR$/SearchJobApp4/SearchJobApp4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SearchJobEnterPriseApp/enterpriseapp.iml" filepath="$PROJECT_DIR$/SearchJobEnterPriseApp/enterpriseapp.iml" />
     </modules>
   </component>
 </project>
