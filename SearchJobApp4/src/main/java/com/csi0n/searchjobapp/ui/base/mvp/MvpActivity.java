@@ -1,9 +1,13 @@
 package com.csi0n.searchjobapp.ui.base.mvp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 
 import com.csi0n.searchjobapp.core.log.CLog;
 import com.csi0n.searchjobapp.ui.base.BaseActivity;
+import com.csi0n.searchjobapp.ui.base.BaseFragment;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -13,7 +17,6 @@ import org.greenrobot.eventbus.Subscribe;
 public abstract class MvpActivity<P extends BaseMvpPresenter<V>, V extends IMvpView> extends BaseActivity {
     protected P presenter;
     protected V view;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,4 +127,5 @@ public abstract class MvpActivity<P extends BaseMvpPresenter<V>, V extends IMvpV
         view = null;
         super.onDestroy();
     }
+
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color_pressed">#57a188</color>
+    <color name="theme_color">#5fbe9e</color>
+    <!--com.csi0n.im.widget.alert start-->
+    <!--窗口背景颜色-->
+    <color name="bgColor_overlay">#60000000</color>
+    <color name="bgColor_alertview_alert">#f8f8f8</color>
+    <color name="bgColor_alertview_alert_start">#f0f0f0</color>
+    <!--标题颜色-->
+    <color name="textColor_alert_title">#000000</color>
+    <color name="textColor_actionsheet_title">#8f8f8f</color>
+    <!--消息颜色-->
+    <color name="textColor_alert_msg">#000000</color>
+    <color name="textColor_actionsheet_msg">#8f8f8f</color>
+    <!--线条颜色-->
+    <color name="bgColor_divier">#d7d7db</color>
+    <!--取消按钮颜色-->
+    <color name="textColor_alert_button_cancel">#007aff</color>
+    <!--高亮按钮颜色-->
+    <color name="textColor_alert_button_destructive">#ff3b30</color>
+    <!--普通按钮文字颜色-->
+    <color name="textColor_alert_button_others">#007aff</color>
+    <!--点击颜色-->
+    <color name="bgColor_alert_button_press">#EAEAEA</color>
+    <!--actionsheet模式的取消按钮背景颜色-->
+    <color name="bgColor_actionsheet_cancel_nor">#ffffff</color>
+    <!--com.csi0n.im.widget.alert end-->
+    <color name="gray">#f0eff5</color>
+    <color name="white">@android:color/white</color>
+    <color name="red">#fb6155</color>
+    <color name="red_color_pressed">#f76e63</color>
+    <color name="all_back_color">#eff1ef</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="transparent_half">#50000000</color>
+    <color name="black">@android:color/black</color>
+</resources>

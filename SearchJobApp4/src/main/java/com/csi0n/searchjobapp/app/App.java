@@ -2,6 +2,8 @@ package com.csi0n.searchjobapp.app;
 
 import android.app.Application;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by chqss on 2016/4/29 0029.
  */

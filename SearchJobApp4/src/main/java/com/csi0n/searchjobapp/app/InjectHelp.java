@@ -8,7 +8,6 @@ public class InjectHelp {
     static void init(Application application) {
         // 关闭 RoboGuice 3.+ 编译时生成代码功能。仅使用反射。
         RoboGuice.setUseAnnotationDatabases(false);
-
         RoboGuice.getOrCreateBaseApplicationInjector(
                 application,
                 RoboGuice.DEFAULT_STAGE,

@@ -1,24 +1,27 @@
 package com.csi0n.searchjobapp.ui.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
 import com.csi0n.searchjobapp.ui.base.mvp.ILoadDataView;
 
 import butterknife.ButterKnife;
+import roboguice.activity.RoboActionBarActivity;
 import roboguice.activity.RoboFragmentActivity;
 
 /**
  * Created by chqss on 2016/4/29 0029.
  */
-public class BaseActivity extends RoboFragmentActivity implements ILoadDataView {
+public class BaseActivity extends RoboActionBarActivity implements ILoadDataView {
     static final String LOADING_DIALOG_TAG = "loading_dialog";
     private DialogFragment loadingDialogFragment;
     protected Handler uiHandler;
-
+    protected BaseFragment currentFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,5 +80,47 @@ public class BaseActivity extends RoboFragmentActivity implements ILoadDataView 
     @Override
     public Context getContext() {
         return this;
+    }
+    public void skipActivityWithBundle(Context context, Class<?> classz, Bundle bundle) {
+        startActivity(context, classz, bundle);
+        finish();
+    }
+
+    public void skipActivityWithBundleWithOutExit(Context context, Class<?> classz, Bundle bundle) {
+        startActivity(context, classz, bundle);
+    }
+
+    public Bundle getBundle() {
+        return getIntent().getExtras();
+    }
+
+    public void startActivity(Context context, Class<?> classz) {
+        startActivity(context, classz, null);
+    }
+
+    private void startActivity(Context context, Class<?> classz, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(context, classz);
+        if (bundle != null)
+            intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    public void changeFragment(int resView, BaseFragment targetFragment) {
+        if (targetFragment.equals(currentFragment)) {
+            return;
+        }
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (!targetFragment.isAdded()) {
+            transaction.add(resView, targetFragment, targetFragment.getClass().getName());
+        }
+        if (targetFragment.isHidden()) {
+            transaction.show(targetFragment);
+        }
+        if (currentFragment != null && currentFragment.isVisible()) {
+            transaction.hide(currentFragment);
+        }
+        currentFragment = targetFragment;
+        transaction.commit();
     }
 }
