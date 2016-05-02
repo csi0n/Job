@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/GreenDao" />
             <option value="$PROJECT_DIR$/Lib" />
             <option value="$PROJECT_DIR$/Lib4" />
             <option value="$PROJECT_DIR$/SearchJobApp2" />
@@ -19,6 +20,7 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/GreenDao" />
             <option value="$PROJECT_DIR$/Lib" />
             <option value="$PROJECT_DIR$/Lib4" />
             <option value="$PROJECT_DIR$/SearchJobApp2" />

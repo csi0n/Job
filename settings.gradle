@@ -1,1 +1,1 @@
-include ':SearchJobApp2', ':SearchJobEnterPriseApp', ':Lib', ':SearchJobApp3', ':SearchJobApp4', ':Lib4'
+include ':SearchJobApp2', ':SearchJobEnterPriseApp', ':Lib', ':SearchJobApp3', ':SearchJobApp4', ':Lib4', ':GreenDao'

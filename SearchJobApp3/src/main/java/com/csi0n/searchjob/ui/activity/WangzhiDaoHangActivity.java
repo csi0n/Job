@@ -23,7 +23,6 @@ import org.xutils.view.annotation.ViewInject;
  */
 @ContentView(R.layout.aty_news_webview)
 public class WangzhiDaoHangActivity extends BaseActivity {
-
     private WanZhiDaoHangController mWanZhiDaoHangController;
     @ViewInject(value = R.id.viewpagertab)
     private SmartTabLayout mSmartTabLayout;

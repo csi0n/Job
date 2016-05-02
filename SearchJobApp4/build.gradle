@@ -11,9 +11,8 @@ android {
     }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
-        applicationId "com.csi0n.searchjobapp"
+        applicationId 'com.csi0n.searchjob'
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
@@ -24,6 +23,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+        }
+    }
+    productFlavors {
     }
 }
 
@@ -40,5 +46,9 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'cn.bingoogolapple:bga-badgeview:1.1.1@aar'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.4@aar'
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
+    compile 'org.greenrobot:greendao:2.2.0'
     compile project(':Lib4')
 }

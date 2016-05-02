@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".ui.AppStartActivity">
+    tools:context="com.csi0n.searchjob.ui.AppStartActivity">
 
     <ImageView
         android:id="@+id/iv_start_pic"
