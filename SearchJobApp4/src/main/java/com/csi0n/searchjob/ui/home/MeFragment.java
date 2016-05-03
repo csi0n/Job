@@ -1,5 +1,5 @@
 package com.csi0n.searchjob.ui.home;
-import com.csi0n.searchjobapp.R;
+import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
 /**
  * Created by chqss on 2016/5/1 0001.

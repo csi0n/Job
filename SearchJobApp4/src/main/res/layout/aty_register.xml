@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_back_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_line_top"></include>
+
+    <com.csi0n.searchjob.lib.widget.CScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <EditText
+                    android:id="@+id/edit_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入手机号码"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="8dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:id="@+id/edit_uname"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入短信验证码"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:id="@+id/edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请输入密码"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+
+                <EditText
+                    android:id="@+id/edit_repassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_normal_size"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_shape"
+                    android:hint="请确认密码"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/normal_gray"
+                    android:textSize="@dimen/text_medium_size" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/bg_check_theme_white"
+                    android:text="我已经认真阅读并且完全同意《用户服务条例》中的所有条款"
+                    android:textColor="@color/normal_gray"
+                    android:textSize="@dimen/text_small_size" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_normal_size"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_selector_theme"
+                android:text="注册"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium_size" />
+        </LinearLayout>
+    </com.csi0n.searchjob.lib.widget.CScrollView>
+
+</LinearLayout>

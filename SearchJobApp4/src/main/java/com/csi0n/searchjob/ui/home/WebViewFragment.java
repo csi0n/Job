@@ -6,7 +6,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.csi0n.searchjobapp.R;
+import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;

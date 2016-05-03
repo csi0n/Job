@@ -9,7 +9,7 @@ import com.csi0n.searchjob.business.pojo.event.ext.MainFragmentSkipEvent;
 import com.csi0n.searchjob.business.pojo.event.ext.WangZhiDaoHangEvent;
 import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.ui.base.mvp.MvpActivity;
-import com.csi0n.searchjobapp.R;
+import com.csi0n.searchjob.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
@@ -22,12 +22,9 @@ import roboguice.inject.ContentView;
 /**
  * Created by chqss on 2016/5/1 0001.
  */
-@ContentView(R.layout.aty_news_webview)
 public class WangzhiDaoHangActivity extends MvpActivity<WangzhiDaoHangPresenter, WangzhiDaoHangPresenter.IWangzhiDaoHangView> implements WangzhiDaoHangPresenter.IWangzhiDaoHangView {
-    @Bind(value = R.id.viewpagertab)
-    private SmartTabLayout mSmartTabLayout;
-    @Bind(value = R.id.viewpager)
-    private ViewPager mViewPager;
+    @Bind(value = R.id.viewpagertab) SmartTabLayout mSmartTabLayout;
+    @Bind(value = R.id.viewpager) ViewPager mViewPager;
     @OnClick(value = {R.id.t_webview_back, R.id.m_home, R.id.m_search_job}) void onClick(View view) {
         switch (view.getId()) {
             case R.id.t_webview_back:
@@ -43,6 +40,11 @@ public class WangzhiDaoHangActivity extends MvpActivity<WangzhiDaoHangPresenter,
             default:
                 break;
         }
+    }
+
+    @Override
+    protected int getRootView() {
+        return R.layout.aty_news_webview;
     }
 
     @Override

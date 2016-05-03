@@ -4,28 +4,83 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.ui.base.mvp.ILoadDataView;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import roboguice.activity.RoboActionBarActivity;
 
 /**
  * Created by chqss on 2016/4/29 0029.
  */
-public class BaseActivity extends RoboActionBarActivity implements ILoadDataView {
+public abstract class BaseActivity extends RoboActionBarActivity implements ILoadDataView {
+    @Nullable
+    @Bind(value = R.id.tv_back)
+    TextView mTvBack;
+    @Nullable
+    @Bind(value = R.id.tv_more)
+    TextView mTvMore;
+    @Nullable
+    @Bind(value = R.id.tv_title)
+    TextView mTvTitle;
+
+    public class ActionBarRes {
+        public CharSequence title;
+        public CharSequence more;
+    }
+
+    private final ActionBarRes actionBarRes = new ActionBarRes();
     static final String LOADING_DIALOG_TAG = "loading_dialog";
     private DialogFragment loadingDialogFragment;
     protected Handler uiHandler;
     protected BaseFragment currentFragment;
+
+    protected abstract int getRootView();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getRootView());
         ButterKnife.bind(this);
+        try {
+            initActionBar();
+            initListener();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         uiHandler=new Handler(getMainLooper());
+    }
+
+    private void initActionBar() throws Exception{
+        setActionBarRes(actionBarRes);
+        mTvTitle.setText(actionBarRes.title);
+        mTvMore.setText(actionBarRes.more);
+    }
+
+    private void initListener() throws Exception {
+
+        mTvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPress();
+            }
+        });
+        mTvMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickMore();
+            }
+        });
+    }
+
+    protected void setActionBarRes(ActionBarRes actionBarRes) {
     }
     @Override
     public void showLoading() {
@@ -71,6 +126,13 @@ public class BaseActivity extends RoboActionBarActivity implements ILoadDataView
         }
     }
 
+    protected void onBackPress() {
+        finish();
+    }
+
+    protected void onClickMore() {
+
+    }
     @Override
     public void showError(String message) {
         Toast.makeText(BaseActivity.this,message,Toast.LENGTH_SHORT).show();
