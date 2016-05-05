@@ -10,7 +10,7 @@ import de.greenrobot.dao.DaoException;
  */
 public class City {
 
-    private Integer Cid;
+    private Long Cid;
     private String name;
 
     /** Used to resolve relations */
@@ -24,11 +24,11 @@ public class City {
     public City() {
     }
 
-    public City(Integer Cid) {
+    public City(Long Cid) {
         this.Cid = Cid;
     }
 
-    public City(Integer Cid, String name) {
+    public City(Long Cid, String name) {
         this.Cid = Cid;
         this.name = name;
     }
@@ -39,11 +39,11 @@ public class City {
         myDao = daoSession != null ? daoSession.getCityDao() : null;
     }
 
-    public Integer getCid() {
+    public Long getCid() {
         return Cid;
     }
 
-    public void setCid(Integer Cid) {
+    public void setCid(Long Cid) {
         this.Cid = Cid;
     }
 

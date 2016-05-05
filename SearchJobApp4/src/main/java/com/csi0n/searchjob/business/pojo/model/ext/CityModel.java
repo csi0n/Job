@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class CityModel extends BaseModel {
     @SerializedName(value = "id")
-    public int id;
+    public long id;
     @SerializedName(value = "city")
     public String city;
     @SerializedName(value = "pinyin")

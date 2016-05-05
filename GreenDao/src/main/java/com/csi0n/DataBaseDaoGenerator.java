@@ -22,14 +22,14 @@ public class DataBaseDaoGenerator {
 
     private static void addCityAndAreaModel(Schema schema) {
         Entity city = schema.addEntity("City");
-        city.addIntProperty("Cid").primaryKey();
+        city.addLongProperty("Cid").primaryKey();
         city.addStringProperty("name");
 
         Entity area = schema.addEntity("Area");
-        area.addIntProperty("Aid").primaryKey();
+        area.addLongProperty("Aid").primaryKey();
         area.addStringProperty("name");
 
-        Property cityId = area.addIntProperty("Cid").getProperty();
+        Property cityId = area.addLongProperty("Cid").getProperty();
         area.addToOne(city, cityId);
 
         city.addToMany(area, cityId).setName("areas");

@@ -9,11 +9,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class AreaModel extends BaseModel {
     @SerializedName(value = "id")
-    public int id;
+    public long id;
     @SerializedName(value = "area")
     public String area;
     @SerializedName(value = "city_id")
-    public int city_id;
+    public long city_id;
     @SerializedName(value = "pinyin")
     public String pinyin;
 

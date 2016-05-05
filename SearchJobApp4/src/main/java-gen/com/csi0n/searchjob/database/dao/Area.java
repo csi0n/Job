@@ -9,9 +9,9 @@ import de.greenrobot.dao.DaoException;
  */
 public class Area {
 
-    private Integer Aid;
+    private Long Aid;
     private String name;
-    private Integer Cid;
+    private Long Cid;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -20,17 +20,17 @@ public class Area {
     private transient AreaDao myDao;
 
     private City city;
-    private Integer city__resolvedKey;
+    private Long city__resolvedKey;
 
 
     public Area() {
     }
 
-    public Area(Integer Aid) {
+    public Area(Long Aid) {
         this.Aid = Aid;
     }
 
-    public Area(Integer Aid, String name, Integer Cid) {
+    public Area(Long Aid, String name, Long Cid) {
         this.Aid = Aid;
         this.name = name;
         this.Cid = Cid;
@@ -42,11 +42,11 @@ public class Area {
         myDao = daoSession != null ? daoSession.getAreaDao() : null;
     }
 
-    public Integer getAid() {
+    public Long getAid() {
         return Aid;
     }
 
-    public void setAid(Integer Aid) {
+    public void setAid(Long Aid) {
         this.Aid = Aid;
     }
 
@@ -58,17 +58,17 @@ public class Area {
         this.name = name;
     }
 
-    public Integer getCid() {
+    public Long getCid() {
         return Cid;
     }
 
-    public void setCid(Integer Cid) {
+    public void setCid(Long Cid) {
         this.Cid = Cid;
     }
 
     /** To-one relationship, resolved on first access. */
     public City getCity() {
-        Integer __key = this.Cid;
+        Long __key = this.Cid;
         if (city__resolvedKey == null || !city__resolvedKey.equals(__key)) {
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");

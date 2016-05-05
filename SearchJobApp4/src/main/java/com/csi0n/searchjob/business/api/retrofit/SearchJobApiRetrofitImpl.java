@@ -2,7 +2,9 @@ package com.csi0n.searchjob.business.api.retrofit;
 
 import com.csi0n.searchjob.business.api.SearchJobApi;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetLoginRequest;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.core.net.NetWorkException;
 import com.csi0n.searchjob.core.string.Constants;
@@ -54,6 +56,17 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
             @Override
             GetConfigResponse call() throws Exception {
                 return httpApi.getConfigResponse(getConfigRequest.version).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetLoginResponse getLoginResponse(final GetLoginRequest getLoginRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getLoginResponse request = " + getLoginRequest);
+        return new RetrofitAdapter<GetLoginResponse>() {
+            @Override
+            GetLoginResponse call() throws Exception {
+                return httpApi.getLoginResponse(getLoginRequest.username,getLoginRequest.password).execute().body();
             }
         }.get();
     }

@@ -6,6 +6,7 @@ import com.csi0n.searchjob.business.pojo.model.ext.LoginUserModel;
  * Created by chqss on 2016/5/1 0001.
  */
 public class Constants {
+    public static String DB_NAME="searchJob";
     public static LoginUserModel LOGIN_USER;
     public static String BaseUrl="http://192.168.2.102/im/";
     public static String Preference_Name="search_job";

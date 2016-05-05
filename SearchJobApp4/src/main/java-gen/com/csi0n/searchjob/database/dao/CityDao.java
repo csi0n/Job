@@ -14,7 +14,7 @@ import com.csi0n.searchjob.database.dao.City;
 /** 
  * DAO for table "CITY".
 */
-public class CityDao extends AbstractDao<City, Integer> {
+public class CityDao extends AbstractDao<City, Long> {
 
     public static final String TABLENAME = "CITY";
 
@@ -23,7 +23,7 @@ public class CityDao extends AbstractDao<City, Integer> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Cid = new Property(0, Integer.class, "Cid", true, "CID");
+        public final static Property Cid = new Property(0, Long.class, "Cid", true, "CID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
     };
 
@@ -58,7 +58,7 @@ public class CityDao extends AbstractDao<City, Integer> {
     protected void bindValues(SQLiteStatement stmt, City entity) {
         stmt.clearBindings();
  
-        Integer Cid = entity.getCid();
+        Long Cid = entity.getCid();
         if (Cid != null) {
             stmt.bindLong(1, Cid);
         }
@@ -77,15 +77,15 @@ public class CityDao extends AbstractDao<City, Integer> {
 
     /** @inheritdoc */
     @Override
-    public Integer readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getInt(offset + 0);
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public City readEntity(Cursor cursor, int offset) {
         City entity = new City( //
-            cursor.isNull(offset + 0) ? null : cursor.getInt(offset + 0), // Cid
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Cid
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // name
         );
         return entity;
@@ -94,19 +94,20 @@ public class CityDao extends AbstractDao<City, Integer> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, City entity, int offset) {
-        entity.setCid(cursor.isNull(offset + 0) ? null : cursor.getInt(offset + 0));
+        entity.setCid(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
      }
     
     /** @inheritdoc */
     @Override
-    protected Integer updateKeyAfterInsert(City entity, long rowId) {
-        return entity.getCid();
+    protected Long updateKeyAfterInsert(City entity, long rowId) {
+        entity.setCid(rowId);
+        return rowId;
     }
     
     /** @inheritdoc */
     @Override
-    public Integer getKey(City entity) {
+    public Long getKey(City entity) {
         if(entity != null) {
             return entity.getCid();
         } else {

@@ -4,17 +4,19 @@ import android.widget.TextView;
 import com.csi0n.searchjob.ui.base.mvp.MvpActivity;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.core.system.SystemUtils;
+
+import java.util.concurrent.TimeUnit;
+
 import butterknife.Bind;
 import butterknife.BindString;
+import roboguice.inject.ContentView;
+
 /**
  * Created by chqss on 2016/4/29 0029.
  */
+@ContentView(R.layout.aty_start)
 public class AppStartActivity extends MvpActivity<AppStartPresenter, AppStartPresenter.IAppStartView> implements AppStartPresenter.IAppStartView {
     @Bind(value = R.id.tv_ver) TextView tv_ver;
-    @Override
-    protected int getRootView() {
-        return R.layout.aty_start;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class AppStartActivity extends MvpActivity<AppStartPresenter, AppStartPre
             public void run() {
                 Bundle bundle = new Bundle();
                 bundle.putBoolean(MainActivity.MAIN_ACTIVITY_HAS_TOKEN, true);
-                skipActivityWithBundleWithOutExit(getContext(), MainActivity.class, bundle);
+                skipActivityWithBundle(getContext(), MainActivity.class, bundle);
             }
         }, 1000);
     }

@@ -22,6 +22,7 @@ import roboguice.inject.ContentView;
 /**
  * Created by chqss on 2016/5/1 0001.
  */
+@ContentView(R.layout.aty_news_webview)
 public class WangzhiDaoHangActivity extends MvpActivity<WangzhiDaoHangPresenter, WangzhiDaoHangPresenter.IWangzhiDaoHangView> implements WangzhiDaoHangPresenter.IWangzhiDaoHangView {
     @Bind(value = R.id.viewpagertab) SmartTabLayout mSmartTabLayout;
     @Bind(value = R.id.viewpager) ViewPager mViewPager;
@@ -41,12 +42,6 @@ public class WangzhiDaoHangActivity extends MvpActivity<WangzhiDaoHangPresenter,
                 break;
         }
     }
-
-    @Override
-    protected int getRootView() {
-        return R.layout.aty_news_webview;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,17 +9,15 @@ import com.csi0n.searchjob.ui.home.MeFragment;
 import com.csi0n.searchjob.ui.home.SearchJobFragment;
 import com.csi0n.searchjob.ui.home.WangzhiDaoHangActivity;
 import butterknife.Bind;
+import roboguice.inject.ContentView;
+
+@ContentView(R.layout.aty_main)
 public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMainView> implements MainPresenter.IMainView {
     MeFragment mMeFragment;
     SearchJobFragment mSearchJobFragment;
     @Bind(value = R.id.rg_bottom)
     RadioGroup mBottom;
     public static final String MAIN_ACTIVITY_HAS_TOKEN="main_activity_has_token";
-
-    @Override
-    protected int getRootView() {
-        return R.layout.aty_main;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

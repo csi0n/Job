@@ -42,18 +42,14 @@ public abstract class BaseActivity extends RoboActionBarActivity implements ILoa
     private DialogFragment loadingDialogFragment;
     protected Handler uiHandler;
     protected BaseFragment currentFragment;
-
-    protected abstract int getRootView();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getRootView());
         ButterKnife.bind(this);
         try {
             initActionBar();
             initListener();
         } catch (Exception e) {
-            e.printStackTrace();
         }
         uiHandler=new Handler(getMainLooper());
     }

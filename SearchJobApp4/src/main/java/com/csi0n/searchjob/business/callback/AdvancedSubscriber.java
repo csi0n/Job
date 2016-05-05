@@ -105,7 +105,6 @@ public class AdvancedSubscriber<T extends BaseResponse> extends SimpleSubscriber
 
     protected void showToast(String msg) {
         CLog.d("showToast = " + msg);
-
         if (checkLoadDataView()) {
             loadDataViewSoftReference.get().showError(msg);
         }

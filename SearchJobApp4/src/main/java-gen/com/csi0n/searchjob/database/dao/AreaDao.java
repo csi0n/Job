@@ -19,7 +19,7 @@ import com.csi0n.searchjob.database.dao.Area;
 /** 
  * DAO for table "AREA".
 */
-public class AreaDao extends AbstractDao<Area, Integer> {
+public class AreaDao extends AbstractDao<Area, Long> {
 
     public static final String TABLENAME = "AREA";
 
@@ -28,9 +28,9 @@ public class AreaDao extends AbstractDao<Area, Integer> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Aid = new Property(0, Integer.class, "Aid", true, "AID");
+        public final static Property Aid = new Property(0, Long.class, "Aid", true, "AID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
-        public final static Property Cid = new Property(2, Integer.class, "Cid", false, "CID");
+        public final static Property Cid = new Property(2, Long.class, "Cid", false, "CID");
     };
 
     private DaoSession daoSession;
@@ -66,7 +66,7 @@ public class AreaDao extends AbstractDao<Area, Integer> {
     protected void bindValues(SQLiteStatement stmt, Area entity) {
         stmt.clearBindings();
  
-        Integer Aid = entity.getAid();
+        Long Aid = entity.getAid();
         if (Aid != null) {
             stmt.bindLong(1, Aid);
         }
@@ -76,7 +76,7 @@ public class AreaDao extends AbstractDao<Area, Integer> {
             stmt.bindString(2, name);
         }
  
-        Integer Cid = entity.getCid();
+        Long Cid = entity.getCid();
         if (Cid != null) {
             stmt.bindLong(3, Cid);
         }
@@ -90,17 +90,17 @@ public class AreaDao extends AbstractDao<Area, Integer> {
 
     /** @inheritdoc */
     @Override
-    public Integer readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getInt(offset + 0);
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public Area readEntity(Cursor cursor, int offset) {
         Area entity = new Area( //
-            cursor.isNull(offset + 0) ? null : cursor.getInt(offset + 0), // Aid
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Aid
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2) // Cid
+            cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2) // Cid
         );
         return entity;
     }
@@ -108,20 +108,21 @@ public class AreaDao extends AbstractDao<Area, Integer> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, Area entity, int offset) {
-        entity.setAid(cursor.isNull(offset + 0) ? null : cursor.getInt(offset + 0));
+        entity.setAid(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setCid(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
+        entity.setCid(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
      }
     
     /** @inheritdoc */
     @Override
-    protected Integer updateKeyAfterInsert(Area entity, long rowId) {
-        return entity.getAid();
+    protected Long updateKeyAfterInsert(Area entity, long rowId) {
+        entity.setAid(rowId);
+        return rowId;
     }
     
     /** @inheritdoc */
     @Override
-    public Integer getKey(Area entity) {
+    public Long getKey(Area entity) {
         if(entity != null) {
             return entity.getAid();
         } else {
@@ -136,7 +137,7 @@ public class AreaDao extends AbstractDao<Area, Integer> {
     }
     
     /** Internal query to resolve the "areas" to-many relationship of City. */
-    public List<Area> _queryCity_Areas(Integer Cid) {
+    public List<Area> _queryCity_Areas(Long Cid) {
         synchronized (this) {
             if (city_AreasQuery == null) {
                 QueryBuilder<Area> queryBuilder = queryBuilder();
