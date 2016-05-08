@@ -11,6 +11,7 @@ public class Area {
 
     private Long Aid;
     private String name;
+    private String pinyin;
     private Long Cid;
 
     /** Used to resolve relations */
@@ -30,9 +31,10 @@ public class Area {
         this.Aid = Aid;
     }
 
-    public Area(Long Aid, String name, Long Cid) {
+    public Area(Long Aid, String name, String pinyin, Long Cid) {
         this.Aid = Aid;
         this.name = name;
+        this.pinyin = pinyin;
         this.Cid = Cid;
     }
 
@@ -56,6 +58,14 @@ public class Area {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPinyin() {
+        return pinyin;
+    }
+
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
     }
 
     public Long getCid() {

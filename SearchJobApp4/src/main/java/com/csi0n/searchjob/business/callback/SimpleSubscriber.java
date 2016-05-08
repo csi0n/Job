@@ -2,6 +2,7 @@ package com.csi0n.searchjob.business.callback;
 
 import com.csi0n.searchjob.business.pojo.response.BaseResponse;
 import com.csi0n.searchjob.core.log.CLog;
+import com.csi0n.searchjob.core.string.Constants;
 
 import rx.Subscriber;
 
@@ -25,10 +26,13 @@ public class SimpleSubscriber<T extends BaseResponse> extends Subscriber<T> {
             CLog.e("response is null.");
             return;
         }
-        if (response.status == 10) {
+        if (response.status == Constants.CODE_SUCCESS) {
             isSuccess = true;
             onHandleSuccess(response);
-        } else {
+        } else if (response.status==Constants.CODE_CONFIG_UPDATE){
+            isSuccess=true;
+            onHandleUpdateConfig(response);
+        }else {
             onHandleFail(response.info, null);
         }
     }
@@ -44,7 +48,6 @@ public class SimpleSubscriber<T extends BaseResponse> extends Subscriber<T> {
     @Override
     public final void onCompleted() {
         CLog.d(this + "....onCompleted");
-
         onHandleFinish();
     }
 
@@ -53,6 +56,13 @@ public class SimpleSubscriber<T extends BaseResponse> extends Subscriber<T> {
      */
     public void onHandleSuccess(T response) {
         CLog.d("response = " + response);
+    }
+
+    /*
+    *  配置文件需要更新
+    */
+    public void onHandleUpdateConfig(T response) {
+        CLog.d("response=" + response);
     }
 
     /**

@@ -1,15 +1,17 @@
 package com.csi0n.searchjob.core.string;
 
-import com.csi0n.searchjob.business.pojo.model.ext.LoginUserModel;
+import com.csi0n.searchjob.business.pojo.model.ext.MyModel;
 
 /**
  * Created by chqss on 2016/5/1 0001.
  */
 public class Constants {
     public static String DB_NAME="searchJob";
-    public static LoginUserModel LOGIN_USER;
-    public static String BaseUrl="http://192.168.2.102/im/";
+    public static MyModel LOGIN_USER;
+    public static String BaseUrl="http://192.168.56.1/im/";
     public static String Preference_Name="search_job";
+    public static final int CODE_CONFIG_UPDATE=16;
+    public static final int CODE_SUCCESS=10;
 
     public static String[] getNewsTitle() {
         String data[] = {"0", "1", "2", "3", "4", "5", "6"};

@@ -1,32 +1,29 @@
 package com.csi0n.searchjob.ui.home;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.csi0n.searchjob.R;
-import com.csi0n.searchjob.app.App;
 import com.csi0n.searchjob.business.callback.AdvancedSubscriber;
 import com.csi0n.searchjob.business.pojo.model.ext.AreaModel;
 import com.csi0n.searchjob.business.pojo.model.ext.CityAndAreaListModel;
 import com.csi0n.searchjob.business.pojo.model.ext.FuliModel;
 import com.csi0n.searchjob.business.pojo.model.ext.JobTypeModel;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
+import com.csi0n.searchjob.core.io.DbManager;
 import com.csi0n.searchjob.core.io.SharePreferenceManager;
+import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.database.dao.Area;
-import com.csi0n.searchjob.database.dao.AreaDao;
 import com.csi0n.searchjob.database.dao.City;
-import com.csi0n.searchjob.database.dao.CityDao;
-import com.csi0n.searchjob.database.dao.DaoSession;
 import com.csi0n.searchjob.database.dao.FuLi;
-import com.csi0n.searchjob.database.dao.FuLiDao;
 import com.csi0n.searchjob.database.dao.JobType;
-import com.csi0n.searchjob.database.dao.JobTypeDao;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
+
 /**
  * Created by chqss on 2016/5/1 0001.
  */
-public class SearchJobFragment extends MvpFragment<SearchJobPresenter,SearchJobPresenter.ISearchJobView> {
+public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJobPresenter.ISearchJobView> {
     @Override
     protected int getFragmentLayout() {
         return R.layout.frag_search_job;
@@ -39,62 +36,71 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter,SearchJobP
     }
 
     private void init() {
-       /* SharePreferenceManager.setFlagIsFirstStartSearchJobFragment(true);
-        SharePreferenceManager.setFlagLocalConfigVersion("0");*/
+        SharePreferenceManager.setFlagIsFirstStartSearchJobFragment(true);
+        SharePreferenceManager.setFlagLocalConfigVersion("0");
         if (SharePreferenceManager.getFlagIsFirstStartSearchJobFragment()) {
-            presenter.doGetConfig().subscribe(new AdvancedSubscriber<GetConfigResponse>(){
+            updateLocalConfig(new IUpdateConfigStatus() {
                 @Override
-                public void onHandleSuccess(GetConfigResponse response) {
-                    super.onHandleSuccess(response);
-                    saveConfig(response);
-                    SharePreferenceManager.setFlagIsFirstStartSearchJobFragment(false);
-                    SharePreferenceManager.setFlagLocalConfigVersion(response.version);
+                public void success() {
+                    CLog.i("Config Update Success!");
+                }
+
+                @Override
+                public void failed() {
+                    showError("配置文件更新出错,无法继续!");
                 }
             });
         }
     }
 
     public void saveConfig(GetConfigResponse response) {
+        if (TextUtils.isEmpty(response.version))
+            return;
         if (!SharePreferenceManager.getFlagLocalConfigVersion().equals(response.version)) {
-            dropAllTable();
-            createAllTable();
+            DbManager.dropAllTable();
+            DbManager.createAllTable();
             for (CityAndAreaListModel cityAndAreaItem : response.cityAndAreaLists) {
                 for (AreaModel area : cityAndAreaItem.area) {
-                    Area are = new Area(area.id, area.area, area.city_id);
-                    getDaoSession().getAreaDao().insert(are);
+                    Area are = new Area(area.id, area.area,area.pinyin, area.city_id);
+                    DbManager.insertArea(are);
                 }
-                City city = new City(cityAndAreaItem.city.id, cityAndAreaItem.city.city);
-                getDaoSession().getCityDao().insert(city);
+                City city = new City(cityAndAreaItem.city.id, cityAndAreaItem.city.city,cityAndAreaItem.city.pinyin);
+                DbManager.insertCity(city);
             }
             for (FuliModel fuli_model : response.fuLis) {
                 FuLi fuli = new FuLi(fuli_model.id, fuli_model.name);
-                getDaoSession().getFuLiDao().insert(fuli);
+                DbManager.insertFuLi(fuli);
             }
             for (JobTypeModel job_type_model : response.jobTypes) {
                 JobType job_type = new JobType(job_type_model.id, job_type_model.name);
-                getDaoSession().getJobTypeDao().insert(job_type);
+                DbManager.insertJobType(job_type);
             }
         }
     }
 
-    public void dropAllTable() {
-        AreaDao.dropTable(getDb(), true);
-        CityDao.dropTable(getDb(), true);
-        FuLiDao.dropTable(getDb(), true);
-        JobTypeDao.dropTable(getDb(), true);
+    void updateLocalConfig(final IUpdateConfigStatus iUpdateConfigStatus) {
+        presenter.doGetConfig().subscribe(new AdvancedSubscriber<GetConfigResponse>() {
+                                              @Override
+                                              public void onHandleSuccess(GetConfigResponse response) {
+                                                  super.onHandleSuccess(response);
+                                                  saveConfig(response);
+                                                  SharePreferenceManager.setFlagIsFirstStartSearchJobFragment(false);
+                                                  SharePreferenceManager.setFlagLocalConfigVersion(response.version);
+                                                  iUpdateConfigStatus.success();
+                                              }
+
+                                              @Override
+                                              public void onHandleFail(String message, Throwable throwable) {
+                                                  super.onHandleFail(message, throwable);
+                                                  iUpdateConfigStatus.failed();
+                                              }
+                                          }
+        );
     }
 
-    public void createAllTable() {
-        AreaDao.createTable(getDb(),true);
-        CityDao.createTable(getDb(),true);
-        FuLiDao.createTable(getDb(),true);
-        JobTypeDao.createTable(getDb(),true);
-    }
-    public DaoSession getDaoSession() {
-        return ((App) getActivity().getApplicationContext()).getDaoSession();
-    }
+    private interface IUpdateConfigStatus {
+        void success();
 
-    public SQLiteDatabase getDb() {
-        return ((App) getActivity().getApplicationContext()).getDb();
+        void failed();
     }
 }

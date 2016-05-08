@@ -11,7 +11,8 @@ public class DataBaseDaoGenerator {
         addFuLiModel(schema);
         addJobType(schema);
         addCityAndAreaModel(schema);
-        new DaoGenerator().generateAll(schema, "G:/Web_Github/Job/SearchJobApp4/src/main/java-gen");
+        new DaoGenerator().generateAll(schema,"/Users/csi0n/Desktop/Dev/Job/SearchJobApp4/src/main/java-gen/com/csi0n/searchjob/database/dao");
+        //new DaoGenerator().generateAll(schema, "G:/Web_Github/Job/SearchJobApp4/src/main/java-gen");
     }
 
     private static void addFuLiModel(Schema schema) {
@@ -24,10 +25,12 @@ public class DataBaseDaoGenerator {
         Entity city = schema.addEntity("City");
         city.addLongProperty("Cid").primaryKey();
         city.addStringProperty("name");
+        city.addStringProperty("pinyin");
 
         Entity area = schema.addEntity("Area");
         area.addLongProperty("Aid").primaryKey();
         area.addStringProperty("name");
+        area.addStringProperty("pinyin");
 
         Property cityId = area.addLongProperty("Cid").getProperty();
         area.addToOne(city, cityId);

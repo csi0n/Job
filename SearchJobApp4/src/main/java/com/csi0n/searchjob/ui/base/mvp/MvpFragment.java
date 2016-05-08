@@ -2,6 +2,7 @@ package com.csi0n.searchjob.ui.base.mvp;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.ui.base.BaseFragment;
@@ -136,7 +137,10 @@ public abstract class MvpFragment<P extends BaseMvpPresenter, V extends IMvpView
         mvpActivity = null;
         presenter = null;
         view = null;
-
         super.onDestroy();
+    }
+
+    public void showError(String message){
+        mvpActivity.showError(message);
     }
 }

@@ -1,15 +1,24 @@
 package com.csi0n.searchjob.ui;
+
 import android.os.Bundle;
 import android.widget.RadioGroup;
+
 import com.csi0n.searchjob.R;
+import com.csi0n.searchjob.business.pojo.event.ext.MainFragmentSkipEvent;
 import com.csi0n.searchjob.core.string.Constants;
+import com.csi0n.searchjob.core.string.Constants.MainSkipTYPE;
 import com.csi0n.searchjob.ui.base.BaseFragment;
 import com.csi0n.searchjob.ui.base.mvp.MvpActivity;
 import com.csi0n.searchjob.ui.home.MeFragment;
 import com.csi0n.searchjob.ui.home.SearchJobFragment;
 import com.csi0n.searchjob.ui.home.WangzhiDaoHangActivity;
+
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.Bind;
 import roboguice.inject.ContentView;
+
+import static com.csi0n.searchjob.core.string.Constants.MainSkipTYPE.*;
 
 @ContentView(R.layout.aty_main)
 public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMainView> implements MainPresenter.IMainView {
@@ -17,7 +26,7 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
     SearchJobFragment mSearchJobFragment;
     @Bind(value = R.id.rg_bottom)
     RadioGroup mBottom;
-    public static final String MAIN_ACTIVITY_HAS_TOKEN="main_activity_has_token";
+    public static final String MAIN_ACTIVITY_HAS_TOKEN = "main_activity_has_token";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +35,8 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
         setListeners();
         goNext();
     }
-    private void init(){
+
+    private void init() {
         mMeFragment = new MeFragment();
         mSearchJobFragment = new SearchJobFragment();
     }
@@ -45,8 +55,10 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
                     case R.id.rd_me:
                         if (Constants.LOGIN_USER != null)
                             changeMe();
-                        else
+                        else{
+                            EventBus.getDefault().post(new MainFragmentSkipEvent(SEARCHJOB));
                             startLogin();
+                        }
                         break;
                     default:
                         break;
@@ -54,7 +66,8 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
             }
         });
     }
-    private void goNext(){
+
+    private void goNext() {
         changeSearchJob();
     }
 
@@ -76,5 +89,21 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
 
     private void startLogin() {
         startActivity(getContext(), LoginActivity.class);
+    }
+
+    public void onEvent(MainFragmentSkipEvent object) {
+        switch (object.MAIN_SKIP_TYPE) {
+            case ME:
+                changeMe();
+                break;
+            case SEARCHJOB:
+                changeSearchJob();
+                break;
+            case WANGZHIDAOHANG:
+                startWangZhiDaoHang();
+                break;
+            default:
+                break;
+        }
     }
 }

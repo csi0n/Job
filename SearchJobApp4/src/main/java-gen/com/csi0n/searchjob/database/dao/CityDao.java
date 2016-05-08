@@ -25,6 +25,7 @@ public class CityDao extends AbstractDao<City, Long> {
     public static class Properties {
         public final static Property Cid = new Property(0, Long.class, "Cid", true, "CID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
+        public final static Property Pinyin = new Property(2, String.class, "pinyin", false, "PINYIN");
     };
 
     private DaoSession daoSession;
@@ -44,7 +45,8 @@ public class CityDao extends AbstractDao<City, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"CITY\" (" + //
                 "\"CID\" INTEGER PRIMARY KEY ," + // 0: Cid
-                "\"NAME\" TEXT);"); // 1: name
+                "\"NAME\" TEXT," + // 1: name
+                "\"PINYIN\" TEXT);"); // 2: pinyin
     }
 
     /** Drops the underlying database table. */
@@ -67,6 +69,11 @@ public class CityDao extends AbstractDao<City, Long> {
         if (name != null) {
             stmt.bindString(2, name);
         }
+ 
+        String pinyin = entity.getPinyin();
+        if (pinyin != null) {
+            stmt.bindString(3, pinyin);
+        }
     }
 
     @Override
@@ -86,7 +93,8 @@ public class CityDao extends AbstractDao<City, Long> {
     public City readEntity(Cursor cursor, int offset) {
         City entity = new City( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Cid
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // name
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // pinyin
         );
         return entity;
     }
@@ -96,6 +104,7 @@ public class CityDao extends AbstractDao<City, Long> {
     public void readEntity(Cursor cursor, City entity, int offset) {
         entity.setCid(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setPinyin(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     /** @inheritdoc */

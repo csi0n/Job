@@ -30,7 +30,8 @@ public class AreaDao extends AbstractDao<Area, Long> {
     public static class Properties {
         public final static Property Aid = new Property(0, Long.class, "Aid", true, "AID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
-        public final static Property Cid = new Property(2, Long.class, "Cid", false, "CID");
+        public final static Property Pinyin = new Property(2, String.class, "pinyin", false, "PINYIN");
+        public final static Property Cid = new Property(3, Long.class, "Cid", false, "CID");
     };
 
     private DaoSession daoSession;
@@ -52,7 +53,8 @@ public class AreaDao extends AbstractDao<Area, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"AREA\" (" + //
                 "\"AID\" INTEGER PRIMARY KEY ," + // 0: Aid
                 "\"NAME\" TEXT," + // 1: name
-                "\"CID\" INTEGER);"); // 2: Cid
+                "\"PINYIN\" TEXT," + // 2: pinyin
+                "\"CID\" INTEGER);"); // 3: Cid
     }
 
     /** Drops the underlying database table. */
@@ -76,9 +78,14 @@ public class AreaDao extends AbstractDao<Area, Long> {
             stmt.bindString(2, name);
         }
  
+        String pinyin = entity.getPinyin();
+        if (pinyin != null) {
+            stmt.bindString(3, pinyin);
+        }
+ 
         Long Cid = entity.getCid();
         if (Cid != null) {
-            stmt.bindLong(3, Cid);
+            stmt.bindLong(4, Cid);
         }
     }
 
@@ -100,7 +107,8 @@ public class AreaDao extends AbstractDao<Area, Long> {
         Area entity = new Area( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Aid
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2) // Cid
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // pinyin
+            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3) // Cid
         );
         return entity;
     }
@@ -110,7 +118,8 @@ public class AreaDao extends AbstractDao<Area, Long> {
     public void readEntity(Cursor cursor, Area entity, int offset) {
         entity.setAid(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setCid(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
+        entity.setPinyin(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setCid(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
      }
     
     /** @inheritdoc */

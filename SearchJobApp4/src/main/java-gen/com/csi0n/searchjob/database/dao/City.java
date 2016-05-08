@@ -12,6 +12,7 @@ public class City {
 
     private Long Cid;
     private String name;
+    private String pinyin;
 
     /** Used to resolve relations */
     private transient DaoSession daoSession;
@@ -28,9 +29,10 @@ public class City {
         this.Cid = Cid;
     }
 
-    public City(Long Cid, String name) {
+    public City(Long Cid, String name, String pinyin) {
         this.Cid = Cid;
         this.name = name;
+        this.pinyin = pinyin;
     }
 
     /** called by internal mechanisms, do not call yourself. */
@@ -53,6 +55,14 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPinyin() {
+        return pinyin;
+    }
+
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
     }
 
     /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
