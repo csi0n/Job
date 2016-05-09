@@ -83,6 +83,14 @@ public class DbManager {
         FuLiDao.createTable(getDb(), true);
         JobTypeDao.createTable(getDb(), true);
     }
+    public static FuLi getFuLiByID(long Fid){
+        Query query=getDaoSession().getFuLiDao().queryBuilder()
+                .where(FuLiDao.Properties.Fid.eq(Fid))
+                .build();
+        QueryBuilder.LOG_SQL=true;
+        QueryBuilder.LOG_VALUES=true;
+        return (FuLi) query.list().get(0);
+    }
     public static List<City> searchCityByPinYin(String key){
         Query query=getDaoSession().getCityDao().queryBuilder()
                 .where(CityDao.Properties.Pinyin.like(key))

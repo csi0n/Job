@@ -139,7 +139,9 @@ public abstract class MvpFragment<P extends BaseMvpPresenter, V extends IMvpView
         view = null;
         super.onDestroy();
     }
-
+    public void startActivity(Class<?> classz){
+        mvpActivity.startActivity(getActivity(),classz);
+    }
     public void showError(String message){
         mvpActivity.showError(message);
     }

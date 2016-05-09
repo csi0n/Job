@@ -1,8 +1,10 @@
 package com.csi0n.searchjob.business.api.retrofit;
 
 import com.csi0n.searchjob.business.api.SearchJobApi;
+import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetLoginRequest;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
 import com.csi0n.searchjob.core.log.CLog;
@@ -67,6 +69,17 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
             @Override
             GetLoginResponse call() throws Exception {
                 return httpApi.getLoginResponse(getLoginRequest.username,getLoginRequest.password).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetCompanyJobMainResponse getSearchJobListResponse(final GetCompanyJobMainRequest getCompanyJobMainRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getSearchJobListResponse request = " + getCompanyJobMainRequest);
+        return new RetrofitAdapter<GetCompanyJobMainResponse>() {
+            @Override
+            GetCompanyJobMainResponse call() throws Exception {
+                return httpApi.getSearchJobListResponse(getCompanyJobMainRequest.page,getCompanyJobMainRequest.city_id,getCompanyJobMainRequest.area_id,getCompanyJobMainRequest.money_back,getCompanyJobMainRequest.work_type,getCompanyJobMainRequest.fuli).execute().body();
             }
         }.get();
     }

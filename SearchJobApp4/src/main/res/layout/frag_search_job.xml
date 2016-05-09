@@ -55,13 +55,10 @@
 
     </RelativeLayout>
 
-
     <com.csi0n.searchjob.ui.widget.tabview.view.ExpandTabView
         android:id="@+id/expandtab_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.csi0n.searchjob.ui.widget.tabview.view.ExpandTabView>
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"

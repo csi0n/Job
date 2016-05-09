@@ -17,19 +17,15 @@ import com.csi0n.searchjob.core.io.DbManager;
 import com.csi0n.searchjob.database.dao.City;
 import com.csi0n.searchjob.ui.adapter.ChooseCityListAdapter;
 import com.csi0n.searchjob.ui.adapter.ChooseCityResultAdapter;
-import com.csi0n.searchjob.ui.base.BaseActivity;
 import com.csi0n.searchjob.ui.base.mvp.MvpActivity;
 import com.csi0n.searchjob.ui.widget.LetterListView;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
-
 import butterknife.Bind;
 import butterknife.OnItemClick;
 import butterknife.OnTextChanged;

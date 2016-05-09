@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.pojo.model.ext.FuliModel;
+import com.csi0n.searchjob.database.dao.FuLi;
 import com.csi0n.searchjob.ui.widget.tabview.adpter.CheckAdapter;
 
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class ViewWelfare extends RelativeLayout implements ViewBaseAction, View.
     private Button mBtn;
     private CheckAdapter adapter;
     private OnSelectListener mOnSelectListener;
-    public List<FuliModel> fuliBeanList = new ArrayList<>();
-    private List<FuliModel> temp_fuli = new ArrayList<>();
+    public List<FuLi> fuliBeanList = new ArrayList<>();
+    private List<FuLi> temp_fuli = new ArrayList<>();
 
     public ViewWelfare(Context context) {
         super(context);
@@ -83,7 +84,7 @@ public class ViewWelfare extends RelativeLayout implements ViewBaseAction, View.
     }
 
     public interface OnSelectListener {
-        public void getValue(List<FuliModel> datas);
+        public void getValue(List<FuLi> datas);
     }
 
     @Override

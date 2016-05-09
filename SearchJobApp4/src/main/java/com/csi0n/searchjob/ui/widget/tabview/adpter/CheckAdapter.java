@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.pojo.model.ext.FuliModel;
+import com.csi0n.searchjob.database.dao.FuLi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class CheckAdapter extends BaseAdapter {
     private List<FuliModel> mListData;
     private int normalDrawbleId;
     private Drawable selectedDrawble;
-    public List<FuliModel> listData;
+    public List<FuLi> listData;
 
     public CheckAdapter(Context context) {
         mContext = context;
@@ -32,7 +33,7 @@ public class CheckAdapter extends BaseAdapter {
     }
 
     @Override
-    public FuliModel getItem(int i) {
+    public FuLi getItem(int i) {
         return listData.get(i);
     }
 
@@ -53,8 +54,8 @@ public class CheckAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.mtvname.setText(getItem(position).name);
-        holder.mck.setChecked(getItem(position).isCheck() ? true : false);
+        holder.mtvname.setText(getItem(position).getName());
+        holder.mck.setChecked(getItem(position). isCheck());
         holder.mck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

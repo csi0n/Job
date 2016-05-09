@@ -1,6 +1,5 @@
 package com.csi0n.searchjob.ui.adapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,6 +16,10 @@ import com.csi0n.searchjob.ui.ChooseCityActivity;
 import java.util.HashMap;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * Created by csi0n on 5/7/16.
  */
@@ -26,6 +29,7 @@ public class ChooseCityListAdapter extends BaseAdapter {
     private List<City> hotList;
     private List<String> hisCity;
     final int VIEW_TYPE = 5;
+
     public ChooseCityListAdapter(ChooseCityActivity mChooseCityActivity, List<City> list, List<City> hotList, List<String> hisCity) {
         this.mChooseCityActivity = mChooseCityActivity;
         this.list = list;
@@ -51,6 +55,7 @@ public class ChooseCityListAdapter extends BaseAdapter {
     public int getViewTypeCount() {
         return VIEW_TYPE;
     }
+
     @Override
     public int getItemViewType(int position) {
         return position < 4 ? position : 4;
@@ -65,17 +70,18 @@ public class ChooseCityListAdapter extends BaseAdapter {
     public City getItem(int i) {
         return list.get(i);
     }
+
     @Override
     public long getItemId(int position) {
         return position;
     }
-    ViewHolder holder;
+ViewHolder holder;
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         final TextView city;
         int viewType = getItemViewType(position);
         if (viewType == 0) { // 定位
-            convertView = View.inflate(mChooseCityActivity,R.layout.view_choose_city_frist_list_item, null);
+            convertView = View.inflate(mChooseCityActivity, R.layout.view_choose_city_frist_list_item, null);
             TextView locateHint = (TextView) convertView
                     .findViewById(R.id.locateHint);
             city = (TextView) convertView.findViewById(R.id.lng_city);
@@ -117,7 +123,7 @@ public class ChooseCityListAdapter extends BaseAdapter {
                 pbLocate.setVisibility(View.GONE);
             }
         } else if (viewType == 1) { // 最近访问城市
-            convertView = View.inflate(mChooseCityActivity,R.layout.view_choose_city_recent_city, null);
+            convertView = View.inflate(mChooseCityActivity, R.layout.view_choose_city_recent_city, null);
             GridView rencentCity = (GridView) convertView
                     .findViewById(R.id.recent_city);
             rencentCity
@@ -136,7 +142,7 @@ public class ChooseCityListAdapter extends BaseAdapter {
                     .findViewById(R.id.recentHint);
             recentHint.setText("最近访问的城市");
         } else if (viewType == 2) {
-            convertView = View.inflate(mChooseCityActivity,R.layout.view_choose_city_recent_city, null);
+            convertView = View.inflate(mChooseCityActivity, R.layout.view_choose_city_recent_city, null);
             GridView hotCity = (GridView) convertView
                     .findViewById(R.id.recent_city);
             hotCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -155,10 +161,10 @@ public class ChooseCityListAdapter extends BaseAdapter {
                     .findViewById(R.id.recentHint);
             hotHint.setText("热门城市");
         } else if (viewType == 3) {
-            convertView = View.inflate(mChooseCityActivity,R.layout.view_choose_city_total_item, null);
+            convertView = View.inflate(mChooseCityActivity, R.layout.view_choose_city_total_item, null);
         } else {
             if (convertView == null) {
-                convertView = View.inflate(mChooseCityActivity,R.layout.view_choose_city_list_item, null);
+                convertView = View.inflate(mChooseCityActivity, R.layout.view_choose_city_list_item, null);
                 holder = new ViewHolder();
                 holder.alpha = (TextView) convertView
                         .findViewById(R.id.alpha);
@@ -174,6 +180,7 @@ public class ChooseCityListAdapter extends BaseAdapter {
         }
         return convertView;
     }
+
 
     private class ViewHolder {
         TextView alpha; // 首字母标题

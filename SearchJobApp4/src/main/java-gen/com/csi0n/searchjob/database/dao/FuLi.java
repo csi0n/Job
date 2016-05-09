@@ -10,6 +10,8 @@ public class FuLi {
     /** Not-null value. */
     private String name;
 
+    private boolean isCheck=false;
+
     public FuLi() {
     }
 
@@ -36,4 +38,11 @@ public class FuLi {
         this.name = name;
     }
 
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
+    }
 }

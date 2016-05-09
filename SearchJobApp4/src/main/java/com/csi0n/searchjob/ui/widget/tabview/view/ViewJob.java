@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.pojo.model.ext.JobTypeModel;
+import com.csi0n.searchjob.database.dao.JobType;
 import com.csi0n.searchjob.ui.widget.tabview.adpter.JobTypeAdapter;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ViewJob extends RelativeLayout implements ViewBaseAction, JobTypeAd
     private ListView mList;
     private JobTypeAdapter adapter;
     private OnSelectListener mOnSelectListener;
-    public List<JobTypeModel> jobDatas = new ArrayList<>();
+    public List<JobType> jobDatas = new ArrayList<>();
 
     public ViewJob(Context context) {
         super(context);
@@ -77,7 +78,7 @@ public class ViewJob extends RelativeLayout implements ViewBaseAction, JobTypeAd
     }
 
     public interface OnSelectListener {
-        public void getValue(int position, JobTypeModel datas);
+        public void getValue(int position, JobType datas);
 
     }
 

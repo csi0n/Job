@@ -3,8 +3,10 @@ package com.csi0n.searchjob.business.domain.impl;
 
 import com.csi0n.searchjob.business.api.SearchJobApi;
 import com.csi0n.searchjob.business.domain.SearchJobDomain;
+import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetLoginRequest;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
 import com.csi0n.searchjob.core.net.NetWorkException;
@@ -18,7 +20,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by chqss on 2016/4/29 0029.
  */
-public class SearchJobDomainImpl  implements SearchJobDomain{
+public class SearchJobDomainImpl implements SearchJobDomain {
     @Inject
     SearchJobApi searchJobApi;
 
@@ -53,6 +55,22 @@ public class SearchJobDomainImpl  implements SearchJobDomain{
             }
         })
                 .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<GetCompanyJobMainResponse> getCompanyJobMain(int page, String city_id, String area_id, String money_back, String work_type, String fuli) {
+        return Observable.just(new GetCompanyJobMainRequest(page, area_id, city_id, money_back, work_type, fuli)).flatMap(new Func1<GetCompanyJobMainRequest, Observable<GetCompanyJobMainResponse>>() {
+            @Override
+            public Observable<GetCompanyJobMainResponse> call(GetCompanyJobMainRequest getCompanyJobMainRequest) {
+                try {
+                    GetCompanyJobMainResponse response = searchJobApi.getSearchJobListResponse(getCompanyJobMainRequest);
+                    return Observable.just(response);
+                } catch (NetWorkException e) {
+                    return Observable.error(e);
+                }
+            }
+        }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 }

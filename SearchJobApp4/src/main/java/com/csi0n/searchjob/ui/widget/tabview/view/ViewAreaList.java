@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.pojo.model.ext.AreaModel;
+import com.csi0n.searchjob.database.dao.Area;
 import com.csi0n.searchjob.ui.adapter.AreaAdapter;
 
 
@@ -23,7 +24,7 @@ public class ViewAreaList extends RelativeLayout implements ViewBaseAction, Area
     private ListView mList;
     private AreaAdapter adapter;
     private OnSelectListener mOnSelectListener;
-    public List<AreaModel> areaDatas = new ArrayList<>();
+    public List<Area> areaDatas = new ArrayList<>();
 
     public ViewAreaList(Context context) {
         super(context);
@@ -61,7 +62,7 @@ public class ViewAreaList extends RelativeLayout implements ViewBaseAction, Area
     }
 
     public interface OnSelectListener {
-        public void getValue(int position, AreaModel showText);
+        public void getValue(int position, Area showText);
     }
 
     @Override

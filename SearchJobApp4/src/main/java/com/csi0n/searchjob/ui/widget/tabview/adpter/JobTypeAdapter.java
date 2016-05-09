@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.pojo.model.ext.JobTypeModel;
+import com.csi0n.searchjob.database.dao.JobType;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class JobTypeAdapter extends BaseAdapter {
     private Context mContext;
-    private List<JobTypeModel> mListData;
+    private List<JobType> mListData;
     private int selectedPos = -1;
     private String selectedText = "";
     private int normalDrawbleId;
@@ -27,7 +28,7 @@ public class JobTypeAdapter extends BaseAdapter {
     private View.OnClickListener onClickListener;
     private OnItemClickListener mOnItemClickListener;
 
-    public JobTypeAdapter(Context context, List<JobTypeModel> listData, int sId, int nId) {
+    public JobTypeAdapter(Context context, List<JobType> listData, int sId, int nId) {
         mContext = context;
         mListData = listData;
         selectedDrawble = mContext.getResources().getDrawable(sId);
@@ -54,7 +55,7 @@ public class JobTypeAdapter extends BaseAdapter {
     public void setSelectedPosition(int pos) {
         if (mListData != null && pos < mListData.size()) {
             selectedPos = pos;
-            selectedText = mListData.get(pos).name;
+            selectedText = mListData.get(pos).getName();
             notifyDataSetChanged();
         }
     }
@@ -65,7 +66,7 @@ public class JobTypeAdapter extends BaseAdapter {
     public void setSelectedPositionNoNotify(int pos) {
         selectedPos = pos;
         if (mListData != null && pos < mListData.size()) {
-            selectedText = mListData.get(pos).name;
+            selectedText = mListData.get(pos).getName();
         }
     }
 
@@ -92,7 +93,7 @@ public class JobTypeAdapter extends BaseAdapter {
     }
 
     @Override
-    public JobTypeModel getItem(int i) {
+    public JobType getItem(int i) {
         return mListData.get(i);
     }
 
@@ -113,7 +114,7 @@ public class JobTypeAdapter extends BaseAdapter {
         String mString = "";
         if (mListData != null) {
             if (position < mListData.size()) {
-                mString = mListData.get(position).name;
+                mString = mListData.get(position).getName();
             }
         }
         view.setText(mString);
