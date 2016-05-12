@@ -7,12 +7,13 @@ import de.greenrobot.daogenerator.Schema;
 
 public class DataBaseDaoGenerator {
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(1, "com.csi0n.searchjob.database.dao");
+        Schema schema = new Schema(2, "com.csi0n.searchjob.database.dao");
         addFuLiModel(schema);
         addJobType(schema);
         addCityAndAreaModel(schema);
-        new DaoGenerator().generateAll(schema,"/Users/csi0n/Desktop/Dev/Job/SearchJobApp4/src/main/java-gen/com/csi0n/searchjob/database/dao");
-        //new DaoGenerator().generateAll(schema, "G:/Web_Github/Job/SearchJobApp4/src/main/java-gen");
+        addKeyValue(schema);
+        //new DaoGenerator().generateAll(schema,"/Users/csi0n/Desktop/Dev/Job/SearchJobApp4/src/main/java-gen/com/csi0n/searchjob/database/dao");
+        new DaoGenerator().generateAll(schema, "G:/Web_Github/Job/SearchJobApp4/src/main/java-gen");
     }
 
     private static void addFuLiModel(Schema schema) {
@@ -38,6 +39,11 @@ public class DataBaseDaoGenerator {
         city.addToMany(area, cityId).setName("areas");
     }
 
+    private static void addKeyValue(Schema schema){
+        Entity searchKey = schema.addEntity("KeyValue");
+        searchKey.addStringProperty("key");
+        searchKey.addStringProperty("value");
+    }
     private static void addJobType(Schema schema) {
         Entity jobType = schema.addEntity("JobType");
         jobType.addIntProperty("Jid");

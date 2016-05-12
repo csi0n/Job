@@ -13,6 +13,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.csi0n.searchjob.R;
+import com.csi0n.searchjob.business.pojo.event.ext.ChooseCityEvent;
 import com.csi0n.searchjob.core.io.DbManager;
 import com.csi0n.searchjob.database.dao.City;
 import com.csi0n.searchjob.ui.adapter.ChooseCityListAdapter;
@@ -60,14 +61,13 @@ public class ChooseCityActivity extends MvpActivity implements LetterListView.On
     @OnItemClick(value = R.id.list_view)
     void onItemClick(int position) {
         if (position >= 4) {
-            EventBus.getDefault().post(allCity_lists.get(position));
+            EventBus.getDefault().post(new ChooseCityEvent(allCity_lists.get(position)));
             finish();
         }
     }
-
     @OnItemClick(value = R.id.search_result)
     void onItemClick2(int position) {
-        EventBus.getDefault().post(city_result.get(position));
+        EventBus.getDefault().post(new ChooseCityEvent(city_result.get(position)));
         finish();
     }
 

@@ -40,7 +40,7 @@ private ProgressLoading loading;
         } else {
         }
         mMain.changeSearchJobFragment();
-bindDeviceID();
+    bindDeviceID();
     }
     private void bindDeviceID(){
     }

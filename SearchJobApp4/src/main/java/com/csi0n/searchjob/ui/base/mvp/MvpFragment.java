@@ -7,6 +7,8 @@ import android.widget.Toast;
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.ui.base.BaseFragment;
 
+import org.greenrobot.eventbus.Subscribe;
+
 /**
  * Created by chqss on 2016/5/1 0001.
  */
@@ -24,11 +26,8 @@ public abstract class MvpFragment<P extends BaseMvpPresenter, V extends IMvpView
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         beforeMvpInit(savedInstanceState);
-
         onMvpInit();
-
         if (presenter != null) {
             //注册Fragment
             presenter.initMvpPresenter(mvpActivity, this.view);
@@ -90,7 +89,7 @@ public abstract class MvpFragment<P extends BaseMvpPresenter, V extends IMvpView
         }
         return null;
     }
-
+    @Subscribe
     public void onEvent(Object object) {
 
     }

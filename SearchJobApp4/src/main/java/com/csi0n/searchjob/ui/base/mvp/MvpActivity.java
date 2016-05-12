@@ -2,6 +2,7 @@ package com.csi0n.searchjob.ui.base.mvp;
 
 import android.os.Bundle;
 
+import com.csi0n.searchjob.business.pojo.event.ext.MainFragmentSkipEvent;
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.ui.base.BaseActivity;
 
@@ -80,11 +81,6 @@ public abstract class MvpActivity<P extends BaseMvpPresenter<V>, V extends IMvpV
         return null;
     }
 
-    @Subscribe
-    public void onEvent(Object object) {
-
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -123,5 +119,8 @@ public abstract class MvpActivity<P extends BaseMvpPresenter<V>, V extends IMvpV
         view = null;
         super.onDestroy();
     }
+    @Subscribe
+    public void onEvent(Object object){
 
+    }
 }

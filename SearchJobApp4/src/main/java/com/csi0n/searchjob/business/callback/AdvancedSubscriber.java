@@ -37,7 +37,6 @@ public class AdvancedSubscriber<T extends BaseResponse> extends SimpleSubscriber
     @Override
     public void onStart() {
         super.onStart();
-
         if (checkLoadDataView()) {
             loadDataViewSoftReference.get().showLoading();
         }
@@ -47,11 +46,9 @@ public class AdvancedSubscriber<T extends BaseResponse> extends SimpleSubscriber
     public void onHandleSuccess(T response) {
         CLog.i("response = " + response);
     }
-
     @Override
     public void onHandleFail(String message, Throwable throwable) {
         super.onHandleFail(message, throwable);
-
         if (message != null) { // 业务异常
             doHandleBusinessFail(message);
         } else if (throwable != null) { // 运行异常
@@ -113,7 +110,6 @@ public class AdvancedSubscriber<T extends BaseResponse> extends SimpleSubscriber
     @Override
     public void onHandleFinish() {
         super.onHandleFinish();
-
         if (checkLoadDataView()) {
             loadDataViewSoftReference.get().hideLoading();
             loadDataViewSoftReference.clear();

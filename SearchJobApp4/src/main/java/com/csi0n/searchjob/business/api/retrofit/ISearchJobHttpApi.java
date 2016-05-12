@@ -1,8 +1,10 @@
 package com.csi0n.searchjob.business.api.retrofit;
 
+import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobListByKeyResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -22,5 +24,11 @@ public interface ISearchJobHttpApi {
     Call<GetLoginResponse> getLoginResponse(@Field("username")String username,@Field("password")String password);
     @FormUrlEncoded
     @POST("api.php/User/Public/searchJobList")
-    Call<GetCompanyJobMainResponse> getSearchJobListResponse(@Field("page")int page,@Field("city_id")String city_id,@Field("area_id")String area_id,@Field("money_back")String money_back,@Field("work_type")String work_type,@Field("fuli")String fuli);
+    Call<GetCompanyJobMainResponse> getSearchJobListResponse(@Field("page")int page,@Field("city_id")long city_id,@Field("area_id")long area_id,@Field("money_back")int money_back,@Field("work_type")int work_type,@Field("fuli")String fuli,@Field("ver")String ver);
+    @FormUrlEncoded
+    @POST("api.php/User/Oauth/checkTimeOut")
+    Call<GetCheckTimeOutResponse> getCheckTimeOutResponse(@Field("token")String token);
+    @FormUrlEncoded
+    @POST("api.php/User/Public/searchJobList")
+    Call<GetSearchJobListByKeyResponse> getSearchJobListByKeyResponse(@Field("page")int page,@Field("key")String key,@Field("ver")String ver);
 }

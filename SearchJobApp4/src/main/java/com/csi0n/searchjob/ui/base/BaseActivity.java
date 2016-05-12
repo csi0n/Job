@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.csi0n.searchjob.R;
+import com.csi0n.searchjob.lib.AppManager;
 import com.csi0n.searchjob.ui.base.mvp.ILoadDataView;
 
 import butterknife.Bind;
@@ -52,6 +53,7 @@ public abstract class BaseActivity extends RoboActionBarActivity implements ILoa
         } catch (Exception e) {
         }
         uiHandler=new Handler(getMainLooper());
+        AppManager.getAppManager().addActivity(this);
     }
 
     private void initActionBar() throws Exception{

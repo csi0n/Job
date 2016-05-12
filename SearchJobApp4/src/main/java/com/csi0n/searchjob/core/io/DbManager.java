@@ -14,10 +14,12 @@ import com.csi0n.searchjob.database.dao.FuLi;
 import com.csi0n.searchjob.database.dao.FuLiDao;
 import com.csi0n.searchjob.database.dao.JobType;
 import com.csi0n.searchjob.database.dao.JobTypeDao;
+import com.csi0n.searchjob.database.dao.KeyValue;
+import com.csi0n.searchjob.database.dao.KeyValueDao;
 
 import java.util.List;
 
-import de.greenrobot.dao.query.Query;
+import de.greenrobot.dao.query.DeleteQuery;
 import de.greenrobot.dao.query.QueryBuilder;
 
 /**
@@ -70,6 +72,7 @@ public class DbManager {
     public static void insertJobType(JobType jobType) {
         getDaoSession().insert(jobType);
     }
+    public static void insertKeyValue(KeyValue keyValue){getDaoSession().insert(keyValue);}
 
     public static void dropAllTable() {
         AreaDao.dropTable(getDb(), true);
@@ -84,23 +87,34 @@ public class DbManager {
         JobTypeDao.createTable(getDb(), true);
     }
     public static FuLi getFuLiByID(long Fid){
-        Query query=getDaoSession().getFuLiDao().queryBuilder()
+        return getDaoSession().getFuLiDao().queryBuilder()
                 .where(FuLiDao.Properties.Fid.eq(Fid))
-                .build();
-        QueryBuilder.LOG_SQL=true;
-        QueryBuilder.LOG_VALUES=true;
-        return (FuLi) query.list().get(0);
+                .build()
+                .list().get(0);
     }
     public static List<City> searchCityByPinYin(String key){
-        Query query=getDaoSession().getCityDao().queryBuilder()
+        return getDaoSession().getCityDao().queryBuilder()
                 .where(CityDao.Properties.Pinyin.like(key))
                 .orderAsc(CityDao.Properties.Cid)
-                .build();
-        QueryBuilder.LOG_SQL=true;
-        QueryBuilder.LOG_VALUES=true;
-        return query.list();
+                .build()
+                .list();
     }
     public static List<City> getAllCity(){
       return getDaoSession().getCityDao().queryBuilder().list();
+    }
+    public static City getTopCity(){
+        return getDaoSession().getCityDao().queryBuilder().limit(1).build().list().get(0);
+    }
+    public static List<JobType> getAllJobType(){
+        return getDaoSession().getJobTypeDao().queryBuilder().list();
+    }
+    public static List<FuLi> getAllFuLi(){
+        return getDaoSession().getFuLiDao().queryBuilder().list();
+    }
+    public static List<KeyValue> getAllKeyValueByKey(String key){
+        return getDaoSession().getKeyValueDao().queryBuilder().where(KeyValueDao.Properties.Key.eq(key)).list();
+    }
+    public static void clearValueByKey(String key){
+       getDaoSession().getKeyValueDao().queryBuilder().where(KeyValueDao.Properties.Key.eq(key)).buildDelete().executeDeleteWithoutDetachingEntities();
     }
 }

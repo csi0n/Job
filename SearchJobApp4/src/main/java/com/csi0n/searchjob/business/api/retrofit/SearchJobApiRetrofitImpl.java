@@ -1,12 +1,16 @@
 package com.csi0n.searchjob.business.api.retrofit;
 
 import com.csi0n.searchjob.business.api.SearchJobApi;
+import com.csi0n.searchjob.business.pojo.request.ext.GetCheckTimeOutRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetLoginRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobListByKeyRequest;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobListByKeyResponse;
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.core.net.NetWorkException;
 import com.csi0n.searchjob.core.string.Constants;
@@ -79,7 +83,27 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
         return new RetrofitAdapter<GetCompanyJobMainResponse>() {
             @Override
             GetCompanyJobMainResponse call() throws Exception {
-                return httpApi.getSearchJobListResponse(getCompanyJobMainRequest.page,getCompanyJobMainRequest.city_id,getCompanyJobMainRequest.area_id,getCompanyJobMainRequest.money_back,getCompanyJobMainRequest.work_type,getCompanyJobMainRequest.fuli).execute().body();
+                return httpApi.getSearchJobListResponse(getCompanyJobMainRequest.page,getCompanyJobMainRequest.city_id,getCompanyJobMainRequest.area_id,getCompanyJobMainRequest.money_back,getCompanyJobMainRequest.work_type,getCompanyJobMainRequest.fuli,getCompanyJobMainRequest.configVer).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetCheckTimeOutResponse getCheckTimeOutResponse(final GetCheckTimeOutRequest getCheckTimeOutRequest) throws NetWorkException {
+        return new RetrofitAdapter<GetCheckTimeOutResponse>(){
+            @Override
+            GetCheckTimeOutResponse call() throws Exception {
+                return httpApi.getCheckTimeOutResponse(getCheckTimeOutRequest.token).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetSearchJobListByKeyResponse getSearchJobListByKeyResponse(final GetSearchJobListByKeyRequest getSearchJobListByKeyRequest) throws NetWorkException {
+        return new RetrofitAdapter<GetSearchJobListByKeyResponse>(){
+            @Override
+            GetSearchJobListByKeyResponse call() throws Exception {
+                return httpApi.getSearchJobListByKeyResponse(getSearchJobListByKeyRequest.page,getSearchJobListByKeyRequest.key,getSearchJobListByKeyRequest.configVer).execute().body();
             }
         }.get();
     }

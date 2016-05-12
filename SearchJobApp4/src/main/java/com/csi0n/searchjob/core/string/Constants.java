@@ -12,7 +12,9 @@ public class Constants {
     public static String Preference_Name="search_job";
     public static final int CODE_CONFIG_UPDATE=16;
     public static final int CODE_SUCCESS=10;
-
+    public static final int DEFAULT_PAGE = 20;
+    public static final int CODE_EMPTY = 14;
+    public static final String MARK_SHOW_SEARCH_JOB_ACTIVITY_KEY="mark_show_search_job_activity_key";
     public static String[] getNewsTitle() {
         String data[] = {"0", "1", "2", "3", "4", "5", "6"};
         return data;

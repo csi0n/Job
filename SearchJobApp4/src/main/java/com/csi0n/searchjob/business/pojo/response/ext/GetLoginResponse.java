@@ -12,7 +12,6 @@ public class GetLoginResponse extends BaseResponse {
     public MyModel user;
     @SerializedName(value = "token")
     public String token;
-
     @Override
     public String toString() {
         return "GetLoginResponse{" +

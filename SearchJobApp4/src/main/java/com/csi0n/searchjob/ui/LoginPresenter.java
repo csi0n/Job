@@ -14,6 +14,7 @@ import rx.Observable;
 public class LoginPresenter extends BaseMvpPresenter<LoginPresenter.ILoginView> {
     @Inject
     SearchJobDomain searchJobDomain;
+
     public Observable<GetLoginResponse> doGetLogin(String username,String password) {
         return searchJobDomain.getLogin(username,password);
     }

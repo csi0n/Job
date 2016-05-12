@@ -10,10 +10,10 @@ public class FuLi {
     /** Not-null value. */
     private String name;
 
-    private boolean isCheck=false;
-
+    private boolean isCheck;
     public FuLi() {
     }
+
 
     public FuLi(int Fid, String name) {
         this.Fid = Fid;

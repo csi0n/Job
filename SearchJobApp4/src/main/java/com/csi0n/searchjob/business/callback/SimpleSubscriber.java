@@ -29,7 +29,10 @@ public class SimpleSubscriber<T extends BaseResponse> extends Subscriber<T> {
         if (response.status == Constants.CODE_SUCCESS) {
             isSuccess = true;
             onHandleSuccess(response);
-        } else if (response.status==Constants.CODE_CONFIG_UPDATE){
+        } else if (response.status==Constants.CODE_EMPTY){
+            isSuccess=true;
+            onHandleEmptyData();
+        }else if (response.status==Constants.CODE_CONFIG_UPDATE){
             isSuccess=true;
             onHandleUpdateConfig(response);
         }else {
@@ -58,11 +61,16 @@ public class SimpleSubscriber<T extends BaseResponse> extends Subscriber<T> {
         CLog.d("response = " + response);
     }
 
-    /*
+    /**
     *  配置文件需要更新
     */
     public void onHandleUpdateConfig(T response) {
         CLog.d("response=" + response);
+    }
+    /**
+     * 内容为空
+     */
+    public void onHandleEmptyData(){
     }
 
     /**

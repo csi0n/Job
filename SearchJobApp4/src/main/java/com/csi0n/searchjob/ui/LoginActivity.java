@@ -10,6 +10,7 @@ import com.csi0n.searchjob.business.callback.AdvancedSubscriber;
 import com.csi0n.searchjob.business.pojo.event.ext.UserLoginEvent;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
 import com.csi0n.searchjob.core.io.SharePreferenceManager;
+import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.ui.base.mvp.MvpActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -39,21 +40,7 @@ public class LoginActivity extends MvpActivity<LoginPresenter, LoginPresenter.IL
                 else if (TextUtils.isEmpty(password))
                     showError("请输入密码!");
                 else
-                    presenter.doGetLogin(username, password).subscribe(new AdvancedSubscriber<GetLoginResponse>() {
-                        @Override
-                        public void onHandleSuccess(GetLoginResponse response) {
-                            super.onHandleSuccess(response);
-                            SharePreferenceManager.setKeyCachedToken(response.token);
-                            EventBus.getDefault().post(new UserLoginEvent(response.user));
-                            finish();
-                        }
-
-                        @Override
-                        public void onHandleFail(String message, Throwable throwable) {
-                            super.onHandleFail(message, throwable);
-                            showError(message);
-                        }
-                    });
+                    doLogin(username,password);
                 break;
             case R.id.btn_register:
                 startRegister();
@@ -61,7 +48,24 @@ public class LoginActivity extends MvpActivity<LoginPresenter, LoginPresenter.IL
             default:
                 break;
         }
+    }
+    void doLogin(String username,String password){
+        presenter.doGetLogin(username, password).subscribe(new AdvancedSubscriber<GetLoginResponse>() {
+            @Override
+            public void onHandleSuccess(GetLoginResponse response) {
+                super.onHandleSuccess(response);
+                Constants.LOGIN_USER=response.user;
+                SharePreferenceManager.setKeyCachedToken(response.token);
+                EventBus.getDefault().post(new UserLoginEvent(response.user));
+                finish();
+            }
 
+            @Override
+            public void onHandleFail(String message, Throwable throwable) {
+                super.onHandleFail(message, throwable);
+                showError(message);
+            }
+        });
     }
 
     @Override

@@ -10,4 +10,12 @@ public class BaseResponse implements IResponse {
     public int status;
     @SerializedName(value = "info")
     public String info;
+
+    @Override
+    public String toString() {
+        return "BaseResponse{" +
+                "status=" + status +
+                ", info='" + info + '\'' +
+                '}';
+    }
 }

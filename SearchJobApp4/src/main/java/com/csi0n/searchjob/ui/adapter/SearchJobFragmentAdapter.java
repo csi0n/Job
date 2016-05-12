@@ -13,6 +13,7 @@ import com.csi0n.searchjob.core.io.DbManager;
 import com.csi0n.searchjob.database.dao.FuLi;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import butterknife.Bind;
@@ -52,8 +53,9 @@ public class SearchJobFragmentAdapter extends BaseAdapter {
         if (view==null){
             view = View.inflate(mContext, R.layout.view_adapter_item_search_job_fragment, null);
             holder=new ViewHolder(view);
+            view.setTag(holder);
         }else
-        holder=(ViewHolder)view.getTag();
+            holder=(ViewHolder)view.getTag();
         List<String> tags2 = new ArrayList<>();
         tags2.add(String.format("%s-%s", getItem(positon).city, getItem(positon).area));
         if (getItem(positon).sex==3)
@@ -84,7 +86,7 @@ public class SearchJobFragmentAdapter extends BaseAdapter {
         int money;
         money = (getItem(positon).money_back_male + getItem(positon).money_back_famale) / 2;
         holder.tvBackMoney.setText(money > 0 ? String.valueOf(money) + "元" : "");
-        return null;
+        return view;
     }
 
     static class ViewHolder {
@@ -94,7 +96,6 @@ public class SearchJobFragmentAdapter extends BaseAdapter {
         TextView tvBackMoney;
         @Bind(R.id.tag_line_1)
         TagCloudView tagLine1;
-
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
