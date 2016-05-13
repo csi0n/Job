@@ -55,6 +55,7 @@ public class LoginActivity extends MvpActivity<LoginPresenter, LoginPresenter.IL
             public void onHandleSuccess(GetLoginResponse response) {
                 super.onHandleSuccess(response);
                 Constants.LOGIN_USER=response.user;
+                Constants.DEFAULT_TOKEN=response.token;
                 SharePreferenceManager.setKeyCachedToken(response.token);
                 EventBus.getDefault().post(new UserLoginEvent(response.user));
                 finish();

@@ -59,6 +59,7 @@ public class ShowSearchJobResultActivity extends MvpActivity<ShowSearchJobResult
         getJobList(CURRENT_PAGE);
     }
     void getJobList(final int page){
+        is_busy=true;
        presenter.getSearchJobListByKey(page,key, SharePreferenceManager.getFlagLocalConfigVersion()).subscribe(new AdvancedSubscriber<GetSearchJobListByKeyResponse>(){
            @Override
            public void onHandleSuccess(GetSearchJobListByKeyResponse response) {
@@ -73,6 +74,7 @@ public class ShowSearchJobResultActivity extends MvpActivity<ShowSearchJobResult
            @Override
            public void onHandleFinish() {
                super.onHandleFinish();
+               is_busy=false;
                endRefresh();
            }
        });

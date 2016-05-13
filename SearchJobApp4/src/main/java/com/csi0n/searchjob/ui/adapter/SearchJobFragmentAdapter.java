@@ -76,7 +76,7 @@ public class SearchJobFragmentAdapter extends BaseAdapter {
         }
         String[] fu_lis = getItem(positon).fuli.split(",");
         for (int i = 0; i < fu_lis.length; i++) {
-            FuLi fuLi= DbManager.getFuLiByID(Long.valueOf(fu_lis[i]));
+            FuLi fuLi= DbManager.findFuLiByID(fu_lis[i]);
                 if (fuLi != null)
                     if (fuLi.getName()!=null)
                         tags2.add(fuLi.getName());

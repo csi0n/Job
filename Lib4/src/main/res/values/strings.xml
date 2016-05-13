@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name"></string>
+    <string name="crop_saving">保存</string>
+    <string name="crop_wait">等待</string>
 </resources>

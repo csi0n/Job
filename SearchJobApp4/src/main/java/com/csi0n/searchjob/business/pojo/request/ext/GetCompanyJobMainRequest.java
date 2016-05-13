@@ -23,4 +23,17 @@ public class GetCompanyJobMainRequest extends BaseRequest {
         this.fuli = fuli;
         this.configVer = configVer;
     }
+
+    @Override
+    public String toString() {
+        return "GetCompanyJobMainRequest{" +
+                "page=" + page +
+                ", area_id=" + area_id +
+                ", city_id=" + city_id +
+                ", money_back=" + money_back +
+                ", work_type=" + work_type +
+                ", fuli='" + fuli + '\'' +
+                ", configVer='" + configVer + '\'' +
+                '}';
+    }
 }

@@ -11,4 +11,11 @@ public class GetCheckTimeOutRequest extends BaseRequest {
     public GetCheckTimeOutRequest(String token) {
         this.token = token;
     }
+
+    @Override
+    public String toString() {
+        return "GetCheckTimeOutRequest{" +
+                "token='" + token + '\'' +
+                '}';
+    }
 }

@@ -8,13 +8,22 @@ import com.csi0n.searchjob.business.pojo.model.ext.MyModel;
 public class Constants {
     public static String DB_NAME="searchJob";
     public static MyModel LOGIN_USER;
-    public static String BaseUrl="http://192.168.56.1/im/";
-    public static String Preference_Name="search_job";
+    public static final String BaseUrl="http://192.168.56.1/im/";
+    public static final String Preference_Name="search_job";
+    public static final String saveFolder = "SearchJob";
+    public static String DEFAULT_TOKEN;
     public static final int CODE_CONFIG_UPDATE=16;
     public static final int CODE_SUCCESS=10;
     public static final int DEFAULT_PAGE = 20;
     public static final int CODE_EMPTY = 14;
+    /*选择图片相关*/
+    public static final int PIC_FROM_CAMERA=28;
+    public static final int D_PIC_FROM_CAMERA=29;
+    public static final int PIC_FROM_DISK=30;
+    public static final int D_PIC_FROM_DISK=31;
     public static final String MARK_SHOW_SEARCH_JOB_ACTIVITY_KEY="mark_show_search_job_activity_key";
+    public static final String MARK_COMPANY_WORK_DETAIL_COMPANY_ID="mark_company_work_detail_company_id";
+    public static final String MARK_MAIN_ACTIVITY_HAS_TOKEN = "main_activity_has_token";
     public static String[] getNewsTitle() {
         String data[] = {"0", "1", "2", "3", "4", "5", "6"};
         return data;

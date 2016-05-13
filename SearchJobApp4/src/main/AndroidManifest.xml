@@ -43,6 +43,13 @@
         <activity android:name=".ui.ChooseCityActivity" android:theme="@style/notitle"></activity>
         <activity android:name=".ui.SearchJobActivity" android:theme="@style/notitle"></activity>
         <activity android:name=".ui.ShowSearchJobResultActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.CompanyWorkDetailActivity" android:theme="@style/notitle"></activity>
+        <activity android:name="com.csi0n.searchjob.lib.widget.CropImage.CropImageActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.UpdateDocumentsActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.ChangeUnameActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.ChangeNameAndCodeActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.ChangeIntroActivity" android:theme="@style/notitle"></activity>
+        <activity android:name=".ui.MyCommentsActivity" android:theme="@style/notitle"></activity>
     </application>
 
 </manifest>

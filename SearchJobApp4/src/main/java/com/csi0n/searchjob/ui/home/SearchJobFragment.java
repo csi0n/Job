@@ -24,6 +24,7 @@ import com.csi0n.searchjob.database.dao.City;
 import com.csi0n.searchjob.database.dao.FuLi;
 import com.csi0n.searchjob.database.dao.JobType;
 import com.csi0n.searchjob.ui.ChooseCityActivity;
+import com.csi0n.searchjob.ui.CompanyWorkDetailActivity;
 import com.csi0n.searchjob.ui.SearchJobActivity;
 import com.csi0n.searchjob.ui.adapter.SearchJobFragmentAdapter;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
@@ -39,6 +40,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
@@ -54,6 +56,9 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
     BGARefreshLayout mBGARefreshLayout;
     @Bind(value = R.id.list)
     ListView mList;
+    @OnItemClick(R.id.list)void  onItemClick(int position){
+        startCompanyJobDetail(adapter.datas.get(position).id);
+    }
     private ViewAreaList viewAreaList;
     private ViewBackMoney viewBackMoney;
     private ViewJob viewJob;
@@ -143,6 +148,7 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
     }
 
     void getJobList(final int page) {
+        is_busy=true;
         String fuliTemp = null;
         if (FULI_LIST != null && FULI_LIST.size() > 0) {
             for (int i = 0; i < FULI_LIST.size(); i++) {
@@ -182,6 +188,7 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
             @Override
             public void onHandleFinish() {
                 super.onHandleFinish();
+                is_busy=false;
                 endRefresh();
             }
         });
@@ -379,5 +386,10 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
     }
     void startSearchJobActivity(){
         startActivity(SearchJobActivity.class);
+    }
+    void startCompanyJobDetail(int company_id){
+        Bundle bundle=new Bundle();
+        bundle.putInt(Constants.MARK_COMPANY_WORK_DETAIL_COMPANY_ID,company_id);
+        startActivityWithBundle(CompanyWorkDetailActivity.class,bundle);
     }
 }

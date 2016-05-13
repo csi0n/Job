@@ -1,15 +1,12 @@
 package com.csi0n.searchjob.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.csi0n.searchjob.Config;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.lib.controller.BaseController;
 import com.csi0n.searchjob.lib.utils.CLog;
@@ -20,9 +17,9 @@ import com.csi0n.searchjob.lib.utils.bean.EmptyModel;
 import com.csi0n.searchjob.lib.widget.alert.AlertView;
 import com.csi0n.searchjob.lib.widget.alert.OnItemClickListener;
 import com.csi0n.searchjob.model.CompanyWorkDetailAModel;
-import com.squareup.picasso.Picasso;
+
 import org.json.JSONException;
-import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 /**

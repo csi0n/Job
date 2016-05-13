@@ -1,19 +1,32 @@
 package com.csi0n.searchjob.ui;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.callback.AdvancedSubscriber;
+import com.csi0n.searchjob.business.pojo.event.ext.UserInfoChangeEvent;
+import com.csi0n.searchjob.business.pojo.event.ext.ChoosePicHeadEvent;
 import com.csi0n.searchjob.business.pojo.event.ext.MainFragmentSkipEvent;
 import com.csi0n.searchjob.business.pojo.event.ext.UserLoginEvent;
+import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
+import com.csi0n.searchjob.core.io.FileUtils;
 import com.csi0n.searchjob.core.io.SharePreferenceManager;
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.core.string.Constants;
-import com.csi0n.searchjob.core.string.Constants.MainSkipTYPE;
+import com.csi0n.searchjob.core.system.SystemUtils;
+import com.csi0n.searchjob.lib.AppManager;
+import com.csi0n.searchjob.lib.widget.CropImage.Crop;
+import com.csi0n.searchjob.lib.widget.ProgressLoading;
+import com.csi0n.searchjob.lib.widget.alert.AlertView;
+import com.csi0n.searchjob.lib.widget.alert.OnItemClickListener;
 import com.csi0n.searchjob.ui.base.BaseFragment;
 import com.csi0n.searchjob.ui.base.mvp.MvpActivity;
 import com.csi0n.searchjob.ui.home.MeFragment;
@@ -21,7 +34,8 @@ import com.csi0n.searchjob.ui.home.SearchJobFragment;
 import com.csi0n.searchjob.ui.home.WangzhiDaoHangActivity;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
+
+import java.io.File;
 
 import butterknife.Bind;
 import roboguice.inject.ContentView;
@@ -40,8 +54,8 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
     RadioButton mRdSearchJob;
     @Bind(value = R.id.rd_me)
     RadioButton mRdMe;
-    public static final String MAIN_ACTIVITY_HAS_TOKEN = "main_activity_has_token";
-
+    AlertView alertView;
+    ProgressLoading loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +66,13 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
     }
 
     void autoLogin(){
-        String token= SharePreferenceManager.getKeyCachedToken();
+        final String token= SharePreferenceManager.getKeyCachedToken();
         if (!TextUtils.isEmpty(token)){
             presenter.doCheckTimeOut(token).subscribe(new AdvancedSubscriber<GetCheckTimeOutResponse>(){
                 @Override
                 public void onHandleSuccess(GetCheckTimeOutResponse response) {
                     super.onHandleSuccess(response);
+                    Constants.DEFAULT_TOKEN=token;
                     Constants.LOGIN_USER=response.user;
                     EventBus.getDefault().post(new UserLoginEvent(response.user));
                     CLog.e("AUTO LOGIN SUCCESS!");
@@ -128,6 +143,57 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constants.PIC_FROM_CAMERA && resultCode == Activity.RESULT_OK) {
+            beginCrop(Uri.fromFile(FileUtils.getSaveFile(Constants.saveFolder, "TEMP_PIC.png")), "upload_pic", Constants.D_PIC_FROM_CAMERA);
+        } else if (requestCode == Constants.PIC_FROM_DISK && resultCode == Activity.RESULT_OK) {
+            beginCrop(data.getData(), "TEMP_PIC", Constants.D_PIC_FROM_DISK);
+        } else if (requestCode == Constants.D_PIC_FROM_CAMERA||requestCode==Constants.D_PIC_FROM_DISK) {
+            handleCrop(requestCode, resultCode, data);
+        } else if (resultCode==Activity.RESULT_CANCELED){
+            CLog.i("取消操作");
+        }else {
+            showError("不知名操作");
+        }
+    }
+    private void beginCrop(Uri source, String name, int requestCode) {
+        Uri destination = Uri.fromFile(FileUtils.getSaveFile(Constants.saveFolder, name.indexOf(".png") > 0 ? name : name + ".png"));
+        Crop.of(source, destination).asSquare().start(this, requestCode);
+    }
+    private void handleCrop(int requestCode, int resultCode, Intent result) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == Constants.D_PIC_FROM_CAMERA) {
+                uploadHead(FileUtils.getSaveFile(Constants.saveFolder, "upload_pic.png"));
+            } else if (requestCode == Constants.D_PIC_FROM_DISK) {
+                uploadHead(FileUtils.getSaveFile(Constants.saveFolder, "TEMP_PIC.png"));
+            }
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            CLog.i("取消操作");
+        } else if (resultCode == Crop.RESULT_ERROR) {
+            showError(Crop.getError(result).getMessage());
+        } else {
+            CLog.i("resultCode：" + resultCode + "Activity.RESULT_OK:" + Activity.RESULT_OK);
+        }
+    }
+    void uploadHead(final File headfile) {
+        loading=new ProgressLoading(this,"上传中请稍后...");
+        loading.show();
+        presenter.doGetChangeUserInfo(headfile).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>(){
+            @Override
+            public void onHandleSuccess(GetChangeUserInfoResponse response) {
+                super.onHandleSuccess(response);
+                showToast("上传成功!");
+                EventBus.getDefault().post(new UserInfoChangeEvent(headfile, UserInfoChangeEvent.ChangeType.HEAD));
+            }
+            @Override
+            public void onHandleFinish() {
+                super.onHandleFinish();
+                if (loading.isShowing())
+                    loading.dismiss();
+            }
+        });
+    }
+    @Override
     public void onEvent(Object object) {
         super.onEvent(object);
         if (object.getClass()==MainFragmentSkipEvent.class){
@@ -144,6 +210,28 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
                 default:
                     break;
             }
+        }else if (object.getClass()== ChoosePicHeadEvent.class){
+            if (((ChoosePicHeadEvent)object).isFromCamera()){
+                SystemUtils.openCamera(this, Constants.PIC_FROM_CAMERA, Constants.saveFolder);
+            }else {
+                SystemUtils.openPic(this, Constants.PIC_FROM_DISK);
+            }
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            alertView = new AlertView("退出", "是否退出?", "取消", new String[]{"退出"}, null, this, AlertView.Style.Alert, new OnItemClickListener() {
+                @Override
+                public void onItemClick(Object o, int position) {
+                    if (position != AlertView.CANCELPOSITION) {
+                        AppManager.getAppManager().AppExit(MainActivity.this);
+                    }
+                }
+            }).setCancelable(true);
+            alertView.show();
+        }
+        return false;
     }
 }

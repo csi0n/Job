@@ -86,12 +86,6 @@ public class DbManager {
         FuLiDao.createTable(getDb(), true);
         JobTypeDao.createTable(getDb(), true);
     }
-    public static FuLi getFuLiByID(long Fid){
-        return getDaoSession().getFuLiDao().queryBuilder()
-                .where(FuLiDao.Properties.Fid.eq(Fid))
-                .build()
-                .list().get(0);
-    }
     public static List<City> searchCityByPinYin(String key){
         return getDaoSession().getCityDao().queryBuilder()
                 .where(CityDao.Properties.Pinyin.like(key))
@@ -116,5 +110,8 @@ public class DbManager {
     }
     public static void clearValueByKey(String key){
        getDaoSession().getKeyValueDao().queryBuilder().where(KeyValueDao.Properties.Key.eq(key)).buildDelete().executeDeleteWithoutDetachingEntities();
+    }
+    public static FuLi findFuLiByID(String id){
+        return getDaoSession().getFuLiDao().queryBuilder().where(FuLiDao.Properties.Fid.eq(id)).build().list().get(0);
     }
 }

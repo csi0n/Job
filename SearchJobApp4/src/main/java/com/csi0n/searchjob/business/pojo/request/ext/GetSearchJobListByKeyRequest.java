@@ -15,4 +15,13 @@ public class GetSearchJobListByKeyRequest extends BaseRequest {
         this.key = key;
         this.configVer = configVer;
     }
+
+    @Override
+    public String toString() {
+        return "GetSearchJobListByKeyRequest{" +
+                "page=" + page +
+                ", key='" + key + '\'' +
+                ", configVer='" + configVer + '\'' +
+                '}';
+    }
 }

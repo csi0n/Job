@@ -1,15 +1,31 @@
 package com.csi0n.searchjob.business.api.retrofit;
 
 import com.csi0n.searchjob.business.api.SearchJobApi;
+import com.csi0n.searchjob.business.pojo.request.ext.GetChangeUserInfoRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCheckTimeOutRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyCommentResultRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetLoginRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetMyCommentsRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailARequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailBHeaderRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailBRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailCRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailDRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobListByKeyRequest;
+import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetMyCommentsResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailAResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailBHeaderResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailBResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailCResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailDResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobListByKeyResponse;
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.core.net.NetWorkException;
@@ -90,6 +106,7 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
 
     @Override
     public GetCheckTimeOutResponse getCheckTimeOutResponse(final GetCheckTimeOutRequest getCheckTimeOutRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getCheckTimeOutResponse request = " + getCheckTimeOutRequest);
         return new RetrofitAdapter<GetCheckTimeOutResponse>(){
             @Override
             GetCheckTimeOutResponse call() throws Exception {
@@ -100,10 +117,99 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
 
     @Override
     public GetSearchJobListByKeyResponse getSearchJobListByKeyResponse(final GetSearchJobListByKeyRequest getSearchJobListByKeyRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.GetSearchJobListByKeyRequest request = " + getSearchJobListByKeyRequest);
         return new RetrofitAdapter<GetSearchJobListByKeyResponse>(){
             @Override
             GetSearchJobListByKeyResponse call() throws Exception {
                 return httpApi.getSearchJobListByKeyResponse(getSearchJobListByKeyRequest.page,getSearchJobListByKeyRequest.key,getSearchJobListByKeyRequest.configVer).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetSearchJobDetailAResponse getSearchJobDetailAResponse(final GetSearchJobDetailARequest getSearchJobDetailARequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.GetSearchJobDetailARequest request = " + getSearchJobDetailARequest);
+        return new RetrofitAdapter<GetSearchJobDetailAResponse>() {
+            @Override
+            GetSearchJobDetailAResponse call() throws Exception {
+                return httpApi.getSearchJobDetailAResponse(getSearchJobDetailARequest.company_id).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetSearchJobDetailBResponse getSearchJobDetailBResponse(final GetSearchJobDetailBRequest getSearchJobDetailBRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getSearchJobDetailBResponse request = " + getSearchJobDetailBRequest);
+        return new RetrofitAdapter<GetSearchJobDetailBResponse>(){
+            @Override
+            GetSearchJobDetailBResponse call() throws Exception {
+                return httpApi.getSearchJobDetailBResponse(getSearchJobDetailBRequest.page,getSearchJobDetailBRequest.company_id).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetSearchJobDetailBHeaderResponse getSearchJobDetailBHeaderResponse(final GetSearchJobDetailBHeaderRequest getSearchJobDetailBHeaderRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getSearchJobDetailBHeaderResponse request = " + getSearchJobDetailBHeaderRequest);
+        return new RetrofitAdapter<GetSearchJobDetailBHeaderResponse>(){
+            @Override
+            GetSearchJobDetailBHeaderResponse call() throws Exception {
+                return httpApi.getSearchJobDetailBHeaderResponse(getSearchJobDetailBHeaderRequest.company_id).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetSearchJobDetailCResponse getSearchJobDetailCResponse(final GetSearchJobDetailCRequest getSearchJobDetailCRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getSearchJobDetailCResponse request = " + getSearchJobDetailCRequest);
+        return new RetrofitAdapter<GetSearchJobDetailCResponse>() {
+            @Override
+            GetSearchJobDetailCResponse call() throws Exception {
+                return httpApi.getSearchJobDetailCResponse(getSearchJobDetailCRequest.page,getSearchJobDetailCRequest.company_id).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetSearchJobDetailDResponse getSearchJobDetailDResponse(final GetSearchJobDetailDRequest getSearchJobDetailDRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getSearchJobDetailDResponse request = " + getSearchJobDetailDRequest);
+        return new RetrofitAdapter<GetSearchJobDetailDResponse>() {
+            @Override
+            GetSearchJobDetailDResponse call() throws Exception {
+                return httpApi.getSearchJobDetailDResponse(getSearchJobDetailDRequest.page,getSearchJobDetailDRequest.company_id).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetCompanyCommentResultResponse getCompanyCommentResultResponse(final GetCompanyCommentResultRequest getCompanyCommentResultRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getCompanyCommentResultResponse request = " + getCompanyCommentResultRequest);
+        return new RetrofitAdapter<GetCompanyCommentResultResponse>() {
+            @Override
+            GetCompanyCommentResultResponse call() throws Exception {
+                return httpApi.getCompanyCommentResultResponse(getCompanyCommentResultRequest.company_id,getCompanyCommentResultRequest.content,getCompanyCommentResultRequest.reply_uid,getCompanyCommentResultRequest.token).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetChangeUserInfoResponse getChangeUserInfoResponse(final GetChangeUserInfoRequest getChangeUserInfoRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getChangeUserInfoResponse request = " + getChangeUserInfoRequest);
+        return new RetrofitAdapter<GetChangeUserInfoResponse>() {
+            @Override
+            GetChangeUserInfoResponse call() throws Exception {
+                return httpApi.getChangeUserInfoResponse(getChangeUserInfoRequest.head,getChangeUserInfoRequest.old_pass_word,getChangeUserInfoRequest.new_pass_word,getChangeUserInfoRequest.uname,getChangeUserInfoRequest.intro,getChangeUserInfoRequest.sex,getChangeUserInfoRequest.name,getChangeUserInfoRequest.code,getChangeUserInfoRequest.token).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetMyCommentsResponse getMyCommentsResponse(final GetMyCommentsRequest getMyCommentsRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.GetMyCommentsRequest request = " + getMyCommentsRequest);
+        return new RetrofitAdapter<GetMyCommentsResponse>() {
+            @Override
+            GetMyCommentsResponse call() throws Exception {
+                return httpApi.getMyCommentsResponse(getMyCommentsRequest.page,getMyCommentsRequest.token).execute().body();
             }
         }.get();
     }

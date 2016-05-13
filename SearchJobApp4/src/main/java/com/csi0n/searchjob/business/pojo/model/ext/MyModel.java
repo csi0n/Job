@@ -17,7 +17,7 @@ public class MyModel extends BaseModel {
      * head_ic : upload/images/b27d3480e38068d6aaf9733a4ef6ea07/origin.png
      */
     @SerializedName(value = "uid")
-    public String uid;
+    public long uid;
     @SerializedName(value = "login_status")
     public String login_status;
     @SerializedName(value = "sex")
@@ -26,6 +26,8 @@ public class MyModel extends BaseModel {
     public String intro;
     @SerializedName(value = "uname")
     public String uname;
+    @SerializedName(value = "username")
+    public String username;
     @SerializedName(value = "head_ic")
     public String head_ic;
     @SerializedName(value = "real_code")

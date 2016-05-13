@@ -139,7 +139,10 @@ public abstract class MvpFragment<P extends BaseMvpPresenter, V extends IMvpView
         super.onDestroy();
     }
     public void startActivity(Class<?> classz){
-        mvpActivity.startActivity(getActivity(),classz);
+        mvpActivity.startActivity(mvpActivity,classz);
+    }
+    public void startActivityWithBundle(Class<?> classz,Bundle bundle){
+        mvpActivity.skipActivityWithBundleWithOutExit(mvpActivity,classz,bundle);
     }
     public void showError(String message){
         mvpActivity.showError(message);

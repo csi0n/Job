@@ -1,5 +1,6 @@
 package com.csi0n.searchjob.business.pojo.request;
 
+import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.core.system.SystemUtils;
 
 /**
@@ -7,4 +8,5 @@ import com.csi0n.searchjob.core.system.SystemUtils;
  */
 public class BaseRequest  implements IRequest{
     public String version=SystemUtils.getVersion();
+    public String token= Constants.DEFAULT_TOKEN;
 }
