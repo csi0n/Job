@@ -30,11 +30,11 @@ public class SimpleSubscriber<T extends BaseResponse> extends Subscriber<T> {
             isSuccess = true;
             onHandleSuccess(response);
         } else if (response.status==Constants.CODE_EMPTY){
-            isSuccess=true;
             onHandleEmptyData();
-        }else if (response.status==Constants.CODE_CONFIG_UPDATE){
-            isSuccess=true;
+            onHandleFail(response.info, null);
+        } else if (response.status==Constants.CODE_CONFIG_UPDATE){
             onHandleUpdateConfig(response);
+            onHandleFail(response.info, null);
         }else {
             onHandleFail(response.info, null);
         }
@@ -44,7 +44,6 @@ public class SimpleSubscriber<T extends BaseResponse> extends Subscriber<T> {
     public final void onError(Throwable throwable) {
         CLog.d(this + "....onError");
         onHandleFail(null, throwable);
-
         onHandleFinish();
     }
 

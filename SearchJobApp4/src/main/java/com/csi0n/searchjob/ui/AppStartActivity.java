@@ -32,9 +32,7 @@ public class AppStartActivity extends MvpActivity<AppStartPresenter, AppStartPre
         uiHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Bundle bundle = new Bundle();
-                bundle.putBoolean(MainActivity.MAIN_ACTIVITY_HAS_TOKEN, true);
-                skipActivityWithBundle(getContext(), MainActivity.class, bundle);
+                startActivity(getContext(),MainActivity.class);
             }
         }, 1000);
     }

@@ -9,4 +9,12 @@ import com.csi0n.searchjob.core.system.SystemUtils;
 public class BaseRequest  implements IRequest{
     public String version=SystemUtils.getVersion();
     public String token= Constants.DEFAULT_TOKEN;
+
+    @Override
+    public String toString() {
+        return "BaseRequest{" +
+                "version='" + version + '\'' +
+                ", token='" + token + '\'' +
+                '}';
+    }
 }

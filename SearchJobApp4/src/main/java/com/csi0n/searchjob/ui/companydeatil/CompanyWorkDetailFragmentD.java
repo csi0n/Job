@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.callback.AdvancedSubscriber;
+import com.csi0n.searchjob.business.callback.EmptySubscriber;
 import com.csi0n.searchjob.business.pojo.event.ext.UserLoginEvent;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailDResponse;
@@ -20,6 +21,8 @@ import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.ui.LoginActivity;
 import com.csi0n.searchjob.ui.adapter.CompanyWorkDetailDListAdapter;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
+import com.csi0n.searchjob.ui.widget.EmptyErrorType;
+import com.csi0n.searchjob.ui.widget.EmptyLayout;
 
 import java.util.Arrays;
 
@@ -41,6 +44,8 @@ public class CompanyWorkDetailFragmentD extends MvpFragment<CompanyWorkDetailDPr
     BGARefreshLayout mRefreshLayout;
     @Bind(R.id.ll_view)
     LinearLayout llView;
+    @Bind(R.id.emptyLayout)
+    EmptyLayout mEmptyLayout;
 
     @OnItemClick(R.id.list)
     void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -72,6 +77,7 @@ public class CompanyWorkDetailFragmentD extends MvpFragment<CompanyWorkDetailDPr
     }
 
     void init() {
+        mEmptyLayout.setShowError(EmptyErrorType.NO_COMMENTS);
         company_id = mvpActivity.getBundle().getInt(Constants.MARK_COMPANY_WORK_DETAIL_COMPANY_ID);
         mRefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(mvpActivity, true));
         mRefreshLayout.setDelegate(this);
@@ -96,7 +102,7 @@ public class CompanyWorkDetailFragmentD extends MvpFragment<CompanyWorkDetailDPr
     }
 
     void DoPostComment(String content) {
-        presenter.doGetCompanyCommentResult(company_id, content, TEMP_REPLY_UID).subscribe(new AdvancedSubscriber<GetCompanyCommentResultResponse>() {
+        presenter.doGetCompanyCommentResult(company_id, content, TEMP_REPLY_UID).subscribe(new AdvancedSubscriber<GetCompanyCommentResultResponse>(mvpActivity) {
             @Override
             public void onHandleSuccess(GetCompanyCommentResultResponse response) {
                 super.onHandleSuccess(response);
@@ -109,7 +115,7 @@ public class CompanyWorkDetailFragmentD extends MvpFragment<CompanyWorkDetailDPr
 
     void DoGetComments(final int page) {
         is_busy = true;
-        presenter.doGetSearchJobDetailD(page, company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailDResponse>() {
+        presenter.doGetSearchJobDetailD(page, company_id).subscribe(new EmptySubscriber<GetSearchJobDetailDResponse>(mEmptyLayout) {
             @Override
             public void onHandleSuccess(GetSearchJobDetailDResponse response) {
                 super.onHandleSuccess(response);
@@ -143,6 +149,7 @@ public class CompanyWorkDetailFragmentD extends MvpFragment<CompanyWorkDetailDPr
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         if (!is_busy) {
+            mEmptyLayout.reSetCount();
             CURRENT_PAGE = 1;
             DoGetComments(CURRENT_PAGE);
         }

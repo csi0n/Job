@@ -17,7 +17,7 @@ public class ChangeNameAndCodePresenter extends BaseMvpPresenter<ChangeNameAndCo
     @Inject
     SearchJobDomain searchJobDomain;
     public Observable<GetChangeUserInfoResponse> doGetChangeUserInfo(String name,String code){
-        return searchJobDomain.getChangeUserInfoResponse(null,null,null,null,null,null,name,code);
+        return searchJobDomain.getChangeUserInfoResponse(null,null,null,null,null,name,code);
     }
     public interface IChangeNameAndCode extends IMvpPresenter, IMvpView {
 

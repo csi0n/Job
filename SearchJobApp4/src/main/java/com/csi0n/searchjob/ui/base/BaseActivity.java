@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.lib.AppManager;
 import com.csi0n.searchjob.ui.base.mvp.ILoadDataView;
+import com.csi0n.searchjob.ui.widget.EmptyErrorType;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,7 +64,6 @@ public abstract class BaseActivity extends RoboActionBarActivity implements ILoa
     }
 
     private void initListener() throws Exception {
-
         mTvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,16 +80,21 @@ public abstract class BaseActivity extends RoboActionBarActivity implements ILoa
 
     protected void setActionBarRes(ActionBarRes actionBarRes) {
     }
+
+
     @Override
-    public void showLoading() {
+    public void loadstart() {
 
     }
 
-
     @Override
-    public void showLoading(int loadingType) {
+    public void showLoading() {
+        showLoading(EmptyErrorType.NETWORK_LOADING);
+    }
+    @Override
+    public void showLoading(EmptyErrorType loadingType) {
         switch (loadingType){
-            case LOADING_TYPE_DEFAULT:
+            case NETWORK_LOADING:
                 default:
                     showDefaultStyleLoadingDialog(null);
                     break;
@@ -111,17 +116,22 @@ public abstract class BaseActivity extends RoboActionBarActivity implements ILoa
     }
     @Override
     public void hideLoading() {
-        hideLoading(LOADING_TYPE_DEFAULT);
+        hideLoading(EmptyErrorType.NETWORK_LOADING);
     }
 
     @Override
-    public void hideLoading(int loadingType) {
+    public void hideLoading(EmptyErrorType loadingType) {
         switch (loadingType){
-            case LOADING_TYPE_DEFAULT:
+            case NETWORK_LOADING:
                 default:
                     hideDefaultStyleLoadingDialog();
                     break;
         }
+    }
+
+    @Override
+    public void loadfinish() {
+
     }
 
     protected void onBackPress() {
@@ -131,6 +141,7 @@ public abstract class BaseActivity extends RoboActionBarActivity implements ILoa
     protected void onClickMore() {
 
     }
+
     @Override
     public void showError(String message) {
         Toast.makeText(BaseActivity.this,message,Toast.LENGTH_SHORT).show();

@@ -45,12 +45,18 @@ public class ChangePasswordActivity extends MvpActivity<ChangePasswordPresenter,
     }
 
     void DoPostNewPassWord(String old_password, String new_password) {
-        presenter.doGetChangeUserInfo(old_password, new_password).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>() {
+        presenter.doGetChangeUserInfo(old_password, new_password).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>(this) {
             @Override
             public void onHandleSuccess(GetChangeUserInfoResponse response) {
                 super.onHandleSuccess(response);
                 showToast("修改成功");
                 finish();
+            }
+
+            @Override
+            public void onHandleFail(String message, Throwable throwable) {
+                super.onHandleFail(message, throwable);
+                showError(message);
             }
         });
     }

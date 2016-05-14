@@ -35,7 +35,7 @@ public class ChangeUnameActivity extends MvpActivity<ChangeUnamePresenter, Chang
     }
 
     void DoPostChangeUName(String uname) {
-        presenter.doGetChangeUserInfo(uname).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>() {
+        presenter.doGetChangeUserInfo(uname).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>(this) {
             @Override
             public void onHandleSuccess(GetChangeUserInfoResponse response) {
                 super.onHandleSuccess(response);

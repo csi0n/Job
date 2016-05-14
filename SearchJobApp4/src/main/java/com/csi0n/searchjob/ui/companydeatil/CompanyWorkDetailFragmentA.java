@@ -13,6 +13,8 @@ import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.database.dao.FuLi;
 import com.csi0n.searchjob.ui.adapter.CompanyWorkDetailAListAdapter;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
+import com.csi0n.searchjob.ui.widget.EmptyErrorType;
+import com.csi0n.searchjob.ui.widget.EmptyLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +35,8 @@ public class CompanyWorkDetailFragmentA extends MvpFragment<CompanyWorkDetailAPr
     @Bind(R.id.mBGARefreshLayout)
     BGARefreshLayout mBGARefreshLayout;
     private int company_id;
+    @Bind(R.id.emptyLayout)
+    EmptyLayout mEmptyLayout;
     private boolean is_busy = false;
     private ViewHolder holder = null;
     private CompanyWorkDetailAListAdapter adapter;
@@ -44,6 +48,7 @@ public class CompanyWorkDetailFragmentA extends MvpFragment<CompanyWorkDetailAPr
     }
 
     private void init() {
+        mEmptyLayout.setShowError(EmptyErrorType.HIDE_LAYOUT);
         company_id = mvpActivity.getBundle().getInt(Constants.MARK_COMPANY_WORK_DETAIL_COMPANY_ID);
         mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(mvpActivity, false));
         mBGARefreshLayout.setCustomHeaderView(getHeadView(), true);
@@ -61,7 +66,7 @@ public class CompanyWorkDetailFragmentA extends MvpFragment<CompanyWorkDetailAPr
 
     void DoGetCompanyDetailA(int company_id) {
         is_busy = true;
-        presenter.doGetSearchJobDetailA(company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailAResponse>() {
+        presenter.doGetSearchJobDetailA(company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailAResponse>(mEmptyLayout) {
             @Override
             public void onHandleSuccess(GetSearchJobDetailAResponse response) {
                 super.onHandleSuccess(response);
@@ -119,6 +124,7 @@ public class CompanyWorkDetailFragmentA extends MvpFragment<CompanyWorkDetailAPr
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         if (!is_busy) {
+            mEmptyLayout.reSetCount();
             DoGetCompanyDetailA(company_id);
         }
     }

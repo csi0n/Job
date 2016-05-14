@@ -28,6 +28,7 @@ public abstract class BaseFragment extends RoboFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     /**

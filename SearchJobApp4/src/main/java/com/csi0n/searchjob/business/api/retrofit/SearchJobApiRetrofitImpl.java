@@ -3,6 +3,7 @@ package com.csi0n.searchjob.business.api.retrofit;
 import com.csi0n.searchjob.business.api.SearchJobApi;
 import com.csi0n.searchjob.business.pojo.request.ext.GetChangeUserInfoRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCheckTimeOutRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetCheckUserAppVerRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyCommentResultRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
@@ -16,6 +17,7 @@ import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailDRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobListByKeyRequest;
 import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
@@ -198,7 +200,18 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
         return new RetrofitAdapter<GetChangeUserInfoResponse>() {
             @Override
             GetChangeUserInfoResponse call() throws Exception {
-                return httpApi.getChangeUserInfoResponse(getChangeUserInfoRequest.head,getChangeUserInfoRequest.old_pass_word,getChangeUserInfoRequest.new_pass_word,getChangeUserInfoRequest.uname,getChangeUserInfoRequest.intro,getChangeUserInfoRequest.sex,getChangeUserInfoRequest.name,getChangeUserInfoRequest.code,getChangeUserInfoRequest.token).execute().body();
+                return httpApi.getChangeUserInfoResponse(getChangeUserInfoRequest.old_pass_word,getChangeUserInfoRequest.new_pass_word,getChangeUserInfoRequest.uname,getChangeUserInfoRequest.intro,getChangeUserInfoRequest.sex,getChangeUserInfoRequest.name,getChangeUserInfoRequest.code,getChangeUserInfoRequest.token).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetChangeUserInfoResponse getChangeUserInfoHeadResponse(final GetChangeUserInfoRequest getChangeUserInfoRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.getChangeUserInfoHeadResponse request = " + getChangeUserInfoRequest);
+        return new RetrofitAdapter<GetChangeUserInfoResponse>() {
+            @Override
+            GetChangeUserInfoResponse call() throws Exception {
+                return httpApi.getChangeUserInfoHead(getChangeUserInfoRequest.head,getChangeUserInfoRequest.token).execute().body();
             }
         }.get();
     }
@@ -210,6 +223,17 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
             @Override
             GetMyCommentsResponse call() throws Exception {
                 return httpApi.getMyCommentsResponse(getMyCommentsRequest.page,getMyCommentsRequest.token).execute().body();
+            }
+        }.get();
+    }
+
+    @Override
+    public GetCheckUserAppVerResponse getCheckUserAppVerResponse(final GetCheckUserAppVerRequest getCheckUserAppVerRequest) throws NetWorkException {
+        CLog.i("SearchJobApiRetrofitImpl.GetCheckUserAppVerResponse request = " + getCheckUserAppVerRequest);
+        return new RetrofitAdapter<GetCheckUserAppVerResponse>() {
+            @Override
+            GetCheckUserAppVerResponse call() throws Exception {
+                return httpApi.getCheckUserAppVerResponse(getCheckUserAppVerRequest.version).execute().body();
             }
         }.get();
     }

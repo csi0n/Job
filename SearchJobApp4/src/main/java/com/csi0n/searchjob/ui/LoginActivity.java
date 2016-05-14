@@ -50,7 +50,7 @@ public class LoginActivity extends MvpActivity<LoginPresenter, LoginPresenter.IL
         }
     }
     void doLogin(String username,String password){
-        presenter.doGetLogin(username, password).subscribe(new AdvancedSubscriber<GetLoginResponse>() {
+        presenter.doGetLogin(username, password).subscribe(new AdvancedSubscriber<GetLoginResponse>(this) {
             @Override
             public void onHandleSuccess(GetLoginResponse response) {
                 super.onHandleSuccess(response);

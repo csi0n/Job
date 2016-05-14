@@ -15,7 +15,7 @@ public class ChangePasswordPresenter extends BaseMvpPresenter<ChangePasswordPres
     @Inject
     SearchJobDomain searchJobDomain;
     public Observable<GetChangeUserInfoResponse> doGetChangeUserInfo(String old_pass_number,String new_pass_number){
-        return searchJobDomain.getChangeUserInfoResponse(null,old_pass_number,new_pass_number,null,null,null,null,null);
+        return searchJobDomain.getChangeUserInfoResponse(old_pass_number,new_pass_number,null,null,null,null,null);
     }
     public interface IChangePassword extends IMvpView{
 

@@ -2,6 +2,7 @@ package com.csi0n.searchjob.business.api;
 
 import com.csi0n.searchjob.business.pojo.request.ext.GetChangeUserInfoRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCheckTimeOutRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetCheckUserAppVerRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyCommentResultRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
@@ -15,6 +16,7 @@ import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailDRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobListByKeyRequest;
 import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
@@ -56,5 +58,9 @@ public interface SearchJobApi {
 
     GetChangeUserInfoResponse getChangeUserInfoResponse(GetChangeUserInfoRequest getChangeUserInfoRequest)throws NetWorkException;
 
+    GetChangeUserInfoResponse getChangeUserInfoHeadResponse(GetChangeUserInfoRequest getChangeUserInfoRequest)throws NetWorkException;
+
     GetMyCommentsResponse getMyCommentsResponse(GetMyCommentsRequest getMyCommentsRequest)throws NetWorkException;
+
+    GetCheckUserAppVerResponse getCheckUserAppVerResponse(GetCheckUserAppVerRequest getCheckUserAppVerRequest)throws NetWorkException;
 }

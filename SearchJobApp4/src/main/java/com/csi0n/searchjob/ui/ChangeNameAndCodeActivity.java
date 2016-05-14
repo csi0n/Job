@@ -51,7 +51,7 @@ public class ChangeNameAndCodeActivity extends MvpActivity<ChangeNameAndCodePres
     }
 
     void DoPostNameAndCode(String name, String code) {
-        presenter.doGetChangeUserInfo(name, code).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>() {
+        presenter.doGetChangeUserInfo(name, code).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>(this) {
             @Override
             public void onHandleSuccess(GetChangeUserInfoResponse response) {
                 super.onHandleSuccess(response);

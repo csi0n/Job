@@ -20,11 +20,13 @@ public class GetChangeUserInfoRequest extends BaseRequest {
     public String name;
     public String code;
 
-    public GetChangeUserInfoRequest(File head_id, String old_pass_word, String new_pass_word, String uname, String intro, String sex, String name, String code) {
-        if (head_id != null){
+
+    public GetChangeUserInfoRequest(File head_id) {
             RequestBody head = RequestBody.create(MultipartBody.FORM, head_id);
             this.head = head;
-        }
+    }
+
+    public GetChangeUserInfoRequest(String old_pass_word, String new_pass_word, String uname, String intro, String sex, String name, String code) {
         this.old_pass_word = old_pass_word;
         this.new_pass_word = new_pass_word;
         this.uname = uname;

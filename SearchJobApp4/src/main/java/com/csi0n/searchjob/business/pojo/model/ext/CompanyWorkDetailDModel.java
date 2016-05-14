@@ -28,7 +28,7 @@ public class CompanyWorkDetailDModel extends BaseModel {
     @SerializedName("content")
     public String content;
     @SerializedName("add_time")
-    public String addTime;
+    public long addTime;
     @SerializedName(value = "user_info")
     public UserModel userInfo;
     @SerializedName(value = "reply_user_info")

@@ -21,14 +21,14 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by chqss on 2016/5/3 0003.
  */
-public class AdvancedSubscriber<T extends BaseResponse> extends SimpleSubscriber<T> {
+public class EmptySubscriber<T extends BaseResponse> extends SimpleSubscriber<T> {
     private SoftReference<ILoadDataView> loadDataViewSoftReference;
 
-    public AdvancedSubscriber() {
+    public EmptySubscriber() {
         this(null);
     }
 
-    public AdvancedSubscriber(ILoadDataView loadDataView) {
+    public EmptySubscriber(ILoadDataView loadDataView) {
         if (loadDataView != null) {
             this.loadDataViewSoftReference = new SoftReference<>(loadDataView);
         }
@@ -47,6 +47,7 @@ public class AdvancedSubscriber<T extends BaseResponse> extends SimpleSubscriber
     public void onHandleSuccess(T response) {
         CLog.i("response = " + response);
     }
+
     @Override
     public void onHandleFail(String message, Throwable throwable) {
         super.onHandleFail(message, throwable);
@@ -111,7 +112,8 @@ public class AdvancedSubscriber<T extends BaseResponse> extends SimpleSubscriber
     public void onHandleFinish() {
         super.onHandleFinish();
         if (checkLoadDataView()) {
-            loadDataViewSoftReference.get().hideLoading();
+            if (isSuccess())
+                loadDataViewSoftReference.get().hideLoading();
             loadDataViewSoftReference.get().loadfinish();
             loadDataViewSoftReference.clear();
             loadDataViewSoftReference = null;

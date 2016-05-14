@@ -4,7 +4,6 @@ import com.csi0n.searchjob.business.domain.SearchJobDomain;
 import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.ui.base.mvp.BaseMvpPresenter;
 import com.csi0n.searchjob.ui.base.mvp.IMvpView;
-import com.csi0n.searchjob.ui.base.mvp.IView;
 import com.google.inject.Inject;
 
 import rx.Observable;
@@ -16,7 +15,7 @@ public class UpdateDocumentsPresenter extends BaseMvpPresenter<UpdateDocumentsPr
     @Inject
     SearchJobDomain searchJobDomain;
     public Observable<GetChangeUserInfoResponse> doGetChanUserInfo(String sex){
-        return searchJobDomain.getChangeUserInfoResponse(null,null,null,null,null,sex,null,null);
+        return searchJobDomain.getChangeUserInfoResponse(null,null,null,null,sex,null,null);
     }
     public interface iUpdateDocuments extends  IMvpView {
 

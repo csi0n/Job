@@ -97,6 +97,7 @@ public class UpdateDocumentsActivity extends MvpActivity<UpdateDocumentsPresente
                 startChangeIntro();
                 break;
             case R.id.btn_logout:
+                Constants.LOGIN_USER=null;
                 SharePreferenceManager.setKeyCachedToken("");
                 AppManager.getAppManager().restartApplication(this);
                 break;

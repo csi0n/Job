@@ -50,7 +50,7 @@ public class ChangeIntroActivity extends MvpActivity<ChangeIntroPresenter, Chang
     }
 
     void DoPostIntro(String intro) {
-        presenter.doGetChangeUserInfo(intro).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>() {
+        presenter.doGetChangeUserInfo(intro).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>(this) {
             @Override
             public void onHandleSuccess(GetChangeUserInfoResponse response) {
                 super.onHandleSuccess(response);

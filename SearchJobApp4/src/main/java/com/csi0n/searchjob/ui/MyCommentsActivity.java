@@ -5,11 +5,14 @@ import android.widget.ListView;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.callback.AdvancedSubscriber;
+import com.csi0n.searchjob.business.callback.EmptySubscriber;
 import com.csi0n.searchjob.business.pojo.response.ext.GetMyCommentsResponse;
 import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.ui.adapter.MyCommentsAdapter;
 import com.csi0n.searchjob.ui.base.BaseActivity;
 import com.csi0n.searchjob.ui.base.mvp.MvpActivity;
+import com.csi0n.searchjob.ui.widget.EmptyErrorType;
+import com.csi0n.searchjob.ui.widget.EmptyLayout;
 
 import java.util.Arrays;
 
@@ -30,9 +33,10 @@ public class MyCommentsActivity extends MvpActivity<MyCommentsPresenter, MyComme
     ListView mList;
     @Bind(R.id.refreshLayout)
     BGARefreshLayout mRefreshLayout;
+    @Bind(R.id.emptyLayout)
+    EmptyLayout mEmptyLayout;
 
     MyCommentsAdapter adapter;
-
     int CURRENT_PAGE=1;
     int TEMP_COUNT=0;
     boolean is_busy=false;
@@ -50,6 +54,7 @@ public class MyCommentsActivity extends MvpActivity<MyCommentsPresenter, MyComme
         goNext();
     }
     void init(){
+        mEmptyLayout.setShowError(EmptyErrorType.NO_COMMENTS);
         mRefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(this, true));
         mRefreshLayout.setDelegate(this);
         adapter=new MyCommentsAdapter(this);
@@ -60,7 +65,7 @@ public class MyCommentsActivity extends MvpActivity<MyCommentsPresenter, MyComme
     }
     void DoGetMyComments(final int page){
         is_busy=true;
-        presenter.getMyComments(page).subscribe(new AdvancedSubscriber<GetMyCommentsResponse>(){
+        presenter.getMyComments(page).subscribe(new EmptySubscriber<GetMyCommentsResponse>(mEmptyLayout){
             @Override
             public void onHandleSuccess(GetMyCommentsResponse response) {
                 super.onHandleSuccess(response);
@@ -94,6 +99,7 @@ public class MyCommentsActivity extends MvpActivity<MyCommentsPresenter, MyComme
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         if (!is_busy){
             CURRENT_PAGE=1;
+            mEmptyLayout.reSetCount();
             DoGetMyComments(CURRENT_PAGE);
         }
     }

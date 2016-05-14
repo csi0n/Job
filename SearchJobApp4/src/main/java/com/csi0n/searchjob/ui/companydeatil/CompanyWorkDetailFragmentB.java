@@ -13,6 +13,8 @@ import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailBRespons
 import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.ui.adapter.CompanyWorkDetailBListAdapter;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
+import com.csi0n.searchjob.ui.widget.EmptyErrorType;
+import com.csi0n.searchjob.ui.widget.EmptyLayout;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
@@ -31,6 +33,8 @@ public class CompanyWorkDetailFragmentB extends MvpFragment<CompanyWorkDetailBPr
     ListView mList;
     @Bind(R.id.mBGARefreshLayout)
     BGARefreshLayout mBGARefreshLayout;
+    @Bind(R.id.emptyLayout)
+    EmptyLayout mEmptyLayout;
 
     int company_id;
     int CURRENT_PAGE = 1;
@@ -54,6 +58,7 @@ public class CompanyWorkDetailFragmentB extends MvpFragment<CompanyWorkDetailBPr
     }
 
     void init() {
+        mEmptyLayout.setShowError(EmptyErrorType.HIDE_LAYOUT);
         company_id = mvpActivity.getBundle().getInt(Constants.MARK_COMPANY_WORK_DETAIL_COMPANY_ID);
         adapter = new CompanyWorkDetailBListAdapter(mvpActivity);
         mList.setAdapter(adapter);
@@ -63,7 +68,7 @@ public class CompanyWorkDetailFragmentB extends MvpFragment<CompanyWorkDetailBPr
     }
 
     void DoGetCompanyWorkDetailHeader(int company_id) {
-        presenter.doGetSearchJobDetailBHeader(company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailBHeaderResponse>() {
+        presenter.doGetSearchJobDetailBHeader(company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailBHeaderResponse>(mEmptyLayout) {
             @Override
             public void onHandleSuccess(GetSearchJobDetailBHeaderResponse response) {
                 super.onHandleSuccess(response);
@@ -74,7 +79,7 @@ public class CompanyWorkDetailFragmentB extends MvpFragment<CompanyWorkDetailBPr
 
     void DoGetCompanyWorkDetailB(final int page) {
         is_busy = true;
-        presenter.doGetSearchJobDetailB(page, company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailBResponse>() {
+        presenter.doGetSearchJobDetailB(page, company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailBResponse>(mEmptyLayout) {
             @Override
             public void onHandleSuccess(GetSearchJobDetailBResponse response) {
                 super.onHandleSuccess(response);
@@ -121,6 +126,7 @@ public class CompanyWorkDetailFragmentB extends MvpFragment<CompanyWorkDetailBPr
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         if (!is_busy) {
+            mEmptyLayout.reSetCount();
             CURRENT_PAGE = 1;
             DoGetCompanyWorkDetailB(CURRENT_PAGE);
         }

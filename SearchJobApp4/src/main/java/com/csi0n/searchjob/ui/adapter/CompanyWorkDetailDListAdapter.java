@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.pojo.model.ext.CompanyWorkDetailDModel;
 import com.csi0n.searchjob.core.string.Constants;
+import com.csi0n.searchjob.core.string.TimeUtils;
 import com.csi0n.searchjob.lib.widget.RoundImageView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -74,10 +75,9 @@ public class CompanyWorkDetailDListAdapter extends BaseAdapter {
                 });
             }
         }
-
+        finalHolder.tvName.setText(getItem(position).userInfo.uname);
         finalHolder.tvContent.setText(getItem(position).content);
-        /*TimeFormat timeFormat = new TimeFormat(mContext, Long.valueOf(getItem(i).getAdd_time()));
-        finalHolder.mTVtime.setText(timeFormat.getTime());*/
+        finalHolder.tvTime.setText(TimeUtils.getDistanceTime(getItem(position).addTime));
         return convertView;
     }
 

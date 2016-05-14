@@ -17,6 +17,7 @@ import com.csi0n.searchjob.business.pojo.event.ext.MainFragmentSkipEvent;
 import com.csi0n.searchjob.business.pojo.event.ext.UserLoginEvent;
 import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse;
 import com.csi0n.searchjob.core.io.FileUtils;
 import com.csi0n.searchjob.core.io.SharePreferenceManager;
 import com.csi0n.searchjob.core.log.CLog;
@@ -66,6 +67,12 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
     }
 
     void autoLogin(){
+        presenter.doGetCheckUpdate().subscribe(new AdvancedSubscriber<GetCheckUserAppVerResponse>(){
+            @Override
+            public void onHandleSuccess(GetCheckUserAppVerResponse response) {
+                super.onHandleSuccess(response);
+            }
+        });
         final String token= SharePreferenceManager.getKeyCachedToken();
         if (!TextUtils.isEmpty(token)){
             presenter.doCheckTimeOut(token).subscribe(new AdvancedSubscriber<GetCheckTimeOutResponse>(){
@@ -176,20 +183,12 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
         }
     }
     void uploadHead(final File headfile) {
-        loading=new ProgressLoading(this,"上传中请稍后...");
-        loading.show();
-        presenter.doGetChangeUserInfo(headfile).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>(){
+        presenter.doGetChangeUserInfo(headfile).subscribe(new AdvancedSubscriber<GetChangeUserInfoResponse>(this){
             @Override
             public void onHandleSuccess(GetChangeUserInfoResponse response) {
                 super.onHandleSuccess(response);
                 showToast("上传成功!");
                 EventBus.getDefault().post(new UserInfoChangeEvent(headfile, UserInfoChangeEvent.ChangeType.HEAD));
-            }
-            @Override
-            public void onHandleFinish() {
-                super.onHandleFinish();
-                if (loading.isShowing())
-                    loading.dismiss();
             }
         });
     }

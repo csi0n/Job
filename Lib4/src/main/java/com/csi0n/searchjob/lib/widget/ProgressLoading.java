@@ -25,7 +25,6 @@ public class ProgressLoading extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCanceledOnTouchOutside(false);
         setContentView(R.layout.view_progress_loading_dialog);
         txt_text = (TextView) findViewById(R.id.txt_text);
         txt_text.setText(text);

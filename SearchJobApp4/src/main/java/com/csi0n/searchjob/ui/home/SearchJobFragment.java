@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.callback.AdvancedSubscriber;
+import com.csi0n.searchjob.business.callback.EmptySubscriber;
 import com.csi0n.searchjob.business.pojo.event.ext.ChooseCityEvent;
 import com.csi0n.searchjob.business.pojo.model.ext.AreaModel;
 import com.csi0n.searchjob.business.pojo.model.ext.CityAndAreaListModel;
@@ -28,6 +29,8 @@ import com.csi0n.searchjob.ui.CompanyWorkDetailActivity;
 import com.csi0n.searchjob.ui.SearchJobActivity;
 import com.csi0n.searchjob.ui.adapter.SearchJobFragmentAdapter;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
+import com.csi0n.searchjob.ui.widget.EmptyErrorType;
+import com.csi0n.searchjob.ui.widget.EmptyLayout;
 import com.csi0n.searchjob.ui.widget.tabview.view.ExpandTabView;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewAreaList;
 import com.csi0n.searchjob.ui.widget.tabview.view.ViewBackMoney;
@@ -56,6 +59,8 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
     BGARefreshLayout mBGARefreshLayout;
     @Bind(value = R.id.list)
     ListView mList;
+    @Bind(value = R.id.emptyLayout)
+    EmptyLayout mEmptyLayout;
     @OnItemClick(R.id.list)void  onItemClick(int position){
         startCompanyJobDetail(adapter.datas.get(position).id);
     }
@@ -99,6 +104,7 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
     }
 
     void init() {
+        mEmptyLayout.setShowError(EmptyErrorType.NODATA);
         mBGARefreshLayout.setDelegate(this);
         mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(mvpActivity, true));
         adapter = new SearchJobFragmentAdapter(mvpActivity);
@@ -158,7 +164,7 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
                     fuliTemp = fuliTemp + "," + FULI_LIST.get(i).getFid();
             }
         }
-        presenter.getSearJobList(page, CITY_ID, AREA_ID, MONEY_BACK, WORK_TYPE, fuliTemp, SharePreferenceManager.getFlagLocalConfigVersion()).subscribe(new AdvancedSubscriber<GetCompanyJobMainResponse>() {
+        presenter.getSearJobList(page, CITY_ID, AREA_ID, MONEY_BACK, WORK_TYPE, fuliTemp, SharePreferenceManager.getFlagLocalConfigVersion()).subscribe(new EmptySubscriber<GetCompanyJobMainResponse>(mEmptyLayout) {
             @Override
             public void onHandleSuccess(GetCompanyJobMainResponse response) {
                 super.onHandleSuccess(response);
@@ -216,6 +222,7 @@ public class SearchJobFragment extends MvpFragment<SearchJobPresenter, SearchJob
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         if (!is_busy) {
+            mEmptyLayout.reSetCount();
             CURRENT_PAGE = 1;
             getJobList(CURRENT_PAGE);
         }

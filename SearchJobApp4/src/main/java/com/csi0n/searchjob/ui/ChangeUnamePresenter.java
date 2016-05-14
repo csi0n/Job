@@ -15,7 +15,7 @@ public class ChangeUnamePresenter extends BaseMvpPresenter<ChangeUnamePresenter.
     @Inject
     SearchJobDomain searchJobDomain;
     public Observable<GetChangeUserInfoResponse> doGetChangeUserInfo(String uname){
-        return searchJobDomain.getChangeUserInfoResponse(null,null,null,uname,null,null,null,null);
+        return searchJobDomain.getChangeUserInfoResponse(null,null,uname,null,null,null,null);
     }
     public interface IChangeUname extends IMvpView{
 

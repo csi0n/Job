@@ -10,6 +10,7 @@ import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.pojo.model.ext.MyCommentModel;
 import com.csi0n.searchjob.business.pojo.model.ext.MyModel;
 import com.csi0n.searchjob.core.string.Constants;
+import com.csi0n.searchjob.core.string.TimeUtils;
 import com.csi0n.searchjob.lib.widget.RoundImageView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -83,8 +84,7 @@ public class MyCommentsAdapter extends BaseAdapter {
         });
         finalHolder.tvUname.setText(my.uname);
         finalHolder.tvContent.setText(getItem(position).content);
-        /*TimeFormat timeFormat = new TimeFormat(mContext, getItem(position).getAdd_time());
-        finalHolder.mTvAddTime.setText(timeFormat.getTime());*/
+        finalHolder.tvTime.setText(TimeUtils.getDistanceTime(getItem(position).add_time));
         finalHolder.tvCompanyName.setText(getItem(position).name);
         finalHolder.tvCompanyIntro.setText(getItem(position).intro);
         return convertView;

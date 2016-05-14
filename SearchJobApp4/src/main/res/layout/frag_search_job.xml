@@ -66,6 +66,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <com.csi0n.searchjob.ui.widget.EmptyLayout
+            android:layout_width="match_parent"
+            android:id="@+id/emptyLayout"
+            android:layout_height="match_parent"></com.csi0n.searchjob.ui.widget.EmptyLayout>
         <cn.bingoogolapple.refreshlayout.BGARefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"

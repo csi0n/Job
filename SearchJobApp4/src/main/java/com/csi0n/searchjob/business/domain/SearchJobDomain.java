@@ -2,6 +2,7 @@ package com.csi0n.searchjob.business.domain;
 
 import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
@@ -33,6 +34,8 @@ public interface SearchJobDomain {
     Observable<GetSearchJobDetailCResponse> getSearchJobDetailC(int page, int company_id);
     Observable<GetSearchJobDetailDResponse> getSearchJobDetailD(int page, int company_id);
     Observable<GetCompanyCommentResultResponse> getCompanyCommentResult(int company_id,String content,long reply_uid);
-    Observable<GetChangeUserInfoResponse> getChangeUserInfoResponse(File head,String old_pass_number,String new_pass_number,String uname,String intro,String sex,String name,String code);
+    Observable<GetChangeUserInfoResponse> getChangeUserInfoResponse(String old_pass_number,String new_pass_number,String uname,String intro,String sex,String name,String code);
+    Observable<GetChangeUserInfoResponse>getChangeUserInfoHeadResponse(File head);
     Observable<GetMyCommentsResponse> getMyCommentsResponse(int page);
+    Observable<GetCheckUserAppVerResponse>getCheckUserAppVerResponse();
 }

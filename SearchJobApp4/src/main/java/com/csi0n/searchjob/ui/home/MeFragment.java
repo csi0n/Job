@@ -86,7 +86,7 @@ public class MeFragment extends MvpFragment<MePresenter,MePresenter.IMeView> {
         if (my==null)
             EventBus.getDefault().post(new MainFragmentSkipEvent(Constants.MainSkipTYPE.SEARCHJOB));
         else{
-            Picasso.with(mvpActivity).load(my.head_ic).into(RiHead, new Callback() {
+            Picasso.with(mvpActivity).load(Constants.BaseUrl+my.head_ic).into(RiHead, new Callback() {
                 @Override
                 public void onSuccess() {
 

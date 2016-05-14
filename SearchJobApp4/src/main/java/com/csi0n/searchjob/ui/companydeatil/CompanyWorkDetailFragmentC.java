@@ -8,10 +8,13 @@ import android.widget.ListView;
 
 import com.csi0n.searchjob.R;
 import com.csi0n.searchjob.business.callback.AdvancedSubscriber;
+import com.csi0n.searchjob.business.callback.EmptySubscriber;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailCResponse;
 import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.ui.adapter.CompanyWorkDetailCListAdapter;
 import com.csi0n.searchjob.ui.base.mvp.MvpFragment;
+import com.csi0n.searchjob.ui.widget.EmptyErrorType;
+import com.csi0n.searchjob.ui.widget.EmptyLayout;
 
 import java.util.Arrays;
 
@@ -29,6 +32,8 @@ public class CompanyWorkDetailFragmentC extends MvpFragment<CompanyWorkDetailCPr
     ListView mList;
     @Bind(R.id.mBGARefreshLayout)
     BGARefreshLayout mBGARefreshLayout;
+    @Bind(R.id.emptyLayout)
+    EmptyLayout mEmptyLayout;
 
     CompanyWorkDetailCListAdapter adapter;
     int TEMP_COUNT=0;
@@ -47,6 +52,7 @@ public class CompanyWorkDetailFragmentC extends MvpFragment<CompanyWorkDetailCPr
         DoGetCompanyWorkDetailC(CURRENT_PAGE);
     }
     void init(){
+        mEmptyLayout.setShowError(EmptyErrorType.NO_JINGLIREN);
         company_id=mvpActivity.getBundle().getInt(Constants.MARK_COMPANY_WORK_DETAIL_COMPANY_ID);
         mBGARefreshLayout.setRefreshViewHolder(new BGANormalRefreshViewHolder(mvpActivity, true));
         mBGARefreshLayout.setDelegate(this);
@@ -56,7 +62,7 @@ public class CompanyWorkDetailFragmentC extends MvpFragment<CompanyWorkDetailCPr
 
     void DoGetCompanyWorkDetailC(final int page){
         is_busy=true;
-        presenter.doGetSearchJobDetailC(page,company_id).subscribe(new AdvancedSubscriber<GetSearchJobDetailCResponse>(){
+        presenter.doGetSearchJobDetailC(page,company_id).subscribe(new EmptySubscriber<GetSearchJobDetailCResponse>(mEmptyLayout){
             @Override
             public void onHandleSuccess(GetSearchJobDetailCResponse response) {
                 super.onHandleSuccess(response);
@@ -84,6 +90,7 @@ public class CompanyWorkDetailFragmentC extends MvpFragment<CompanyWorkDetailCPr
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         if (!is_busy) {
             CURRENT_PAGE = 1;
+            mEmptyLayout.reSetCount();
             DoGetCompanyWorkDetailC(CURRENT_PAGE);
         }
     }

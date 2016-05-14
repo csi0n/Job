@@ -6,6 +6,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
+import android.widget.TextView;
+
+import com.csi0n.searchjob.lib.widget.ProgressLoading;
 
 import roboguice.fragment.RoboDialogFragment;
 
@@ -45,12 +48,9 @@ public class LoadingDialogFragment  extends RoboDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         boolean dimable = getArguments().getBoolean(DIMABLE);
         String msg = getArguments().getString(MSG, DEFAULT_MSG);
-
-        ProgressDialog dialog = new ProgressDialog(getContext());
-        dialog.setCancelable(dimable);
+        ProgressLoading dialog=new ProgressLoading(getContext(),msg);
         dialog.setCanceledOnTouchOutside(dimable);
-        dialog.setTitle(msg);
-
+        dialog.setCancelable(dimable);
         return dialog;
     }
 

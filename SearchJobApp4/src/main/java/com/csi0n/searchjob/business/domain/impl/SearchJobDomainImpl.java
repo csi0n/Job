@@ -5,6 +5,7 @@ import com.csi0n.searchjob.business.api.SearchJobApi;
 import com.csi0n.searchjob.business.domain.SearchJobDomain;
 import com.csi0n.searchjob.business.pojo.request.ext.GetChangeUserInfoRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCheckTimeOutRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetCheckUserAppVerRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyCommentResultRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
@@ -18,6 +19,7 @@ import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailDRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobListByKeyRequest;
 import com.csi0n.searchjob.business.pojo.response.ext.GetChangeUserInfoResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
@@ -225,12 +227,28 @@ public class SearchJobDomainImpl implements SearchJobDomain {
     }
 
     @Override
-    public Observable<GetChangeUserInfoResponse> getChangeUserInfoResponse(File head, String old_pass_number, String new_pass_number, String uname, String intro, String sex, String name, String code) {
-        return Observable.just(new GetChangeUserInfoRequest(head,old_pass_number,new_pass_number,uname,intro,sex,name,code)).flatMap(new Func1<GetChangeUserInfoRequest, Observable<GetChangeUserInfoResponse>>() {
+    public Observable<GetChangeUserInfoResponse> getChangeUserInfoResponse(String old_pass_number, String new_pass_number, String uname, String intro, String sex, String name, String code) {
+        return Observable.just(new GetChangeUserInfoRequest(old_pass_number,new_pass_number,uname,intro,sex,name,code)).flatMap(new Func1<GetChangeUserInfoRequest, Observable<GetChangeUserInfoResponse>>() {
             @Override
             public Observable<GetChangeUserInfoResponse> call(GetChangeUserInfoRequest getChangeUserInfoRequest) {
                 try {
                     GetChangeUserInfoResponse response=searchJobApi.getChangeUserInfoResponse(getChangeUserInfoRequest);
+                    return Observable.just(response);
+                }catch (NetWorkException e){
+                    return Observable.error(e);
+                }
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<GetChangeUserInfoResponse> getChangeUserInfoHeadResponse(File head) {
+        return Observable.just(new GetChangeUserInfoRequest(head)).flatMap(new Func1<GetChangeUserInfoRequest, Observable<GetChangeUserInfoResponse>>() {
+            @Override
+            public Observable<GetChangeUserInfoResponse> call(GetChangeUserInfoRequest getChangeUserInfoRequest) {
+                try {
+                    GetChangeUserInfoResponse response=searchJobApi.getChangeUserInfoHeadResponse(getChangeUserInfoRequest);
                     return Observable.just(response);
                 }catch (NetWorkException e){
                     return Observable.error(e);
@@ -251,6 +269,22 @@ public class SearchJobDomainImpl implements SearchJobDomain {
                 }catch (NetWorkException e){
                     return Observable.error(e);
                 }
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<GetCheckUserAppVerResponse> getCheckUserAppVerResponse() {
+        return Observable.just(new GetCheckUserAppVerRequest()).flatMap(new Func1<GetCheckUserAppVerRequest, Observable<GetCheckUserAppVerResponse>>() {
+            @Override
+            public Observable<GetCheckUserAppVerResponse> call(GetCheckUserAppVerRequest getCheckUserAppVerRequest) {
+               try {
+                   GetCheckUserAppVerResponse response=searchJobApi.getCheckUserAppVerResponse(getCheckUserAppVerRequest);
+                   return Observable.just(response);
+               }catch (NetWorkException e){
+                   return Observable.error(e);
+               }
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

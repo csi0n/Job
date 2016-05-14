@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmptyLayout">
+        <attr name="ErrorType">
+            <enum name="NO_FRIEND_CHAT" value="5"/>
+            <enum name="NO_COMMENTS" value="7"/>
+            <enum name="NO_JINGLIREN" value="8"/>
+            <enum name="NODATA" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>
