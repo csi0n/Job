@@ -72,5 +72,4 @@ public interface ISearchJobHttpApi {
     @FormUrlEncoded
     @POST("api.php/User/Public/checkUserAppVer")
     Call<GetCheckUserAppVerResponse> getCheckUserAppVerResponse(@Field("ver")String version);
-
 }

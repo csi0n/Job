@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import okhttp3.Response;
+
 /**
  * Created by chqss on 2016/5/1 0001.
  */
@@ -62,17 +64,6 @@ public class FileUtils {
         return file;
     }
 
-    public static File getSaveFileAndCreate(String folderPath, String fileNmae) {
-        File file = new File(getSavePath(folderPath) + File.separator
-                + fileNmae);
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
-    }
-
     public static boolean isFileExists(String folderPath, String fileNmae) {
         File file = new File(getSavePath(folderPath) + File.separator
                 + fileNmae);
@@ -81,6 +72,20 @@ public class FileUtils {
 
     public static String getSavePath(String folderName) {
         return getSaveFolder(folderName).getAbsolutePath();
+    }
+
+    public static boolean saveResponse(Response response, File saveFile) throws IOException {
+        InputStream is = null;
+        byte[] buf = new byte[2048];
+        int len = 0;
+        FileOutputStream fos = null;
+        is = response.body().byteStream();
+        fos = new FileOutputStream(saveFile);
+        while ((len = is.read(buf)) != -1) {
+            fos.write(buf, 0, len);
+        }
+        closeIO(fos);
+        return true;
     }
 
     public static boolean bitmapToFile(Bitmap bitmap, String filePath) {

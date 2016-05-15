@@ -29,6 +29,7 @@ import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailBRespons
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailCResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailDResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobListByKeyResponse;
+import com.csi0n.searchjob.core.io.FileUtils;
 import com.csi0n.searchjob.core.log.CLog;
 import com.csi0n.searchjob.core.net.NetWorkException;
 import com.csi0n.searchjob.core.string.Constants;
@@ -37,6 +38,7 @@ import java.io.IOException;
 import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -53,6 +55,9 @@ public class SearchJobApiRetrofitImpl implements SearchJobApi {
 
     public SearchJobApiRetrofitImpl() {
         OkHttpClient.Builder builder= new OkHttpClient.Builder();
+        int cacheSize=1000*1024*1024;//1000Mib
+        Cache cache=new Cache(FileUtils.getSaveFolder(Constants.cacheFolder),cacheSize);
+        builder.cache(cache);
         builder.readTimeout(15, TimeUnit.MINUTES);
         builder.connectTimeout(15,TimeUnit.MINUTES);
         builder.writeTimeout(15, TimeUnit.MINUTES);

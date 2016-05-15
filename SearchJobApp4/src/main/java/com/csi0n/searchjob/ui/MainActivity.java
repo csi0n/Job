@@ -20,7 +20,9 @@ import com.csi0n.searchjob.business.pojo.response.ext.GetCheckTimeOutResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse;
 import com.csi0n.searchjob.core.io.FileUtils;
 import com.csi0n.searchjob.core.io.SharePreferenceManager;
+import com.csi0n.searchjob.core.io.UIProgressListener;
 import com.csi0n.searchjob.core.log.CLog;
+import com.csi0n.searchjob.core.net.DownLoadFileUtils;
 import com.csi0n.searchjob.core.string.Constants;
 import com.csi0n.searchjob.core.system.SystemUtils;
 import com.csi0n.searchjob.lib.AppManager;
@@ -64,15 +66,10 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
         init();
         setListeners();
         goNext();
+        DoCheckUpDate();
     }
 
     void autoLogin(){
-        presenter.doGetCheckUpdate().subscribe(new AdvancedSubscriber<GetCheckUserAppVerResponse>(){
-            @Override
-            public void onHandleSuccess(GetCheckUserAppVerResponse response) {
-                super.onHandleSuccess(response);
-            }
-        });
         final String token= SharePreferenceManager.getKeyCachedToken();
         if (!TextUtils.isEmpty(token)){
             presenter.doCheckTimeOut(token).subscribe(new AdvancedSubscriber<GetCheckTimeOutResponse>(){
@@ -98,7 +95,22 @@ public class MainActivity extends MvpActivity<MainPresenter, MainPresenter.IMain
         mMeFragment = new MeFragment();
         mSearchJobFragment = new SearchJobFragment();
     }
+    void DoCheckUpDate(){
+        presenter.doGetCheckUpdate().subscribe(new AdvancedSubscriber<GetCheckUserAppVerResponse>(){
+            @Override
+            public void onHandleSuccess(GetCheckUserAppVerResponse response) {
+                super.onHandleSuccess(response);
+                new DownLoadFileUtils(response.url, uiProgressListener).start();
+            }
+        });
+    }
 
+    final UIProgressListener uiProgressListener=new UIProgressListener() {
+        @Override
+        public void onUIProgress(long currentBytes, long contentLength, boolean done) {
+            CLog.d(currentBytes+" "+contentLength+" "+done);
+        }
+    };
     void setListeners() {
         mBottom.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

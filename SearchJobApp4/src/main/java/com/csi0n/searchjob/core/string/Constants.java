@@ -11,6 +11,7 @@ public class Constants {
     public static final String BaseUrl="http://192.168.56.1/im/";
     public static final String Preference_Name="search_job";
     public static final String saveFolder = "SearchJob";
+    public static final String cacheFolder="Cache";
     public static String DEFAULT_TOKEN;
     public static final int CODE_CONFIG_UPDATE=16;
     public static final int CODE_SUCCESS=10;

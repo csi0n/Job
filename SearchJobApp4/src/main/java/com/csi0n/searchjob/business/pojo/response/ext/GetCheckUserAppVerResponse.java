@@ -7,8 +7,8 @@ import com.google.gson.annotations.SerializedName;
  * Created by chqss on 2016/5/14 0014.
  */
 public class GetCheckUserAppVerResponse extends BaseResponse {
-    @SerializedName(value = "info")
-    public String info;
+    @SerializedName(value = "desc")
+    public String desc;
     @SerializedName(value = "url")
     public String url;
 }
