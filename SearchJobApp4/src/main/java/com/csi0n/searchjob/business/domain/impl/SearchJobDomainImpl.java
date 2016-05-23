@@ -11,6 +11,7 @@ import com.csi0n.searchjob.business.pojo.request.ext.GetCompanyJobMainRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetConfigRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetLoginRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetMyCommentsRequest;
+import com.csi0n.searchjob.business.pojo.request.ext.GetRequestDownLoadRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailARequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailBHeaderRequest;
 import com.csi0n.searchjob.business.pojo.request.ext.GetSearchJobDetailBRequest;
@@ -23,6 +24,7 @@ import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetDownLoadFileResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetMyCommentsResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailAResponse;
@@ -31,11 +33,19 @@ import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailBRespons
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailCResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailDResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobListByKeyResponse;
+import com.csi0n.searchjob.core.io.ProgressHelper;
+import com.csi0n.searchjob.core.io.UIProgressListener;
 import com.csi0n.searchjob.core.net.NetWorkException;
 import com.google.inject.Inject;
 
 import java.io.File;
+import java.io.IOException;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
@@ -48,6 +58,7 @@ public class SearchJobDomainImpl implements SearchJobDomain {
     @Inject
     SearchJobApi searchJobApi;
 
+    private OkHttpClient client = new OkHttpClient();
     @Override
     public Observable<GetConfigResponse> getConfig() {
         return Observable.just(new GetConfigRequest()).flatMap(new Func1<GetConfigRequest, Observable<GetConfigResponse>>() {

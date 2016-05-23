@@ -43,10 +43,6 @@ public class DownLoadFileUtils {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                for (int i = 0; i < response.headers().size(); i++) {
-                    CLog.e("header-----name:"+response.headers().name(i)+"value:"+response.headers().value(i));
-                }
-                CLog.e(response.body().contentType().toString());
                 File downloadFile=FileUtils.getSaveFile(Constants.saveFolder,"111.zip");
                 BufferedSink sink= Okio.buffer(Okio.sink(downloadFile));
                 sink.writeAll(response.body().source());

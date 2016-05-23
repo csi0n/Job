@@ -6,6 +6,7 @@ import com.csi0n.searchjob.business.pojo.response.ext.GetCheckUserAppVerResponse
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyCommentResultResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetCompanyJobMainResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetConfigResponse;
+import com.csi0n.searchjob.business.pojo.response.ext.GetDownLoadFileResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetLoginResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetMyCommentsResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailAResponse;
@@ -14,9 +15,13 @@ import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailBRespons
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailCResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobDetailDResponse;
 import com.csi0n.searchjob.business.pojo.response.ext.GetSearchJobListByKeyResponse;
+import com.csi0n.searchjob.core.io.UIProgressListener;
 
 import java.io.File;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import rx.Observable;
 
 /**
